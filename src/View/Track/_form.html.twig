@@ -1,0 +1,36 @@
+{# TODO : manage errors display #}
+
+<form method="post" action="/tracks/add" enctype="multipart/form-data">
+
+	<input type="hidden" value="{{ track.id }}" name="id">
+
+	<div> 
+		<label for="title"></label>
+		<input type="text" placeholder="Titre" value="{{ track.title }}" name="title">
+	</div> 
+
+	<div> 
+		<input type="text" placeholder="Artiste" value="{{ track.artist }}" name="artist">
+	</div>
+
+	<div>
+		<input type="text" placeholder="Album" value="{{ track.album }}" name="album">
+	</div>
+
+	<div>
+		<input type="text" placeholder="Durée" value="{{ track.duration }}" name="duration">
+	</div>
+
+	<div>
+		<input type="file" name="mp3" id="mp3">
+	</div>
+
+	<div>
+		<label for="flux"> Ajouter au flux</label>
+		<input type="checkbox"  name="flux" id="flux">
+	</div>
+
+	<div>
+		<button type="submit" value="Submit"> Ajouter une track</button>
+	</div>
+ 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
