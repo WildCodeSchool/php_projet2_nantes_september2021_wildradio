@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+     
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -13,8 +13,26 @@
 </head>
 
 <body>
+
+<video class="sunset"  playsinline autoplay muted loop> 
+<source src="\assets\images\Sunset.mp4" type="video/mp4">
+</video>
+
+     <header>
+      <nav>
+
+    <img class="Logo" src="\assets\images\Wild-Radio-Noir-BD.png">
+    <HR>
+    <ul>
+        <li> <a href="playlist.html"> Playlists</a></li>
+        <li> <a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+</header>
+
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
+
 </body>
 </html>
 

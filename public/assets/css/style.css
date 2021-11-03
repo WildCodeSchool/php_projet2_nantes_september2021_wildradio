@@ -1,0 +1,80 @@
+
+
+
+.sunset{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: auto;
+                
+}
+
+.Logo{
+                        
+    width: clamp(20px, 30%, 70px);
+    margin-left: 580px;
+    margin-top: 10px;
+}
+
+ul{
+                        
+    list-style-type: none;
+    font-size: 30px;
+    display: flex;
+    gap: 100px;   
+    margin-left: 600px;
+                    
+}
+
+a{
+    text-decoration: none;
+    color: whitesmoke;
+                        
+}
+
+h1{
+    color:whitesmoke;
+    margin-right: 1000px;
+    margin-left: 200px;
+    font-size:90px;
+    margin-bottom: 100px;
+    font-family:'Maven Pro';
+}
+
+h2{
+    color: whitesmoke;
+    
+}
+
+                        
+p{
+    color: whitesmoke;
+   
+}
+
+
+
+button:hover{
+    background-color:#4A517E ;
+    font-family:'Maven Pro';
+}
+
+.button{
+    width: 20%;
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    background-color:#F39F81;
+    border-radius: 10px;
+    text-transform: uppercase;
+    margin:auto;
+    display:block;    
+    margin-right: 1000px;
+}
+
+
+HR{                
+    margin-left: 100px;
+    margin-right: 100px;
+   
+}
