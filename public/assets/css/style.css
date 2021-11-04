@@ -49,6 +49,8 @@ h2{
                         
 p{
     color: whitesmoke;
+    margin-left: 30px;
+    font-size: x-large;
    
 }
 
@@ -59,7 +61,7 @@ button:hover{
     font-family:'Maven Pro';
 }
 
-.button{
+.buttons{
     width: 20%;
     color: white;
     font-size: 25px;

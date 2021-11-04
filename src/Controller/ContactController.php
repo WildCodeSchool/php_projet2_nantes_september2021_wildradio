@@ -9,7 +9,7 @@
 
 namespace App\Controller;
 
-class HomeController extends AbstractController
+class ContactController extends AbstractController
 {
     /**
      * Display home page
@@ -19,11 +19,12 @@ class HomeController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
-    {
-        return $this->twig->render('Home/index.html.twig');
-    }
 
+       
     
+    public function contact()
+    {
+
+    return $this->twig->render('Home/contact.html.twig');
+    }
 }
-   
