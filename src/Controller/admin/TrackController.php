@@ -149,7 +149,29 @@ class TrackController extends AbstractController
     }
 
     
+    /**
+     * Edit a specific item
+     */
+    public function edit(int $id): string
+    {
+        $trackManager = new TrackManager();
+        $item = $itemManager->selectOneById($id);
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $item = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $itemManager->update($item);
+            header('Location: /items/show?id=' . $id);
+        }
+
+        return $this->twig->render('Item/edit.html.twig', [
+            'item' => $item,
+        ]);
+    }
 
 
 }

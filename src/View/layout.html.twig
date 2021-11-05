@@ -10,7 +10,15 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
-    {% block script %}{% endblock %}
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+     
+    {% block script %}
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"</script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"</script>
+    {% endblock %}
+   
 
 </head>
 

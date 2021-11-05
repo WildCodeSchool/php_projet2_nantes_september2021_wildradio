@@ -12,6 +12,7 @@ return [
     'tracks' => ['admin\TrackController', 'browse' ],
     'tracks/show' => ['admin\TrackController', 'show', ['id']],
     'tracks/delete' => ['admin\TrackController', 'delete',],
+    'tracks/edit' => ['admin\TrackController', 'edit', ['id']],
 
     '' => ['front\FluxController', 'browse',]
 

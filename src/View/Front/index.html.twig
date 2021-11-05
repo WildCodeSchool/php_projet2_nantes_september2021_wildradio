@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <h1> Wild Radio </h1>
+   <h1> Wild Radio </h1>
     
         <audio controls id="audioPlayer"></audio>
 
@@ -13,17 +13,30 @@
                 <i id="play" class="fa fa-play"></i>
             </div>
             <div id="infosTrack">
-                <p>Artiste - Nom du track</p>
-                <p>Nom de l'album</p>
+                {% for track in tracks %}
+
+                <p>Artiste : {{ track.artist }}</p>
+                <p>Titre : {{ track.name }}</p>
+
+                {% endfor %}
+
             </div>
         </div>
 
         <ul id="playlist">
             {% for track in tracks %}
             <li class="current-song">
-                {{ track.mp3 }}
+                <a href="{{ track.mp3 }}"> </a>
             </li>
             {% endfor %}
         </ul>
+
+{% endblock %}
+
+{% block javascript %} 
+    <script src="/assets/js/playerFlux.js"></script>
+    <script>
+        audioPlayer();
+    </script>
 
 {% endblock %}
