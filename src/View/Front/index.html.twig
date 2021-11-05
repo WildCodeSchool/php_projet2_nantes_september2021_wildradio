@@ -3,10 +3,27 @@
 {% block title %}WildRadio{% endblock %}
 
 {% block content %}
-<h1> </h1>
-<p> </p> 
+
+    <h1> Wild Radio </h1>
+    
+        <audio controls id="audioPlayer"></audio>
+
+        <div id="player">
+            <div>
+                <i id="play" class="fa fa-play"></i>
+            </div>
+            <div id="infosTrack">
+                <p>Artiste - Nom du track</p>
+                <p>Nom de l'album</p>
+            </div>
+        </div>
+
+        <ul id="playlist">
+            {% for track in tracks %}
+            <li class="current-song">
+                {{ track.mp3 }}
+            </li>
+            {% endfor %}
+        </ul>
 
 {% endblock %}
-
-
-{% block javascript %} {% endblock %}

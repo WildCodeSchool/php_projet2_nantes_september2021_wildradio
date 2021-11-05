@@ -13,7 +13,7 @@ return [
     'tracks/show' => ['admin\TrackController', 'show', ['id']],
     'tracks/delete' => ['admin\TrackController', 'delete',],
 
-    '' => ['front\FluxController', 'show',]
+    '' => ['front\FluxController', 'browse',]
 
 
     /*
