@@ -20,11 +20,9 @@ class ContactController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      */
 
-       
     
     public function contact()
     {
-
-    return $this->twig->render('front/contact.html.twig');
+        return $this->twig->render('front/contact.html.twig');
     }
 }
