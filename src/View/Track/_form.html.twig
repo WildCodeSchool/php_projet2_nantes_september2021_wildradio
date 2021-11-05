@@ -4,9 +4,9 @@
 
 	<div> 
 		<label for="title"></label>
-		<input type="text" placeholder="Titre" value="{{ track.title }}" name="title" >
-		{% if errors.title is defined %}
-        	{{ errors.title }}
+		<input type="text" placeholder="Titre" value="{{ track.name }}" name="title" >
+		{% if errors.name is defined %}
+        	{{ errors.name }}
 		{% endif %}
 	
 	</div> 

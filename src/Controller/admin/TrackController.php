@@ -155,21 +155,21 @@ class TrackController extends AbstractController
     public function edit(int $id): string
     {
         $trackManager = new TrackManager();
-        $item = $itemManager->selectOneById($id);
+        $this->track = $trackManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $item = array_map('trim', $_POST);
+            $ $this->track  = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
 
             // if validation is ok, update and redirection
-            $itemManager->update($item);
-            header('Location: /items/show?id=' . $id);
+            $trackManager->update($this->track );
+            header('Location: /tracks/show?id=' . $id);
         }
 
-        return $this->twig->render('Item/edit.html.twig', [
-            'item' => $item,
+        return $this->twig->render('Track/edit.html.twig', [
+            'track' => $this->track ,
         ]);
     }
 

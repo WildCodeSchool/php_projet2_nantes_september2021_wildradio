@@ -31,4 +31,20 @@ class TrackManager extends AbstractManager
 
         return $tracks;
     }
+
+     /**
+     * Update track in database
+     */
+    public function update(array $track): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, mp3 = :mp3, flux = :flux WHERE id=:id");
+        $statement->bindValue('id', $track['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':title', $track['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':artist', $track['artist'], \PDO::PARAM_STR);
+        $statement->bindValue(':album', $track['album'], \PDO::PARAM_STR);
+        $statement->bindValue(':mp3', $track['mp3'], \PDO::PARAM_STR);
+        $statement->bindValue(':flux', $track['flux'], \PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
 }
