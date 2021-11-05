@@ -10,30 +10,22 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="\assets\images\Wild-Radio-Blanc-BD.png">
+     {% block content %}
 </head>
 
 <body>
-     {% block header %}
      <video class="sunset"  playsinline autoplay muted loop> 
 <source src="\assets\images\Sunset.mp4" type="video/mp4">
 </video>
+     {% block header %}{% endblock %}
 
-     <header>
-      <nav>
 
-    <img class="Logo" src="\assets\images\Wild-Radio-Blanc-BD.png">
-    <HR>
-    <ul>
-        <li> <a href="home/playlist"> Playlists</a></li>
-        <li> <a href="home/contact">Contact</a></li>
-    </ul>
-</nav>
-     {% endblock %}
 
-    {% block content %}{% endblock %}
+
     {% block javascript %}{% endblock %}
 
 </body>
 </html>
+ {% endblock %}
 
 

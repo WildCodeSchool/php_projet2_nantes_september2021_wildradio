@@ -10,6 +10,6 @@ return [
     '' => ['HomeController', 'index',],
     'home/playlist' => ['PlaylistController', 'playlist'],
     'home/catalogue' => ['CatalogueController', 'catalogue'],
-    'home/contact' => ['ContactController', 'contact',],
-    
+    'home/contact' => ['ContactController', 'contact'],
+    'home/error' => ['ErrorController' , 'error'],
 ];

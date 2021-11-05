@@ -1,37 +1,28 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-     
-    <title>{% block title %}WILD RADIO{% endblock %}</title>
-
-    <link rel="stylesheet" href="/assets/css/style.css">
-    {% block stylesheet %}{% endblock %}
-    <link rel="icon" href="\assets\images\Wild-Radio-Blanc-BD.png">
-</head>
-
-<body>
-
-<video class="sunset"  playsinline autoplay muted loop> 
+ {% block content %}
+ 
+     <video class="sunset"  playsinline autoplay muted loop> 
 <source src="\assets\images\Sunset.mp4" type="video/mp4">
 </video>
 
-     <header>
-      <nav>
+      {% block header %}
 
-    <img class="Logo" src="\assets\images\Wild-Radio-Blanc-BD.png">
-    <HR>
-    <ul>
-        <li> <a href="playlist.html"> Playlists</a></li>
-        <li> <a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
-</header>
+    <nav>
+        <div id="playlist">
+            <a href="home/playlist"> Playlists</a>
+        </div>
 
-    {% block content %}{% endblock %}
-    {% block javascript %}{% endblock %}
+        <div>
+            <img class="wr" src="\assets\images\Wild-Radio-Blanc-BD.png">
+        </div>
 
-</body>
-</html>
+        <div id="contact">    
+            <a href="home/contact">Contact</a>
+        </div>    
+    </nav>
+    <div id="ligne">
+    </div>
+
+
+
+    {% endblock %}
+ {% endblock %}

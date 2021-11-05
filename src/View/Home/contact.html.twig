@@ -8,8 +8,9 @@
 
   {% block content %}
 
+{% block header %}{% include "Home/header.html.twig" %}{% endblock %}
  
-
+    
     <div class="PageGauche">
     <h2>Eva Wild 
         <i class="fa-brands fa-instagram"></i>
@@ -51,7 +52,7 @@
             <label for="msg">Message :</label>
             <textarea id="msg" name="user_message"></textarea>
         </div>
-        <input type="text" value="Envoyer">
+        <input class= 'env' type="text" value="Envoyer">
         </form>
        </div>
    </p> 

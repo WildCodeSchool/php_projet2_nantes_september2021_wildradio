@@ -1,49 +1,92 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:'Maven Pro';
+    font-size: 18px;
+}
 
+/* CSS du background video */
 
-
+body{
+    margin-left: 0px;
+    margin-right: 0px;
+}
 .sunset{
     position: fixed;
     z-index: -1;
     width: 100%;
     height: auto;
-                
 }
 
-.Logo{
-                        
-    width: clamp(20px, 30%, 70px);
-    margin-left: 580px;
-    margin-top: 10px;
+/* CSS du header */
+
+.wr{              
+    width: 70px;
 }
 
-ul{
-                        
-    list-style-type: none;
-    font-size: 30px;
+
+nav{                   
     display: flex;
-    gap: 100px;   
-    margin-left: 600px;
-                    
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-a{
+#playlist{
+    margin-right: 20px;
+}
+
+#contact{
+    margin-left: 20px;
+}
+
+#ligne{                
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: whitesmoke;
+    height: 1px;
+}
+
+nav a{
     text-decoration: none;
-    color: whitesmoke;
-                        
+    color: whitesmoke;          
 }
 
-h1{
+/* CSS du Wild Radio de la homepage */
+
+#wildradio{
+    margin-left: 10%;
+    color: whitesmoke;
+    width: 40%;
+}
+
+#wild{
+    font-size: 6em;
+}
+
+br{
+    line-height: 5px;
+}
+
+#radio{
+    font-size: 6em;
+    font-style: italic;
+    padding-left: 10%;
+    line-height: 55px;
+      
+}
+
+
+/* h1{
     color:whitesmoke;
     margin-right: 1000px;
     margin-left: 200px;
     font-size:90px;
-    margin-bottom: 100px;
-    font-family:'Maven Pro';
-}
+    margin-bottom: 100px; 
+} */
 
-h2{
+h2{ text-align: center;
     color: whitesmoke;
-    
 }
 
                         
@@ -51,32 +94,41 @@ p{
     color: whitesmoke;
     margin-left: 30px;
     font-size: x-large;
-   
+    width: 95%;
+    font-size: 18px;
+    margin: 15px;
 }
 
 
 
 button:hover{
     background-color:#4A517E ;
-    font-family:'Maven Pro';
+   
 }
 
-.buttons{
-    width: 20%;
+.buttons {
+    width: 15%;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
+    padding: 5px;
+    background-color:#F39F81;
+    border-radius: 10px;
+    margin:auto;
+    display:block;    
+    margin-right: 1000px;
+    border-color:none;
+}
+
+
+.env{
+    width: 10%;
+    color: white;
+    font-size: 15px;
     padding: 5px;
     background-color:#F39F81;
     border-radius: 10px;
     text-transform: uppercase;
     margin:auto;
     display:block;    
-    margin-right: 1000px;
-}
-
-
-HR{                
-    margin-left: 100px;
-    margin-right: 100px;
-   
+    border-color:none;
 }
