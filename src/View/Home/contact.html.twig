@@ -1,0 +1,60 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block title %}CONTACT{% endblock %}
+
+{# PAGE DE GAUCHE #}
+
+  {% block content %}
+
+{% block header %}{% include "Home/header.html.twig" %}{% endblock %}
+ 
+    
+    <div class="PageGauche">
+    <h2>Eva Wild 
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+    </h2>
+        <p>« Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed non risus. Suspendisse lectus tortor..."</p>
+    </div>
+
+
+{# PAGE DE DROITE #}
+
+    <div class="PageDroite">
+
+        <h2> Prenons contact </h2>
+
+        <form action="form" method="post">
+    <p>
+        <div>
+            <label for="name">Nom - prénom</label>
+            <input type="text" id="name" name="user_name">
+        </div>
+    </p>
+    <p> 
+        <div>
+       
+            <label for="mail">Mail</label>
+            <input type="email" id="mail" name="user_mail">
+        </div>
+    </p> 
+    <p>   
+        <div>
+            <label for="objet">Objet</label>
+            <textarea id="objet" name="user_objet"></textarea>
+        </div>
+    </p>
+    <p>    
+        <div>
+            <label for="msg">Message :</label>
+            <textarea id="msg" name="user_message"></textarea>
+        </div>
+        <input class= 'env' type="text" value="Envoyer">
+        </form>
+       </div>
+   </p> 
+{% endblock %}
+

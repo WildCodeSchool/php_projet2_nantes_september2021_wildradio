@@ -15,11 +15,12 @@ return [
     'tracks/edit' => ['admin\TrackController', 'edit', ['id']],
 
     '' => ['front\FluxController', 'browse',]
+    'playlists' => ['front\PlaylistController', 'browse' ],
+    'playlists/show' => ['front\PlaylistController', 'show', ['id']],
+    'contact' => ['front\HomeController', 'contact'],
+    'error' => ['front\HomeController' , 'error']
+// verifier error // 
 
-
-    /*
-
-    '' => ['HomeController', 'index',],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],

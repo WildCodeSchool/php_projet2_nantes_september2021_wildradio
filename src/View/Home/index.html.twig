@@ -1,5 +1,25 @@
-{% extends 'layout.html.twig' %}
+ {% extends 'layout.html.twig' %}
 
-{% block content %}
-    <h1>Hello Wilder !</h1>
+{% block title %}WILD RADIO{% endblock %}
+
+ {% block content %}
+
+
+{% block header %}{% include "Home/header.html.twig" %}{% endblock %}
+
+<body>
+
+<h1 id="wildradio">
+    <span id="wild">WILD</span>
+    <span id="radio">RADIO</span></h1>
+
+<p id="description"> description  ❤ ❤ ❤ ❤ </p>
+
+<div>
+    <a href="/home/playlist"><button class="buttons">Playlist 1</button></a>
+    <a href="/home/playlist"><button class="buttons">Playlist 2</button></a>
+
+    <a href="home/catalogue"><button class="buttons">Toutes nos playlists</button></a>
+</div>
+</body>
 {% endblock %}
