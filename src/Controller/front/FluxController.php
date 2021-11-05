@@ -5,7 +5,7 @@ namespace App\Controller\front;
 use App\Model\TrackManager;
 use App\Controller\admin;
 
-class FluxController extends admin\AbstractController
+class FluxController extends AbstractController
 {
 
     /**
@@ -16,7 +16,7 @@ class FluxController extends admin\AbstractController
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
 
-        return $this->twig->render('Front/index.html.twig', ['tracks' => $tracks]);
+        return $this->twig->render('front/index.html.twig', ['tracks' => $tracks]);
     
     }
 
