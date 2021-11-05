@@ -3,7 +3,31 @@
     padding: 0px;
     font-family:'Maven Pro';
     font-size: 18px;
+}*
+
+a{
+    text-decoration: none;
 }
+
+
+button:hover{
+    background-color:#4A517E ;
+   
+}
+
+.buttons {
+    width: 15%;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    background-color:#F39F81;
+    border-radius: 10px;
+    margin:auto;
+    display:block;    
+    margin-right: 1000px;
+    border-color:none;
+}
+
 
 /* CSS du background video */
 
@@ -52,6 +76,7 @@ nav a{
     color: whitesmoke;          
 }
 
+
 /* CSS du Wild Radio de la homepage */
 
 #wildradio{
@@ -77,13 +102,17 @@ br{
 }
 
 
-/* h1{
-    color:whitesmoke;
-    margin-right: 1000px;
-    margin-left: 200px;
-    font-size:90px;
-    margin-bottom: 100px; 
-} */
+/* CSS de description page home*/
+
+#description{
+
+}
+
+/* CSS des bouttons page home*/
+
+
+
+
 
 h2{ text-align: center;
     color: whitesmoke;
@@ -99,26 +128,7 @@ p{
     margin: 15px;
 }
 
-
-
-button:hover{
-    background-color:#4A517E ;
-   
-}
-
-.buttons {
-    width: 15%;
-    color: white;
-    font-size: 20px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    margin:auto;
-    display:block;    
-    margin-right: 1000px;
-    border-color:none;
-}
-
+/* boutton 'envoyer' page contact*/
 
 .env{
     width: 10%;
