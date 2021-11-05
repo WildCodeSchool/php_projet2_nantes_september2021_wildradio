@@ -9,7 +9,7 @@
     <div> <a href="/tracks/add">Ajouter une track</a> </div> 
 
     <ul>
-        {% for track in  tracks %}
+        {% for track in tracks %}
             <li>
                 <a href="/tracks/show?id={{track.id}}?>">
                     {{ track.name}} - {{ track.artist}} - {{ track.album}}

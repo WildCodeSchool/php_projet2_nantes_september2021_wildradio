@@ -11,7 +11,10 @@ return [
     'tracks/add' => ['admin\TrackController', 'add'],
     'tracks' => ['admin\TrackController', 'browse' ],
     'tracks/show' => ['admin\TrackController', 'show', ['id']],
-    'tracks/delete' => ['admin\TrackController', 'delete',]
+    'tracks/delete' => ['admin\TrackController', 'delete',],
+
+    '' => ['front\FluxController', 'show',]
+
 
     /*
 
