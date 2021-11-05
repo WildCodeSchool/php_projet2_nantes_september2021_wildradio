@@ -5,6 +5,28 @@
     font-size: 18px;
 }
 
+a{
+    text-decoration: none;
+}
+
+
+button:hover{
+    background-color:#4A517E ;
+}
+
+.buttons {
+    width: 15%;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    background-color:#F39F81;
+    border-radius: 10px;
+    margin:auto;
+    display:block;
+    margin-right: 1000px;
+    border-color:none;
+}
+
 /* CSS du background video */
 
 body{
@@ -52,7 +74,10 @@ nav a{
     color: whitesmoke;          
 }
 
-/* CSS du Wild Radio de la homepage */
+/*CSS du contenu de la homepage*/
+
+
+/* CSS du logo Wild Radio de la homepage */
 
 #wildradio{
     margin-left: 10%;
@@ -74,6 +99,21 @@ br{
     padding-left: 10%;
     line-height: 55px;
       
+}
+
+/* CSS du player */
+
+audio { 
+    display: none;
+}
+
+#player {
+    color: whitesmoke;
+    margin-left: 20%;
+}
+
+#play {
+    font-size: 6em;
 }
 
 
