@@ -89,8 +89,7 @@ class TrackController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $verified = $this->verification(); 
-            
-            
+                        
 
             if (empty($this->errors)){
     
@@ -103,7 +102,7 @@ class TrackController extends AbstractController
 
             }
             
-            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors]);
+            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
             var_dump($this->track);
             var_dump($this->errors);
         }
@@ -152,16 +151,16 @@ class TrackController extends AbstractController
     /**
      * Edit a specific item
      */
-    public function edit(int $id): string
+    public function edit(int $id)
     {
         $trackManager = new TrackManager();
         $this->track = $trackManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $ $this->track  = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
+            $verified = $this->verification(); 
+
 
             // if validation is ok, update and redirection
             $trackManager->update($this->track );
@@ -169,7 +168,7 @@ class TrackController extends AbstractController
         }
 
         return $this->twig->render('Track/edit.html.twig', [
-            'track' => $this->track ,
+            'track' => $this->track , 'action'=> "/tracks/edit?id=$id" 
         ]);
     }
 
