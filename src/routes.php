@@ -20,7 +20,6 @@ return [
     'playlists/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\ContactController', 'contact'],
     'error' => ['front\ErrorController' , 'error'],
-// verifier error // 
 
     'items' => ['ItemController', 'index'],
     'items/edit' => ['ItemController', 'edit', ['id']],
