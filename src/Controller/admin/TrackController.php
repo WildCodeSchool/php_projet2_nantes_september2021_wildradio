@@ -1,63 +1,155 @@
 <?php
 
 namespace App\Controller\admin;
-use \App\Model\TrackManager;
+
+use App\Model\TrackManager;
 
 class TrackController extends AbstractController
 {
-   
+
+    public $track; 
+    public $errors = [];
+
+    public function verification() 
+    {
+
+            // clean $_POST data
+            $this->track = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            if ($this->track['title'] == "") {
+                $this->errors['title'] = "Le nom de la track est obligatoire";
+            }
+
+            // check if only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['title'])) {
+                $this->errors['title'] = "Seul les lettres et espaces sont autorisés";
+            }
+            if ($this->track['artist'] == "") {
+                $this->errors['artist'] = "Le nom de l'artiste est obligatoire";
+            }
+
+            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['artist'])) {
+                $this->errors['artist'] = "Seul les lettres et espaces sont autorisés";
+            }
+
+            if ($this->track['album'] == "") {
+                $this->errors['album'] = "Le nom de l'album est obligatoire";
+            }
+            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['album'])) {
+                $this->errors['album'] = "Seul les lettres et espaces sont autorisés";
+            }
+
+    }
+    
+    /// Traiement de l'upload des fichiers mp3 :
+    public function uploadFile() {
+
+            // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
+            $uploadDir = "/assets/audio/";
+
+            // // Je récupère l'extension du fichier
+            $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
+
+            // // Les extensions autorisées
+            $authorizedExtensions = ['mp3'];
+            if( (!in_array($extension, $authorizedExtensions))){
+                $this->errors['mp3'] = 'Veuillez sélectionner un fichier mp3 !';
+            }
+
+            // le nom de fichier
+            $uploadFile = $uploadDir . uniqid() . "." . $extension;
+
+            // Le poids max géré par PHP
+            $maxFileSize = 2000000;
+  
+
+
+            if (isset ($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
+                $this->errors["mp3"] ="le poid max du fichier est de 2Mo";
+             } else {
+                 
+                 move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
+                 // on précise le chemin du fichier pour la BDD
+                  $this->track['mp3'] = $uploadFile;
+      
+                  // on indique 1 ou 0 si l'ajout au flux est coché
+                  $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
+
+                }
+            
+        }
+
      /**
-     * Add a new track to the database with a form 
+     * Add a new track to the database with a form
      */
     public function add()
     {
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $track = array_map('trim', $_POST);
 
- 
-            // TODO validations (length, format...)
+            $verified = $this->verification(); 
+            
+            
 
-
-            // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés (attention ce dossier doit être accessible en écriture)
-            $uploadDir = "/assets/audio/";
+            if (empty($this->errors)){
     
-            // // Je récupère l'extension du fichier
-            $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
-            
-            // le nom de fichier sur le serveur est celui du nom d'origine du fichier sur le poste du client (mais d'autre stratégies de nommage sont possibles)
-            $uploadFile = $uploadDir .uniqid(). ".". $extension;
-            
-           
-            // // Les extensions autorisées
-            $authorizedExtensions = ['mp3'];
-
-            // Le poids max géré par PHP par défaut est de 2M
-            $maxFileSize = 2000000;  
-
-            //  /****** On vérifie si l'image existe et si le poids est autorisé en octets *************/
-            if( file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize){
-            $errors[] = "Votre fichier doit faire moins de 2M !";
-            }
-
-             // on déplace le fichier temporaire vers le nouvel emplacement sur le serveur. Ca y est, le fichier est uploadé
-             move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"].$uploadFile);
-            // on précise le chemin du fichier pour la BDD 
-             $track['mp3']=$uploadFile;
-            // on indique 1 ou 0 si l'ajout au flux est coché 
-            $track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
-
             // if validation is ok, insert and redirection
-            $trackManager = new TrackManager();
-            var_dump( $track);
-           
-            $id = $trackManager->insert($track);
+    
+                $this->uploadFile();
+                $trackManager = new TrackManager();
+                $trackManager->insert($this->track);
+                header('Location:/tracks/add');
 
-        } 
-
+            }
+            
+            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors]);
+            var_dump($this->track);
+            var_dump($this->errors);
+        }
         return $this->twig->render('Track/add.html.twig');
+      
     }
+
+
+     /**
+     * List track
+     */
+    public function browse(): string
+    {
+        $trackManager = new TrackManager();
+        $tracks = $trackManager->getAll();
+
+        return $this->twig->render('Track/index.html.twig', ['tracks' => $tracks]);
+    }
+
+
+    /**
+     * Show informations for a specific track
+     */
+    public function show( $id): string
+    {
+        $trackManager = new TrackManager();
+        $track = $trackManager->selectOneById($id);
+
+        return $this->twig->render('Track/show.html.twig', ['track' => $track]);
+    }
+
+    /**
+     * Delete a specific track
+     */
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $trackManager = new TrackManager();
+            $trackManager->delete($id);
+            header('Location:/tracks');
+        }
+    }
+
+    
+
 
 
 }

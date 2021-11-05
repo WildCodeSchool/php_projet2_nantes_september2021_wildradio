@@ -8,7 +8,10 @@
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
 
-    'tracks/add' => ['admin\TrackController', 'add']
+    'tracks/add' => ['admin\TrackController', 'add'],
+    'tracks' => ['admin\TrackController', 'browse' ],
+    'tracks/show' => ['admin\TrackController', 'show', ['id']],
+    'tracks/delete' => ['admin\TrackController', 'delete',]
 
     /*
 

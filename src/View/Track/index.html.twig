@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mes tracks{% endblock %}
+
+{% block content %}
+
+    <h1>Toutes mes tracks </h1> 
+
+    <div> <a href="/tracks/add">Ajouter une track</a> </div> 
+
+    <ul>
+        {% for track in  tracks %}
+            <li>
+                <a href="/tracks/show?id={{track.id}}?>">
+                    {{ track.name}} - {{ track.artist}} - {{ track.album}}
+                </a>
+            </li>
+        {% endfor %}  
+
+    </ul>
+
+{% endblock %}
