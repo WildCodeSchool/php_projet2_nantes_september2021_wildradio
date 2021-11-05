@@ -14,16 +14,16 @@ return [
     'tracks/delete' => ['admin\TrackController', 'delete',],
     'tracks/edit' => ['admin\TrackController', 'edit', ['id']],
 
-    '' => ['front\FluxController', 'browse',]
+    '' => ['front\FluxController', 'browse'],
     'playlists' => ['front\PlaylistController', 'browse' ],
     'playlists/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\HomeController', 'contact'],
-    'error' => ['front\HomeController' , 'error']
+    'error' => ['front\HomeController' , 'error'],
 // verifier error // 
 
-    'items' => ['ItemController', 'index',],
+    'items' => ['ItemController', 'index'],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete',], */ 
+    'items/delete' => ['ItemController', 'delete'] 
 ];
