@@ -18,6 +18,10 @@ class TrackController extends AbstractController
 
             // TODO validations (length, format...)
 
+            // on indique 1 ou 0 si l'ajout au flux est coché
+            $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
+
+
             if ($this->track['title'] == "") {
                 $this->errors['title'] = "Le nom de la track est obligatoire";
             }
@@ -74,9 +78,7 @@ class TrackController extends AbstractController
                  // on précise le chemin du fichier pour la BDD
                   $this->track['mp3'] = $uploadFile;
       
-                  // on indique 1 ou 0 si l'ajout au flux est coché
-                  $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
-
+                  
                 }
             
         }
@@ -143,7 +145,7 @@ class TrackController extends AbstractController
             $id = trim($_POST['id']);
             $trackManager = new TrackManager();
             $trackManager->delete($id);
-            header('Location:/tracks');
+            header('Location:/admin/tracks');
         }
     }
 
@@ -154,22 +156,27 @@ class TrackController extends AbstractController
     public function edit(int $id)
     {
         $trackManager = new TrackManager();
-        $this->track = $trackManager->selectOneById($id);
+        $track = $trackManager->selectOneById($id);
 
+        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id"]);
+    
+    }
+
+    public function update(int $id)
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // TODO validations (length, format...)
+            // Verification
             $verified = $this->verification(); 
 
-
-            // if validation is ok, update and redirection
-            $trackManager->update($this->track );
-            header('Location: /tracks/show?id=' . $id);
+            // if validation is ok, update 
+            if (empty($this->errors)){
+                
+                $trackManager = new TrackManager();
+                $trackManager->update($this->track );
+                header('Location: /admin/tracks/show?id=' . $id);
+            }    
         }
-
-        return $this->twig->render('admin/Track/edit.html.twig', [
-            'track' => $this->track , 'action'=> "/tracks/edit?id=$id" 
-        ]);
     }
 
 

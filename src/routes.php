@@ -14,6 +14,8 @@ return [
     'admin/tracks/show' => ['admin\TrackController', 'show', ['id']],
     'admin/tracks/delete' => ['admin\TrackController', 'delete',],
     'admin/tracks/edit' => ['admin\TrackController', 'edit', ['id']],
+    'admin/tracks/update' => ['admin\TrackController', 'update', ['id']],
+    'admin/register' => ['admin\RegisterController', 'login'],
 
     '' => ['front\HomeController', 'index'],
     'playlists' => ['front\PlaylistController', 'browse' ],
