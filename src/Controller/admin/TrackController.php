@@ -10,13 +10,14 @@ class TrackController extends AbstractController
     public $track; 
     public $errors = [];
 
+
+    // Permet de vérifier les données entrantes 
     public function verification() 
     {
 
             // clean $_POST data
             $this->track = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
 
             // on indique 1 ou 0 si l'ajout au flux est coché
             $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
@@ -48,7 +49,8 @@ class TrackController extends AbstractController
     }
     
     /// Traiement de l'upload des fichiers mp3 :
-    public function uploadFile() {
+    public function uploadFile() 
+    {
 
             // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
             $uploadDir = "/assets/audio/";
@@ -68,8 +70,6 @@ class TrackController extends AbstractController
             // Le poids max géré par PHP
             $maxFileSize = 2000000;
   
-
-
             if (isset ($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
                 $this->errors["mp3"] ="le poid max du fichier est de 2Mo";
              } else {
@@ -78,10 +78,8 @@ class TrackController extends AbstractController
                  // on précise le chemin du fichier pour la BDD
                   $this->track['mp3'] = $uploadFile;
       
-                  
-                }
-            
-        }
+                }    
+    }
 
      /**
      * Add a new track to the database with a form
@@ -90,13 +88,9 @@ class TrackController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $verified = $this->verification(); 
+            $this->verification(); 
                         
-
             if (empty($this->errors)){
-    
-            // if validation is ok, insert and redirection
-    
                 $this->uploadFile();
                 $trackManager = new TrackManager();
                 $trackManager->insert($this->track);
@@ -151,7 +145,7 @@ class TrackController extends AbstractController
 
     
     /**
-     * Edit a specific item
+     * permet d'afficher le formulaire pré-rempli 
      */
     public function edit(int $id)
     {
@@ -162,6 +156,9 @@ class TrackController extends AbstractController
     
     }
 
+    /**
+     * permet de mettre à jour les données du formulaire  
+     */
     public function update(int $id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
