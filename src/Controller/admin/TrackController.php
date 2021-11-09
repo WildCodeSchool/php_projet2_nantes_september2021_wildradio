@@ -106,7 +106,7 @@ class TrackController extends AbstractController
             var_dump($this->track);
             var_dump($this->errors);
         }
-        return $this->twig->render('Track/add.html.twig');
+        return $this->twig->render('admin/Track/add.html.twig');
       
     }
 
@@ -119,7 +119,7 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
 
-        return $this->twig->render('Track/index.html.twig', ['tracks' => $tracks]);
+        return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
     }
 
 
@@ -131,7 +131,7 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
 
-        return $this->twig->render('Track/show.html.twig', ['track' => $track]);
+        return $this->twig->render('admin/Track/show.html.twig', ['track' => $track]);
     }
 
     /**
@@ -167,7 +167,7 @@ class TrackController extends AbstractController
             header('Location: /tracks/show?id=' . $id);
         }
 
-        return $this->twig->render('Track/edit.html.twig', [
+        return $this->twig->render('admin/Track/edit.html.twig', [
             'track' => $this->track , 'action'=> "/tracks/edit?id=$id" 
         ]);
     }
