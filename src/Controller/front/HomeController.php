@@ -7,9 +7,9 @@
  * Time: 18:40
  */
 
-namespace App\Controller;
+namespace App\Controller\front;
 
-class ErrorController extends AbstractController
+class HomeController extends AbstractController
 {
     /**
      * Display home page
@@ -19,13 +19,11 @@ class ErrorController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-
-
-         
-    public function error()
+    public function index()
     {
-
-    return $this->twig->render('Home/error.html.twig');
+        return $this->twig->render('front/index.html.twig');
     }
-       
-}    
+
+    
+}
+   
