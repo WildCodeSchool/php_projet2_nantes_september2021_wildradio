@@ -22,7 +22,7 @@ class PlaylistController extends AbstractController
     /**
      * Show informations for a specific track
      */
-    public function show( $id): string
+    public function show($id): string
     {
         // $playlistManager = new PlaylistManager();
         // $playslist = $playlistManager->selectOneById($id);

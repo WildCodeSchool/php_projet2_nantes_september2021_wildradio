@@ -9,6 +9,8 @@
 
 namespace App\Controller\front;
 
+use App\Model\TrackManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -21,9 +23,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('front/index.html.twig');
-    }
+        $trackManager = new TrackManager();
+        $tracks = $trackManager->getAll();
 
-    
+        return $this->twig->render('front/index.html.twig', ['tracks' => $tracks]);
+    }   
 }
-   
