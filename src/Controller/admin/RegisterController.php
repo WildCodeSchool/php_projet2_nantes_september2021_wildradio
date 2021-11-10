@@ -17,8 +17,8 @@ class RegisterController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $this->verificationData(); 
-            $this->VerificationIdentity();
-            $this->VerificationPassword();
+            $this->verificationIdentity();
+            $this->verificationPassword();
             
             if (empty($this->errors)){
                 $this->sessionStart();
@@ -48,7 +48,7 @@ class RegisterController extends AbstractController
     }
 
     // Permet de comparer le username entré avec celui présent en BDD  
-    public function VerificationIdentity() 
+    public function verificationIdentity() 
     {
         $registerManager = new RegisterManager();
         $userConnecting = $registerManager->selectByUsername($user['username']);
@@ -64,7 +64,7 @@ class RegisterController extends AbstractController
 
     //Permet de vérifier la validité du mot de passe ; retourne true si il est conforme
     // à compléter ! 
-    public function VerificationPassword() 
+    public function verificationPassword() 
     {
         $registerManager = new RegisterManager();
         $userConnecting = $registerManager->selectByUsername($user['username']);
