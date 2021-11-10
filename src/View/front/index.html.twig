@@ -1,28 +1,29 @@
- {% extends 'layout.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}WILD RADIO{% endblock %}
 
- {% block content %}
+{% block content %}
 
 
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
 <body>
     <div id="contenu-homepage">
-        <div>
+        <div id="left-homepage">
 
             <h1 id="wildradio">
                 <span id="wild">WILD</span>
                 <span id="radio">RADIO</span></h1>
 
-            <p id="description"> description  ❤ ❤ ❤ ❤ </p>
+            <p id="description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae ligula lectus. Morbi diam ligula, tincidunt vitae nisi vitae, tempor ultrices quam. Aliquam porttitor eros mauris, vitae varius diam ultrices a.</p>
 
-            <div>
-                <a href="/playlist"><button class="buttons">Playlist 1</button></a>
-                <a href="/playlist"><button class="buttons">Playlist 2</button></a>
-
-                <a href="/playlists"><button class="buttons">Toutes nos playlists</button></a>
+            <div id="playlists-homepage">
+                <a href="/playlist"><button>Playlist 1</button></a>
+                <a href="/playlist"><button>Playlist 2</button></a>
             </div>
+                
+                <a href="/playlists"><button>Toutes nos playlists</button></a>
+
         </div>
 
 
@@ -55,6 +56,7 @@
         </div>
 
         {% block javascript %} 
+        
             <script src="/assets/js/playerFlux.js"></script>
             <script>
                 audioPlayer();
@@ -65,3 +67,4 @@
     </div>
 </body>
 {% endblock %}
+
