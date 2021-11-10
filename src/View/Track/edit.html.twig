@@ -1,7 +1,0 @@
-{% extends 'layout.html.twig' %}
-
-{% block content %}
-    <h1> Modifier la track {{ track.name }}</h1>
-    {% include 'Track/_form.html.twig' %}
-    <a href="/tracks/show?id={{ track.id }}">Retour</a>
-{% endblock %}

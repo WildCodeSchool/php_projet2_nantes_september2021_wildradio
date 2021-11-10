@@ -10,13 +10,18 @@ class TrackController extends AbstractController
     public $track; 
     public $errors = [];
 
+
+    // Permet de vérifier les données entrantes 
     public function verification() 
     {
 
             // clean $_POST data
             $this->track = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+
+            // on indique 1 ou 0 si l'ajout au flux est coché
+            $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
+
 
             if ($this->track['title'] == "") {
                 $this->errors['title'] = "Le nom de la track est obligatoire";
@@ -44,7 +49,8 @@ class TrackController extends AbstractController
     }
     
     /// Traiement de l'upload des fichiers mp3 :
-    public function uploadFile() {
+    public function uploadFile() 
+    {
 
             // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
             $uploadDir = "/assets/audio/";
@@ -64,8 +70,6 @@ class TrackController extends AbstractController
             // Le poids max géré par PHP
             $maxFileSize = 2000000;
   
-
-
             if (isset ($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
                 $this->errors["mp3"] ="le poid max du fichier est de 2Mo";
              } else {
@@ -74,12 +78,8 @@ class TrackController extends AbstractController
                  // on précise le chemin du fichier pour la BDD
                   $this->track['mp3'] = $uploadFile;
       
-                  // on indique 1 ou 0 si l'ajout au flux est coché
-                  $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
-
-                }
-            
-        }
+                }    
+    }
 
      /**
      * Add a new track to the database with a form
@@ -88,13 +88,9 @@ class TrackController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $verified = $this->verification(); 
+            $this->verification(); 
                         
-
             if (empty($this->errors)){
-    
-            // if validation is ok, insert and redirection
-    
                 $this->uploadFile();
                 $trackManager = new TrackManager();
                 $trackManager->insert($this->track);
@@ -106,7 +102,7 @@ class TrackController extends AbstractController
             var_dump($this->track);
             var_dump($this->errors);
         }
-        return $this->twig->render('Track/add.html.twig');
+        return $this->twig->render('admin/Track/add.html.twig');
       
     }
 
@@ -119,7 +115,7 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
 
-        return $this->twig->render('Track/index.html.twig', ['tracks' => $tracks]);
+        return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
     }
 
 
@@ -131,7 +127,7 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
 
-        return $this->twig->render('Track/show.html.twig', ['track' => $track]);
+        return $this->twig->render('admin/Track/show.html.twig', ['track' => $track]);
     }
 
     /**
@@ -143,33 +139,41 @@ class TrackController extends AbstractController
             $id = trim($_POST['id']);
             $trackManager = new TrackManager();
             $trackManager->delete($id);
-            header('Location:/tracks');
+            header('Location:/admin/tracks');
         }
     }
 
     
     /**
-     * Edit a specific item
+     * permet d'afficher le formulaire pré-rempli 
      */
     public function edit(int $id)
     {
         $trackManager = new TrackManager();
-        $this->track = $trackManager->selectOneById($id);
+        $track = $trackManager->selectOneById($id);
 
+        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id"]);
+    
+    }
+
+    /**
+     * permet de mettre à jour les données du formulaire  
+     */
+    public function update(int $id)
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // TODO validations (length, format...)
+            // Verification
             $verified = $this->verification(); 
 
-
-            // if validation is ok, update and redirection
-            $trackManager->update($this->track );
-            header('Location: /tracks/show?id=' . $id);
+            // if validation is ok, update 
+            if (empty($this->errors)){
+                
+                $trackManager = new TrackManager();
+                $trackManager->update($this->track );
+                header('Location: /admin/tracks/show?id=' . $id);
+            }    
         }
-
-        return $this->twig->render('Track/edit.html.twig', [
-            'track' => $this->track , 'action'=> "/tracks/edit?id=$id" 
-        ]);
     }
 
 

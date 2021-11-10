@@ -1,8 +1,10 @@
-{% extends 'layout.html.twig' %}
+{% extends '/admin/layout.html.twig' %}
 
 {% block title %}Mes tracks{% endblock %}
 
 {% block content %}
+
+    {% include '/admin/unallowedAccess.html.twig' %}
 
     <h1>Toutes mes tracks </h1> 
 
