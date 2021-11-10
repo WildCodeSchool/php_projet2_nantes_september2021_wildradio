@@ -3,13 +3,26 @@
 namespace App\Controller\admin;
 
 use App\Model\TrackManager;
+use App\Model\PlaylistManager;
 
 class TrackController extends AbstractController
 {
 
     public $track; 
+    public $playlists;
     public $errors = [];
 
+    // constructeur permet de sécuriser l'acces pour 
+
+    public function __construct()
+    {
+        parent::__construct();
+        session_start();
+        if (!isset($_SESSION['Connected'])) {
+           header ("Location: /");
+        }
+
+    }
 
     // Permet de vérifier les données entrantes 
     public function verification() 
@@ -77,7 +90,6 @@ class TrackController extends AbstractController
                  move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
                  // on précise le chemin du fichier pour la BDD
                   $this->track['mp3'] = $uploadFile;
-      
                 }    
     }
 
@@ -86,6 +98,7 @@ class TrackController extends AbstractController
      */
     public function add()
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $this->verification(); 
@@ -94,14 +107,14 @@ class TrackController extends AbstractController
                 $this->uploadFile();
                 $trackManager = new TrackManager();
                 $trackManager->insert($this->track);
-                header('Location:/tracks/add');
-
+                header('Location:/admin/tracks/show?id={{track.id}}?>');
             }
             
-            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
-            var_dump($this->track);
-            var_dump($this->errors);
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
+            
         }
+
+
         return $this->twig->render('admin/Track/add.html.twig');
       
     }
@@ -114,7 +127,7 @@ class TrackController extends AbstractController
     {
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
-
+       
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
     }
 
@@ -122,7 +135,7 @@ class TrackController extends AbstractController
     /**
      * Show informations for a specific track
      */
-    public function show( $id): string
+    public function show($id): string
     {
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
@@ -152,13 +165,17 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
 
-        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id"]);
+        $this->playlists = $this->browsePlaylists();
+
+
+        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists]);
     
     }
 
     /**
      * permet de mettre à jour les données du formulaire  
      */
+
     public function update(int $id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -176,5 +193,35 @@ class TrackController extends AbstractController
         }
     }
 
+    
+    /**
+     * Permet d'ajouter une track à une playlist
+     */
+    public function addTrackToPlaylist()
+    {
+        var_dump($_POST);
+        die();
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+    
+            if (empty($this->errors)){
+                $trackManager = new TrackManager();
+                $trackManager->link($_POST['id'], $_POST['addPlaylist']);
+            }
+            
+            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
+           
+        }
+        return $this->twig->render('admin/Track/add.html.twig');
+      
+    }
+
+    public function browsePlaylists()
+    {
+        $playlistManager = new PlaylistManager();
+        return  $playlistManager->getAll();
+
+    }
 
 }

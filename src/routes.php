@@ -9,6 +9,7 @@
 
 return [
 
+    'admin/tracks/playlistAdd' => ['admin\TrackController', 'addTrackToPlaylist'],
     'admin/tracks/add' => ['admin\TrackController', 'add'],
     'admin/tracks' => ['admin\TrackController', 'browse' ],
     'admin/tracks/show' => ['admin\TrackController', 'show', ['id']],
