@@ -122,7 +122,7 @@ class TrackController extends AbstractController
     /**
      * Show informations for a specific track
      */
-    public function show( $id): string
+    public function show($id): string
     {
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);

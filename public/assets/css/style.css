@@ -101,7 +101,6 @@ br{
     font-style: italic;
     line-height: 55px;
     padding-left: 15%;
-
 }
 
 /* CSS du player */
@@ -117,6 +116,10 @@ audio {
 
 #play {
     font-size: 6em;
+}
+
+#infosTrack {
+    display: none;
 }
 
 
