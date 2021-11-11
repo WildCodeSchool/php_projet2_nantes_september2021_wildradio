@@ -1,19 +1,30 @@
 {% extends '/front/layout.html.twig' %}
 
-{% block title %}PLAYLISTS{% endblock %}
-
-{# PAGE DE GAUCHE #}
+{% block title %}Playlist{% endblock %}
 
   {% block content %}
 
-
+<div id="playlistpage">
+  <div id="left-playlistpage"> 
   {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
-  <div class="PageGauche"> 
-		
-		<h2>Nom_de_la_playlist </h2>
-		<p> description playlist</p> 
+		<div id="playlist-description"> 
+      <h1> left page </h1>
+      <img src="{{selectedPlaylist.image}}"> </img>
+		  <h2> {{selectedPlaylist.playlist}} </h2>
+		  <p> {{selectedPlaylist.description}}</p> 
+    </div>
   </div> 
 
- <div class="PageDroite"></div> 
+ <div id="right-playlistpage">
+    <div id="tracks-list"> 
+    <h1> page droite </h1>
+      {% for track in selectedPlaylist %}
+        <li>{{selectedPlaylist.title}} {{selectedPlaylist.artist}}</li>
+        <li> {{selectedPlaylist.album}}</li>
+      {% endfor %}
+    </div>
+ </div> 
+</div>
+
 {% endblock %}

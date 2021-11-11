@@ -107,7 +107,7 @@ public function delete()
 public function uploadFile() {
 
     // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
-    $uploadDir = "/assets/images";
+    $uploadDir = "/assets/images/";
 
     // // Je récupère l'extension du fichier
     $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
@@ -157,7 +157,7 @@ public function edit(int $id)
     }
 
     return $this->twig->render('admin/Playlist/edit.html.twig', [
-        'playlist' => $this->track , 'action'=> "/playlists/edit?id=$id" 
+        'playlist' => $this->playlist , 'action'=> "/playlists/edit?id=$id" 
     ]);
 }
   

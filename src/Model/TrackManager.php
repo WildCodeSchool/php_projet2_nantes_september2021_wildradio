@@ -52,9 +52,7 @@ class TrackManager extends AbstractManager
     public function link($track_id, $playlists_id)
     {
 
-        var_dump($playlists_id);
-        die();
-        
+
         $statement = $this->pdo->prepare("INSERT INTO" . self::TABLE . 
         "WHERE id 
         IN (SELECT track_id=" . ":track_id" . "FROM trackPlaylist WHERE playlist_id=:" . ":playlist_id)"); 

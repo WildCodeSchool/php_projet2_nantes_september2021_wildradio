@@ -260,9 +260,27 @@ p{  display: block;
 
 .PageGauche{
   min-height: 100%;
-    background-color: #4A517E;
+  background-color: #4A517E;
 }
 
 .PageDroite{
     background-color:#F39F81;
+}
+
+
+/* playlist page */
+#playlistpage {
+    display: flex;
+    
+}
+
+#left-playlistpage {
+    background-color: #4A517E;
+    width: 50%;
+}
+
+
+#right-playlistpage {
+    background-color:#F39F81;
+    width: 50%;
 }

@@ -13,7 +13,7 @@ return [
      
     '' => ['front\HomeController', 'index'],
     'playlists' => ['front\PlaylistController', 'browse' ],
-    'playlists/show' => ['front\PlaylistController', 'show', ['id']],
+    'playlist/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\ContactController', 'contact'],
     'error' => ['front\ErrorController' , 'error'],
 
