@@ -9,22 +9,13 @@ a{
     text-decoration: none;
 }
 
-
-button:hover{
-    background-color:#4A517E ;
-}
-
-.buttons {
-    width: 15%;
-    color: white;
-    font-size: 20px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    margin:auto;
-    display:block;
-    margin-right: 1000px;
-    border-color:none;
+button {
+    cursor:pointer;
+    padding: 3%;
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    text-transform: uppercase;
 }
 
 /* CSS du background video */
@@ -52,6 +43,8 @@ nav{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
+
 }
 
 #playlist{
@@ -76,12 +69,19 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
+#contenu-homepage {
+    margin-top: 10vh;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    display: flex;
+    flex-direction: row;
+}
 
 /* CSS du côté gauche de homepage */
 
 #left-homepage{
-    padding-left: 10%;
-    width: 40%;
+    width: 50%;
 }
 
 #wildradio{
@@ -92,10 +92,6 @@ nav a{
     font-size: 6em;
 }
 
-br{
-    line-height: 5px;
-}
-
 #radio{
     font-size: 6em;
     font-style: italic;
@@ -103,7 +99,43 @@ br{
     padding-left: 15%;
 }
 
-/* CSS du player */
+#description{
+    margin-top: 5%;
+}
+
+#playlists-homepage {
+    margin-top: 5%;
+    display:flex;
+    justify-content: space-between;
+}
+
+#button-playlists {
+    width: 30vh;
+    border:solid 1px white;
+    background: rgba(255, 255, 255,0);
+}
+
+#button-playlists:hover{
+    border:none;
+    background: #F39F81;
+}
+
+#button-allplaylists {
+    margin-top: 5%;
+    width: 100%;
+    background: #F39F81;
+}
+#button-allplaylists:hover {
+    border:solid 1px white;
+    background: rgba(255, 255, 255,0); 
+}
+
+
+/* CSS du côté droit de la page : player */
+
+#right-homepage {
+    width: 50%;
+}
 
 audio { 
     display: none;
@@ -111,12 +143,18 @@ audio {
 
 #player {
     color: whitesmoke;
-    margin-left: 20%;
+    text-align: center;
+    margin-top: 20vh; 
 }
 
 #play {
     font-size: 6em;
 }
+
+.current-song{
+    display: none;
+}
+
 
 #infosTrack {
     display: none;
@@ -146,11 +184,6 @@ p{
 }
 
 
-
-button:hover{
-    background-color:#4A517E ;
-   
-}
 /* 
 .buttons {
     width: 15%;
