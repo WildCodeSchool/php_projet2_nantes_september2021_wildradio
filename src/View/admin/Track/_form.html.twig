@@ -1,4 +1,6 @@
+
 <form method="POST" action="{{action}}" enctype="multipart/form-data">
+
 
 	<input type="hidden" value="{{ track.id }}" name="id">
 
@@ -24,12 +26,17 @@
         	{{ errors.album }}
 		{% endif %}
 	</div>
-	</div>
+
+	<div>
 		<input type="file" name="mp3" id="mp3" >
 		{% if errors.mp3 is defined %}
         	{{ errors.mp3 }}
 		{% endif %}
 	</div>
+
+	<div>
+		<label for="flux"> Ajouter au flux</label>
+		<input type="checkbox"  name="flux" id="flux">
 	</div>
 
 	<div>
@@ -37,4 +44,5 @@
 	</div>
 
 </form> 
+
  

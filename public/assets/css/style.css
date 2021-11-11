@@ -1,31 +1,14 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family:'Maven Pro';
-    font-size: 18px;
-}
+    font-size: 18px;   
+}*
 
 a{
     text-decoration: none;
 }
 
 
-button:hover{
-    background-color:#4A517E ;
-}
-
-.buttons {
-    width: 15%;
-    color: white;
-    font-size: 20px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    margin:auto;
-    display:block;
-    margin-right: 1000px;
-    border-color:none;
-}
 
 /* CSS du background video */
 
@@ -76,6 +59,63 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
+#description{
+    display:block;
+    text-align:left;
+    color:whitesmoke;
+    margin-top: 40px;
+}
+
+/* CSS bouttons playlist2 playlist2 et "Voir tout"*/
+
+button:hover{
+    background:transparent;
+   
+}
+
+#BTS {display: flex;
+     justify-content:flex-start;
+     flex-direction: row;
+     margin-left: 130px;  
+     margin-top: 20px;   
+}
+
+
+.play1{
+  
+    padding:5px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-color: whitesmoke;
+    border-radius: 10px;
+ }
+
+ .play2{
+  
+    padding:5px;
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-color: whitesmoke;
+    border-radius: 10px;
+    margin-left: 30px;
+ }
+ 
+ .Voir{
+
+    padding:5px;
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-radius: 10px;
+    background-color:#F39F81;
+    border:none;
+    margin-left: 130px; 
+    margin-top:10px;
+ }
+
 
 /* CSS du côté gauche de homepage */
 
@@ -111,7 +151,14 @@ audio {
 
 #player {
     color: whitesmoke;
-    margin-left: 20%;
+    display: flex;
+    justify-content: center;
+    margin-left: 300px;
+    margin-top: -30px;
+    
+   
+
+
 }
 
 #play {
@@ -123,47 +170,32 @@ audio {
 }
 
 
-/* h1{
-    color:whitesmoke;
-    margin-right: 1000px;
-    margin-left: 200px;
-    font-size:90px;
-    margin-bottom: 100px; 
-} */
+/* CSS de description page home*/
+
 
 h2{ text-align: center;
     color: whitesmoke;
 }
 
                         
-p{
+p{  display: block;
     color: whitesmoke;
     margin-left: 30px;
     font-size: x-large;
-    width: 95%;
     font-size: 18px;
     margin: 15px;
+    text-align:left;
+    
 }
+
+
+/* boutton 'envoyer' page contact*/
 
 
 
 button:hover{
-    background-color:#4A517E ;
-   
+    background-color:#4A517E ; 
 }
-/* 
-.buttons {
-    width: 15%;
-    color: white;
-    font-size: 20px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    margin:auto;
-    display:block;    
-    margin-right: 1000px;
-    border-color:none;
-} */
 
 
 .env{
@@ -177,4 +209,14 @@ button:hover{
     margin:auto;
     display:block;    
     border-color:none;
+}
+
+
+.PageGauche{
+  min-height: 100%;
+    background-color: #4A517E;
+}
+
+.PageDroite{
+    background-color:#F39F81;
 }

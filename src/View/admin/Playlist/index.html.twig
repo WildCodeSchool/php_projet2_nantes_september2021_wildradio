@@ -1,0 +1,22 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block title %}Mes Playlists{% endblock %}
+
+{% block content %}
+
+    <h1>Toutes mes playlists</h1> 
+
+    <div> <a href="/admin/playlists/add">Ajouter une playlist</a> </div> 
+
+    <ul>
+        {% for playlist in playlists %}
+            <li>
+                <a href="/admin/playlists/show?id={{playlist.id}}?>">
+                    {{ playlist.name}} - {{ playlist.artist}} - {{ playlist.album}}
+                </a>
+            </li>
+        {% endfor %}  
+
+    </ul>
+
+{% endblock %}
