@@ -107,7 +107,7 @@ public function delete()
 public function uploadFile() {
 
     // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
-    $uploadDir = "/assets";
+    $uploadDir = "/assets/images";
 
     // // Je récupère l'extension du fichier
     $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
@@ -132,11 +132,7 @@ public function uploadFile() {
 
            // on précise le chemin du fichier pour la BDD
            move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
-     ​
-6
-use App\Model\PlaylistManager;
-7
-use App\Model\TrackManager;
+     
            $this->playlist['img'] = $uploadFile;
            }
     
