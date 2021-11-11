@@ -7,10 +7,10 @@ use App\Model\RegisterManager;
 class RegisterController extends AbstractController
 {
 
-    public $user; 
+    public $user;
     public $errors = [];
     
-    // permet de se connecter à l'espace administrateur 
+    // permet de se connecter à l'espace administrateur
     public function login()
     {
 
@@ -21,7 +21,7 @@ class RegisterController extends AbstractController
             $this->verificationPassword($this->user);
             
             if (empty($this->errors)){
-               $this->sessionStart();
+                $this->sessionStart();
             }
         }
 
