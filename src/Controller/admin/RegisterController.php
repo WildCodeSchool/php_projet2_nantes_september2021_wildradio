@@ -25,7 +25,7 @@ class RegisterController extends AbstractController
             }
         }
 
-        return $this->twig->render('admin/Register/index.html.twig');
+        return $this->twig->render('admin/Register/index.html.twig', ["errors" => $this->errors ]);
 
     }
 
@@ -71,12 +71,7 @@ class RegisterController extends AbstractController
         } else { 
             $this->errors['username'] = "L'utilisateur ou mot de passe incorrect";
         };
-
-        var_dump($userConnecting['password']);
-        var_dump($this->user);
-        var_dump($this->errors);
-
-        
+              
     }
 
     // Si le mot de passe et le nom de l'utilisateur sont correct alors ouverture de session 
