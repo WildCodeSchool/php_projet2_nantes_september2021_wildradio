@@ -9,6 +9,15 @@ a{
 }
 
 
+button {
+    cursor:pointer;
+    padding: 3%;
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
 
 /* CSS du background video */
 
@@ -35,6 +44,8 @@ nav{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
+
 }
 
 #playlist{
@@ -58,6 +69,16 @@ nav a{
 }
 
 /*CSS du contenu de la homepage*/
+
+
+#contenu-homepage {
+    margin-top: 10vh;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    display: flex;
+    flex-direction: row;
+}
 
 #description{
     display:block;
@@ -117,31 +138,65 @@ button:hover{
  }
 
 
-/* CSS du logo Wild Radio de la homepage */
+
+/* CSS du côté gauche de homepage */
+
+#left-homepage{
+    width: 50%;
+}
 
 #wildradio{
-    margin-left: 10%;
     color: whitesmoke;
-    width: 40%;
 }
 
 #wild{
     font-size: 6em;
 }
 
-br{
-    line-height: 5px;
-}
-
 #radio{
     font-size: 6em;
     font-style: italic;
-    padding-left: 10%;
     line-height: 55px;
-      
+    padding-left: 15%;
 }
 
-/* CSS du player */
+#description{
+    margin-top: 5%;
+}
+
+#playlists-homepage {
+    margin-top: 5%;
+    display:flex;
+    justify-content: space-between;
+}
+
+#button-playlists {
+    width: 30vh;
+    border:solid 1px white;
+    background: rgba(255, 255, 255,0);
+}
+
+#button-playlists:hover{
+    border:none;
+    background: #F39F81;
+}
+
+#button-allplaylists {
+    margin-top: 5%;
+    width: 100%;
+    background: #F39F81;
+}
+#button-allplaylists:hover {
+    border:solid 1px white;
+    background: rgba(255, 255, 255,0); 
+}
+
+
+/* CSS du côté droit de la page : player */
+
+#right-homepage {
+    width: 50%;
+}
 
 audio { 
     display: none;
@@ -149,23 +204,26 @@ audio {
 
 #player {
     color: whitesmoke;
-    display: flex;
-    justify-content: center;
-    margin-left: 300px;
-    margin-top: -30px;
-    
-   
-
-
+    text-align: center;
+    margin-top: 20vh; 
 }
 
 #play {
     font-size: 6em;
 }
 
+.current-song{
+    display: none;
+}
+
+
+#infosTrack {
+    display: none;
+}
+
+
 /* CSS de description page home*/
 
-/* CSS des bouttons page home*/
 
 h2{ text-align: center;
     color: whitesmoke;
@@ -181,6 +239,8 @@ p{  display: block;
     text-align:left;
     
 }
+
+
 
 /* boutton 'envoyer' page contact*/
 

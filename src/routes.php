@@ -19,11 +19,16 @@ return [
 
    // affichage track admin
 
+    'admin/tracks/playlistAdd' => ['admin\TrackController', 'addTrackToPlaylist'],
     'admin/tracks/add' => ['admin\TrackController', 'add'],
     'admin/tracks' => ['admin\TrackController', 'browse' ],
     'admin/tracks/show' => ['admin\TrackController', 'show', ['id']],
     'admin/tracks/delete' => ['admin\TrackController', 'delete',],
     'admin/tracks/edit' => ['admin\TrackController', 'edit', ['id']],
+    'admin/tracks/update' => ['admin\TrackController', 'update', ['id']],
+    'admin/register' => ['admin\RegisterController', 'login'],
+    'admin' => ['admin\HomeController', 'index'],
+
 
    // affichage playlists admin 
 

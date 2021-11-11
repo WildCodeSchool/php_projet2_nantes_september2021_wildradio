@@ -8,6 +8,7 @@ class PlaylistManager extends AbstractManager
 {
     public const TABLE = 'playlist';
 
+
    // inserer nouvelle playlist dans database
    
     public function insert(array $playlist)
@@ -22,6 +23,7 @@ class PlaylistManager extends AbstractManager
         $statement->execute();
     }
     
+
     public function getAll(): array
     {
         $statement = $this->pdo->query("SELECT * FROM ". self::TABLE);
@@ -29,6 +31,7 @@ class PlaylistManager extends AbstractManager
 
         return $playlists;
     }
+
 
      // telecharger playlist dans dtbase
 

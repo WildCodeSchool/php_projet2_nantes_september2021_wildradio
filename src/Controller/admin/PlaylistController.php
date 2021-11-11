@@ -2,14 +2,19 @@
 
 namespace App\Controller\admin;
 
+
 use App\Model\PlaylistManager;
+use App\Model\TrackManager;
+
 
 class PlaylistController extends AbstractController
 {
 
+
     public $playlist; 
     public $errors = [];
-
+    public $trackPlaylist;
+    
 
 public function verification() 
 {
@@ -160,4 +165,5 @@ public function edit(int $id)
 
 
 }
+
 

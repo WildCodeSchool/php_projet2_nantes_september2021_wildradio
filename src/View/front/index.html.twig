@@ -3,26 +3,33 @@
 {% block title %}WILD RADIO{% endblock %}
 
 {% block content %}
-
 {% block background %}{% include "front/background.html.twig" %}{% endblock %}
- 
+
 
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
 <body>
     <div id="contenu-homepage">
-        <div>
+        <div id="left-homepage">
 
             <h1 id="wildradio">
                 <span id="wild">WILD</span>
                 <span id="radio">RADIO</span></h1>
 
-            <p id="description">« Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            
+            <p id="description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae ligula lectus. Morbi diam ligula, tincidunt vitae nisi vitae, tempor ultrices quam. Aliquam porttitor eros mauris, vitae varius diam ultrices a.</p>
+
+            <div id="playlists-homepage">
+                <a href="/playlist"><button id="button-playlists">► Playlist 1</button></a>
+                <a href="/playlist"><button id="button-playlists">► Playlist 2</button></a>
+            </div>
+
+                <a href="/playlists"><button id="button-allplaylists">Écouter toutes nos playlists</button></a>
+
+        </div>
 
 
 
-        <div>
+        <div id="right-homepage">
             <audio controls id="audioPlayer"></audio>
 
             <div id="player">
@@ -48,22 +55,15 @@
                     {% endfor %}
                 </ul>
         </div>
-
         {% block javascript %} 
+
             <script src="/assets/js/playerFlux.js"></script>
             <script>
                 audioPlayer();
             </script>
 
         {% endblock %}
-<div id="BTS">
-                <a href="/playlist"><button class="play1">Playlist 1</button></a>
-                <a href="/playlist"><button class="play2">Playlist 2</button></a>
-            </div>
-            <div>
-                <a href="/playlists"><button class="Voir">Toutes nos playlists</button></a>
-            </div>
-        </div>
+
     </div>
 </body>
 {% endblock %}
