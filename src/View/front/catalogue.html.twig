@@ -7,12 +7,17 @@
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
 
-<div class="contenu-homepage">
+<div id="contenu-playlists">
+    <h1> Toutes les playlists</h1>
+    <p> Ecoutez nos playlists créees avec ❤ </p>
+</div>
 
-<h1> Toutes les playlists</h1>
-<p> Ecoutez nos playlists créees avec ❤ </p>
+<div>
+    {% for playlist in playlists %}
 
+        <p>{{ playlist.name }}</p>
 
+    {% endfor %}
 </div>
 
 {% endblock %}

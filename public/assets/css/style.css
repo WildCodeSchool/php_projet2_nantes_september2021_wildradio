@@ -5,6 +5,12 @@
     font-size: 18px;
 }
 
+h1{
+    color:whitesmoke;
+    text-transform: uppercase;
+    font-size: 35px;
+}
+
 p{
     color: whitesmoke;
 }
@@ -73,7 +79,7 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
-.contenu-homepage {
+#contenu-homepage {
     margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
@@ -93,11 +99,11 @@ nav a{
 }
 
 #wild{
-    font-size: 6em;
+    font-size: 4em;
 }
 
 #radio{
-    font-size: 6em;
+    font-size: 4em;
     font-style: italic;
     line-height: 55px;
     padding-left: 15%;
@@ -159,52 +165,20 @@ audio {
     display: none;
 }
 
-
 #infosTrack {
     display: none;
 }
 
 /* CSS de la page Playlists */
 
+#contenu-playlists {
+    margin-top: 10vh;
 
-
-h1{
-    color:whitesmoke;
-    text-decoration: uppercase;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
 
 /* h2{ text-align: center;
     color: whitesmoke;
 } */
-
-                        
-
-
-
-/* 
-.buttons {
-    width: 15%;
-    color: white;
-    font-size: 20px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    margin:auto;
-    display:block;    
-    margin-right: 1000px;
-    border-color:none;
-} */
-
-
-.env{
-    width: 10%;
-    color: white;
-    font-size: 15px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    text-transform: uppercase;
-    margin:auto;
-    display:block;    
-    border-color:none;
-}
