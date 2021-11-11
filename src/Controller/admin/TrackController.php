@@ -3,20 +3,38 @@
 namespace App\Controller\admin;
 
 use App\Model\TrackManager;
+use App\Model\PlaylistManager;
 
 class TrackController extends AbstractController
 {
 
     public $track; 
+    public $playlists;
     public $errors = [];
 
+    // constructeur permet de sécuriser l'acces pour 
+
+    public function __construct()
+    {
+        parent::__construct();
+        session_start();
+        if (!isset($_SESSION['Connected'])) {
+           header ("Location: /");
+        }
+
+    }
+
+    // Permet de vérifier les données entrantes 
     public function verification() 
     {
 
             // clean $_POST data
             $this->track = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+
+            // on indique 1 ou 0 si l'ajout au flux est coché
+            $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
+
 
             if ($this->track['title'] == "") {
                 $this->errors['title'] = "Le nom de la track est obligatoire";
@@ -44,7 +62,8 @@ class TrackController extends AbstractController
     }
     
     /// Traiement de l'upload des fichiers mp3 :
-    public function uploadFile() {
+    public function uploadFile() 
+    {
 
             // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
             $uploadDir = "/assets/audio/";
@@ -64,8 +83,6 @@ class TrackController extends AbstractController
             // Le poids max géré par PHP
             $maxFileSize = 2000000;
   
-
-
             if (isset ($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
                 $this->errors["mp3"] ="le poid max du fichier est de 2Mo";
              } else {
@@ -73,39 +90,30 @@ class TrackController extends AbstractController
                  move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
                  // on précise le chemin du fichier pour la BDD
                   $this->track['mp3'] = $uploadFile;
-      
-                  // on indique 1 ou 0 si l'ajout au flux est coché
-                  $this->track['flux'] = (isset($_POST['flux'])) ? 1 : 0;
-
-                }
-            
-        }
+                }    
+    }
 
      /**
      * Add a new track to the database with a form
      */
     public function add()
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $verified = $this->verification(); 
+            $this->verification(); 
                         
-
             if (empty($this->errors)){
-    
-            // if validation is ok, insert and redirection
-    
                 $this->uploadFile();
                 $trackManager = new TrackManager();
                 $trackManager->insert($this->track);
-                header('Location:/tracks/add');
-
+                header('Location:/admin/tracks/show?id={{track.id}}?>');
             }
             
-            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
-            var_dump($this->track);
-            var_dump($this->errors);
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
+            
         }
+      
         return $this->twig->render('admin/Track/add.html.twig');
       
     }
@@ -126,7 +134,7 @@ class TrackController extends AbstractController
     /**
      * Show informations for a specific track
      */
-    public function show( $id): string
+    public function show($id): string
     {
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
@@ -143,34 +151,76 @@ class TrackController extends AbstractController
             $id = trim($_POST['id']);
             $trackManager = new TrackManager();
             $trackManager->delete($id);
-            header('Location:/tracks');
+            header('Location:/admin/tracks');
         }
     }
 
     
     /**
-     * Edit a specific item
+     * permet d'afficher le formulaire pré-rempli 
      */
     public function edit(int $id)
     {
         $trackManager = new TrackManager();
-        $this->track = $trackManager->selectOneById($id);
+        $track = $trackManager->selectOneById($id);
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            // TODO validations (length, format...)
-            $verified = $this->verification(); 
+        $this->playlists = $this->browsePlaylists();
 
 
-            // if validation is ok, update and redirection
-            $trackManager->update($this->track );
-            header('Location: /tracks/show?id=' . $id);
-        }
-
-        return $this->twig->render('admin/Track/edit.html.twig', [
-            'track' => $this->track , 'action'=> "/tracks/edit?id=$id" 
-        ]);
+        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists]);
+    
     }
 
+    /**
+     * permet de mettre à jour les données du formulaire  
+     */
+
+    public function update(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Verification
+            $verified = $this->verification(); 
+
+            // if validation is ok, update 
+            if (empty($this->errors)){
+                
+                $trackManager = new TrackManager();
+                $trackManager->update($this->track );
+                header('Location: /admin/tracks/show?id=' . $id);
+            }    
+        }
+    }
+
+   
+    /**
+     * Permet d'ajouter une track à une playlist
+     */
+    public function addTrackToPlaylist()
+    {
+        var_dump($_POST);
+        die();
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+    
+            if (empty($this->errors)){
+                $trackManager = new TrackManager();
+                $trackManager->link($_POST['id'], $_POST['addPlaylist']);
+            }
+            
+            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
+           
+        }
+        return $this->twig->render('admin/Track/add.html.twig');
+      
+    }
+
+    public function browsePlaylists()
+    {
+        $playlistManager = new PlaylistManager();
+        return  $playlistManager->getAll();
+
+    }
 
 }

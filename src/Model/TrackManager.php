@@ -37,7 +37,7 @@ class TrackManager extends AbstractManager
      */
     public function update(array $track): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, flux = :flux WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, is_in_flux = :flux WHERE id=:id");
         $statement->bindValue('id', $track['id'], \PDO::PARAM_INT);
         $statement->bindValue(':title', $track['title'], \PDO::PARAM_STR);
         $statement->bindValue(':artist', $track['artist'], \PDO::PARAM_STR);
@@ -45,5 +45,22 @@ class TrackManager extends AbstractManager
         $statement->bindValue(':flux', $track['flux'], \PDO::PARAM_STR);
 
         return $statement->execute();
+    }
+
+
+   
+    public function link($track_id, $playlists_id)
+    {
+
+        var_dump($playlists_id);
+        die();
+        
+        $statement = $this->pdo->prepare("INSERT INTO" . self::TABLE . 
+        "WHERE id 
+        IN (SELECT track_id=" . ":track_id" . "FROM trackPlaylist WHERE playlist_id=:" . ":playlist_id)"); 
+        $statement->bindValue(':track_id', $track_id, \PDO::PARAM_INT);
+        $statement->bindValue(':playlist_id', $playlists_id, \PDO::PARAM_INT);
+        
+        $statement->execute();
     }
 }

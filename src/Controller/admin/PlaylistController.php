@@ -2,14 +2,19 @@
 
 namespace App\Controller\admin;
 
+
 use App\Model\PlaylistManager;
+use App\Model\TrackManager;
+
 
 class PlaylistController extends AbstractController
 {
 
+
     public $playlist; 
     public $errors = [];
-
+    public $trackPlaylist;
+    
 
 public function verification() 
 {
@@ -127,7 +132,11 @@ public function uploadFile() {
 
            // on précise le chemin du fichier pour la BDD
            move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
-     
+     ​
+6
+use App\Model\PlaylistManager;
+7
+use App\Model\TrackManager;
            $this->playlist['img'] = $uploadFile;
            }
     
@@ -160,4 +169,5 @@ public function edit(int $id)
 
 
 }
+
 

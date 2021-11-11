@@ -117,12 +117,15 @@ button:hover{
  }
 
 
-/* CSS du logo Wild Radio de la homepage */
+/* CSS du côté gauche de homepage */
+
+#left-homepage{
+    padding-left: 10%;
+    width: 40%;
+}
 
 #wildradio{
-    margin-left: 10%;
     color: whitesmoke;
-    width: 40%;
 }
 
 #wild{
@@ -136,9 +139,8 @@ br{
 #radio{
     font-size: 6em;
     font-style: italic;
-    padding-left: 10%;
     line-height: 55px;
-      
+    padding-left: 15%;
 }
 
 /* CSS du player */
@@ -163,9 +165,13 @@ audio {
     font-size: 6em;
 }
 
+#infosTrack {
+    display: none;
+}
+
+
 /* CSS de description page home*/
 
-/* CSS des bouttons page home*/
 
 h2{ text-align: center;
     color: whitesmoke;
@@ -182,7 +188,15 @@ p{  display: block;
     
 }
 
+
 /* boutton 'envoyer' page contact*/
+
+
+
+button:hover{
+    background-color:#4A517E ; 
+}
+
 
 .env{
     width: 10%;

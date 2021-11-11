@@ -7,6 +7,7 @@
 
     <title>{% block title %}{% endblock %}</title>
 
+
     {% block stylesheet %}
         <link rel="stylesheet" href="/assets/css/style.css">
     {% endblock %}
@@ -19,25 +20,23 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500;555&display=swap');
-</style>
+    </style>
       
     {% block script %}
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"</script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"</script>
+
     {% endblock %}
+
 
 </head>
 
 
 {% block content %}
 
-<body>
-
-{% block header %}{% endblock %}
-
+    {% block header %}{% endblock %}
+    {% block javascript %}{% endblock %}
 
 </body>
 </html>
-{% endblock %}
-
-{% block javascript %}{% endblock %}
+ {% endblock %}
