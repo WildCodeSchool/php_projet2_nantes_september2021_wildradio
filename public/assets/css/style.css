@@ -1,9 +1,8 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family:'Maven Pro';
-    font-size: 18px;
-}
+    font-size: 18px;   
+}*
 
 h1{
     color:whitesmoke;
@@ -19,6 +18,7 @@ a{
     text-decoration: none;
 }
 
+
 button {
     cursor:pointer;
     padding: 3%;
@@ -27,6 +27,7 @@ button {
     color: whitesmoke;
     text-transform: uppercase;
 }
+
 
 /* CSS du background video */
 
@@ -79,6 +80,7 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
+
 #contenu-homepage {
     margin-top: 10vh;
     margin-left: 10%;
@@ -87,6 +89,65 @@ nav a{
     display: flex;
     flex-direction: row;
 }
+
+#description{
+    display:block;
+    text-align:left;
+    color:whitesmoke;
+    margin-top: 40px;
+}
+
+/* CSS bouttons playlist2 playlist2 et "Voir tout"*/
+
+button:hover{
+    background:transparent;
+   
+}
+
+#BTS {display: flex;
+     justify-content:flex-start;
+     flex-direction: row;
+     margin-left: 130px;  
+     margin-top: 20px;   
+}
+
+
+.play1{
+  
+    padding:5px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-color: whitesmoke;
+    border-radius: 10px;
+ }
+
+ .play2{
+  
+    padding:5px;
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-color: whitesmoke;
+    border-radius: 10px;
+    margin-left: 30px;
+ }
+ 
+ .Voir{
+
+    padding:5px;
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-radius: 10px;
+    background-color:#F39F81;
+    border:none;
+    margin-left: 130px; 
+    margin-top:10px;
+ }
+
+
 
 /* CSS du côté gauche de homepage */
 
@@ -171,14 +232,59 @@ audio {
 
 /* CSS de la page Playlists */
 
+<<<<<<< HEAD
 #contenu-playlists {
     margin-top: 10vh;
+=======
+/* CSS de description page home*/
+
+>>>>>>> ad4849ffac2ed9eb20a51c68023021c63aad722c
 
     margin-left: 10%;
     margin-right: 10%;
 }
 
+<<<<<<< HEAD
 
 /* h2{ text-align: center;
     color: whitesmoke;
 } */
+=======
+                        
+p{  display: block;
+    color: whitesmoke;
+    margin-left: 30px;
+    font-size: x-large;
+    font-size: 18px;
+    margin: 15px;
+    text-align:left;
+    
+}
+
+
+
+/* boutton 'envoyer' page contact*/
+
+.env{
+    width: 10%;
+    color: white;
+    font-size: 15px;
+    padding: 5px;
+    background-color:#F39F81;
+    border-radius: 10px;
+    text-transform: uppercase;
+    margin:auto;
+    display:block;    
+    border-color:none;
+}
+
+
+.PageGauche{
+  min-height: 100%;
+    background-color: #4A517E;
+}
+
+.PageDroite{
+    background-color:#F39F81;
+}
+>>>>>>> ad4849ffac2ed9eb20a51c68023021c63aad722c

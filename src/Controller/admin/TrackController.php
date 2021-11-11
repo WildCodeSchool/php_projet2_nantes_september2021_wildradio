@@ -113,8 +113,7 @@ class TrackController extends AbstractController
             return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
             
         }
-
-
+      
         return $this->twig->render('admin/Track/add.html.twig');
       
     }
@@ -127,7 +126,7 @@ class TrackController extends AbstractController
     {
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
-       
+
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
     }
 
@@ -192,39 +191,4 @@ class TrackController extends AbstractController
             }    
         }
     }
-
-<<<<<<< HEAD
-=======
-    
-    /**
-     * Permet d'ajouter une track à une playlist
-     */
-    public function addTrackToPlaylist()
-    {
-        var_dump($_POST);
-        die();
-        
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
-    
-            if (empty($this->errors)){
-                $trackManager = new TrackManager();
-                $trackManager->link($_POST['id'], $_POST['addPlaylist']);
-            }
-            
-            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
-           
-        }
-        return $this->twig->render('admin/Track/add.html.twig');
-      
-    }
-
-    public function browsePlaylists()
-    {
-        $playlistManager = new PlaylistManager();
-        return  $playlistManager->getAll();
-
-    }
-
->>>>>>> 8af66ee1e1056eda7449335a2611ff1818f16137
 }
