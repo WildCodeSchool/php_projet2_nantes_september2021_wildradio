@@ -5,6 +5,10 @@
     font-size: 18px;
 }
 
+p{
+    color: whitesmoke;
+}
+
 a{
     text-decoration: none;
 }
@@ -69,7 +73,7 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
-#contenu-homepage {
+.contenu-homepage {
     margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
@@ -160,28 +164,21 @@ audio {
     display: none;
 }
 
+/* CSS de la page Playlists */
 
-/* h1{
+
+
+h1{
     color:whitesmoke;
-    margin-right: 1000px;
-    margin-left: 200px;
-    font-size:90px;
-    margin-bottom: 100px; 
+    text-decoration: uppercase;
+}
+
+/* h2{ text-align: center;
+    color: whitesmoke;
 } */
 
-h2{ text-align: center;
-    color: whitesmoke;
-}
-
                         
-p{
-    color: whitesmoke;
-    margin-left: 30px;
-    font-size: x-large;
-    width: 95%;
-    font-size: 18px;
-    margin: 15px;
-}
+
 
 
 /* 
