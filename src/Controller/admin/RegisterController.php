@@ -9,7 +9,7 @@ class RegisterController extends AbstractController
 
     public $user; 
     public $errors = [];
-
+    
     // permet de se connecter à l'espace administrateur 
     public function login()
     {
@@ -17,16 +17,15 @@ class RegisterController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $this->verificationData(); 
-            $this->VerificationIdentity();
-            $this->VerificationPassword();
+            $this->verificationIdentity($this->user);
+            $this->verificationPassword($this->user);
             
             if (empty($this->errors)){
-                $this->sessionStart();
-                header('Location: /admin/');
+               $this->sessionStart();
             }
         }
 
-        return $this->twig->render('admin/Register/index.html.twig');
+        return $this->twig->render('admin/Register/index.html.twig', ["errors" => $this->errors ]);
 
     }
 
@@ -48,47 +47,54 @@ class RegisterController extends AbstractController
     }
 
     // Permet de comparer le username entré avec celui présent en BDD  
-    public function VerificationIdentity() 
+    public function verificationIdentity($user) 
     {
         $registerManager = new RegisterManager();
         $userConnecting = $registerManager->selectByUsername($user['username']);
 
-        var_dump($result);
-        die();
-
-        if ($result === false ) {
+        // si $Userconnectiing est faux, cela signifie que l'utlisateur n'est pas enregistré dans la BDD
+        if ($userConnecting === false ) {
             $this->errors['username'] = "L'utilisateur ou mot de passe incorrect";
         }
-
+        
     }    
 
     //Permet de vérifier la validité du mot de passe ; retourne true si il est conforme
     // à compléter ! 
-    public function VerificationPassword() 
+    public function verificationPassword($user) 
     {
         $registerManager = new RegisterManager();
         $userConnecting = $registerManager->selectByUsername($user['username']);
 
-        if (password_verify($user['password'], $userConnecting->$Password)) {
+        if (password_verify($user['password'], $userConnecting['password'])) {
             return true ;
         } else { 
             $this->errors['username'] = "L'utilisateur ou mot de passe incorrect";
         };
+              
     }
 
     // Si le mot de passe et le nom de l'utilisateur sont correct alors ouverture de session 
-    // à compléter !
     public function sessionStart()
     {
         session_start();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $_SESSION['username']=$user['username'];
-
-            if(isset($_SESSION['username'])){
-                header('Location: /');
-            }
-        }
+        $_SESSION['Connected'] = 'true';
+        header('Location: /admin/');
 
     }
 
+    // non utile pour la v1
+    public function addMember(){
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      
+          $this->verificationData(); 
+                   
+          if (empty($this->errors)){
+            $registerManager = new RegisterManager();
+            $registerManager->insert($this->user);
+            header('Location: /admin/');
+          }
+        }
+    }
 }

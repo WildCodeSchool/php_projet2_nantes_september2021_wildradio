@@ -2,11 +2,13 @@
  
 {% block content %}
 
-    {% include '/admin/unallowedAccess.html.twig' %}
-
     <h1> Modifier la track {{ track.name }}</h1>
 
     {% include 'admin/Track/_form.html.twig' %}
+
+
+    <h2>Ajouter à la playlist</h2>
+    {% include 'admin/Track/addplaylist.html.twig' %}
 
     <a href="admin/tracks/show?id={{ track.id }}">Retour</a>
 
