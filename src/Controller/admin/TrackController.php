@@ -113,8 +113,7 @@ class TrackController extends AbstractController
             return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
             
         }
-
-
+      
         return $this->twig->render('admin/Track/add.html.twig');
       
     }
@@ -127,7 +126,7 @@ class TrackController extends AbstractController
     {
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
-       
+
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
     }
 
@@ -193,7 +192,7 @@ class TrackController extends AbstractController
         }
     }
 
-    
+   
     /**
      * Permet d'ajouter une track à une playlist
      */

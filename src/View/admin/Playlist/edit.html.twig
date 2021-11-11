@@ -1,0 +1,9 @@
+ {% extends '/admin/layout.html.twig' %}
+ 
+{% block content %}
+
+    <h1> Editer la playlist {{ playlist.name }}</h1>
+    {% include 'Playlist/form.html.twig' %}
+    
+
+{% endblock %}
