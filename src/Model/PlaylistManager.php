@@ -24,14 +24,14 @@ class TrackManager extends AbstractManager
 
         $statement->execute();
 
-        if($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['save_playlist'])
-        {
-            $playlistId = isset($_POST['playlist']) ? $_POST['playlist']: NULL;
-                if($playlist){
-                    save_playlist($playlist);
-                    echo "Bravo ! La playlist a bien été créée";
-            }
-        }
+        // if($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['save_playlist'])
+        // {
+        //     $playlistId = isset($_POST['playlist']) ? $_POST['playlist']: NULL;
+        //         if($playlist){
+        //             save_playlist($playlist);
+        //             echo "Bravo ! La playlist a bien été créée";
+        //     }
+        // }
     }
 
     /**
