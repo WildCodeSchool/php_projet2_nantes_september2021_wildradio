@@ -102,7 +102,7 @@ public function delete()
 public function uploadFile() {
 
     // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
-    $uploadDir = "/assets";
+    $uploadDir = "/assets/images";
 
     // // Je récupère l'extension du fichier
     $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
