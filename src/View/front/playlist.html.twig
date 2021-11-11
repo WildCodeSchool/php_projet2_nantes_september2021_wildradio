@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends '/front/layout.html.twig' %}
 
 {% block title %}PLAYLISTS{% endblock %}
 
@@ -9,15 +9,11 @@
 
   {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
-
   <div class="PageGauche"> 
-	
 		
 		<h2>Nom_de_la_playlist </h2>
 		<p> description playlist</p> 
-</div> 
-
-
+  </div> 
 
  <div class="PageDroite"></div> 
 {% endblock %}
