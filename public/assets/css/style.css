@@ -5,6 +5,13 @@
     font-size: 18px;
 }
 
+h1{
+    color:whitesmoke;
+    text-transform: uppercase;
+    font-size: 30px;
+
+}
+
 p{
     color: whitesmoke;
 }
@@ -168,10 +175,7 @@ audio {
 
 
 
-h1{
-    color:whitesmoke;
-    text-decoration: uppercase;
-}
+
 
 /* h2{ text-align: center;
     color: whitesmoke;

@@ -5,6 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="/assets/css/admin.css">
+
+
     <title>{% block title %}{% endblock %}</title>
 
     {% block stylesheet %}{% endblock %}
@@ -13,14 +16,22 @@
 
 </head>
 
+<header>
+    <video class="sunset"  playsinline autoplay muted loop> 
+    <source src="\assets\images\Sunset.mp4" type="video/mp4">
+    </video>
+</header>
 
+{% block content %}
 <body>
 
-   {% block header %}{% endblock %}
-   {% block content %} {% endblock %}
+     {% block header %}{% endblock %}
 
 
-   {% block javascript %}{% endblock %}
+
+
+    {% block javascript %}{% endblock %}
 
 </body>
 </html>
+ {% endblock %}

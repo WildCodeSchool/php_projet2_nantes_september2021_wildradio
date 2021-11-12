@@ -1,0 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:'Maven Pro';
+    font-size: 18px;
+}
+
+
+
+body{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+
+}
+
+.sunset{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.buttons {
+    cursor:pointer;
+    padding: 3%;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: #F39F81;
+    text-transform: uppercase;
+}
+
+.buttons:hover {
+    border: solid 1px black;
+    background-color: #F39F81;
+    color: black;
+}
+
+/* CSS du header */
+
+.wr{              
+    width: 70px;
+}
+
+nav {           
+    margin-left: 20%;        
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+    gap: 30px;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;          
+}
+
+#ligne{                
+    margin-left: 20%;
+    margin-right: 10%;
+    background-color: black;
+    height: 1px;
+}
+
+/* CSS de la page /admin */
+
+#left-admin {
+    background-color: #F39F81;
+    width: 50%;
+    height: 1000px;
+}
+
+#contenu-left-admin {
+    margin-top: 10vh;
+    margin-left: 20%;
+}
+
+#buttons-admin {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
