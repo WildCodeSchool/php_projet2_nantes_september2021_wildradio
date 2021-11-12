@@ -37,6 +37,7 @@ body{
 }
 .sunset{
     position: fixed;
+    justify-content:center;
     z-index: -1;
     width: 100%;
     height: auto;
@@ -47,7 +48,6 @@ body{
 .wr{              
     width: 70px;
 }
-
 
 nav{                   
     display: flex;
@@ -161,8 +161,20 @@ audio {
 
 #player {
     color: whitesmoke;
-    text-align: center;
     margin-top: 20vh; 
+}
+
+#bouton-play-texte {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+#action {
+    font-size:4em;
+    margin-right: 20px;
+    text-transform: uppercase;
 }
 
 #play {
@@ -172,7 +184,6 @@ audio {
 .current-song{
     display: none;
 }
-
 
 #infosTrack {
     display: none;

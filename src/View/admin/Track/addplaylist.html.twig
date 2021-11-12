@@ -1,0 +1,31 @@
+<form method="POST" action="/admin/tracks/playlistAdd">
+	<table>
+		<tr>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+		</tr>
+			
+		{% for playlist in playlists %}
+
+			<tr>
+				<td> {{ playlist.name }} </td>
+
+				<td>
+					<input type="hidden" value="{{ track.id }}" name="id">
+
+
+					<label for="addPlaylist-{{ playlist.id }}"></label>
+					<input type="checkbox"  name="addPlaylist[]" id="addPlaylist-{{ playlist.id }}" value="{{ playlist.id }}">
+			
+				</td>
+
+			</tr>
+			
+		{% endfor %}
+
+	</table>
+
+	<button type="submit" value="submit">Valider</button>
+
+</form>

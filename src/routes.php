@@ -8,7 +8,18 @@
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 
 return [
+     
+    // affichage Front (user)
+     
+    '' => ['front\HomeController', 'index'],
+    'playlists' => ['front\PlaylistController', 'browse' ],
+    'playlists/show' => ['front\PlaylistController', 'show', ['id']],
+    'contact' => ['front\ContactController', 'contact'],
+    'error' => ['front\ErrorController' , 'error'],
 
+   // affichage track admin
+
+    'admin/tracks/playlistAdd' => ['admin\TrackController', 'addTrackToPlaylist'],
     'admin/tracks/add' => ['admin\TrackController', 'add'],
     'admin/tracks' => ['admin\TrackController', 'browse' ],
     'admin/tracks/show' => ['admin\TrackController', 'show', ['id']],
@@ -18,16 +29,11 @@ return [
     'admin/register' => ['admin\RegisterController', 'login'],
     'admin' => ['admin\HomeController', 'index'],
 
+   // affichage playlists admin 
 
-    '' => ['front\HomeController', 'index'],
-    'playlists' => ['front\PlaylistController', 'browse' ],
-    'playlists/show' => ['front\PlaylistController', 'show', ['id']],
-    'contact' => ['front\ContactController', 'contact'],
-    'error' => ['front\ErrorController' , 'error'],
-
-    'items' => ['ItemController', 'index'],
-    'items/edit' => ['ItemController', 'edit', ['id']],
-    'items/show' => ['ItemController', 'show', ['id']],
-    'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete']
+    'admin/playlists/add' => ['admin\PlaylistController', 'add'],
+    'admin/playlists' => ['admin\PlaylistController', 'browse'],
+    'admin/playlists/show' => ['admin\PlaylistController', 'show' , ['id']],
+    'admin/playlists/delete' => ['admin\PlaylistController', 'delete' ,],
+    'admin/playlists/edit' => ['admin\PlaylistController', 'edit' , ['id']],
 ];

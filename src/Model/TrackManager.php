@@ -46,4 +46,17 @@ class TrackManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function link($track_id, $playlists_id)
+    {        
+        $statement = $this->pdo->prepare("INSERT INTO trackPlaylist 
+        (playlist_id, track_id) VALUES (:playlist_id, :track_id)"); 
+
+        foreach ($_POST ["addPlaylist"] as $playlists_id) {
+            $statement->bindValue(':track_id', $_POST['id'], \PDO::PARAM_INT);
+            $statement->bindValue(':playlist_id', $playlists_id, \PDO::PARAM_INT);        
+            
+            $statement->execute();
+        } 
+    }
 }

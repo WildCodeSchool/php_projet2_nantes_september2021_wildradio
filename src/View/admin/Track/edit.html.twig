@@ -8,6 +8,9 @@
 
     {% include 'admin/Track/_form.html.twig' %}
 
+    <h2>Ajouter à la playlist</h2>
+    {% include 'admin/Track/addplaylist.html.twig' %}
+
     <a href="admin/tracks/show?id={{ track.id }}">Retour</a>
 
 {% endblock %}
