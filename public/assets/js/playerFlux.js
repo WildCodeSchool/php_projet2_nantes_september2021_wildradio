@@ -24,16 +24,3 @@ play_button.click(function() {
     $(this).toggleClass("fa-pause", !player.paused);
     $(this).toggleClass("fa-play", player.paused);
 });
-
-
-// fonction gérant le bouton play / pause
-
-var player = document.getElementById('audioPlayer');
-var play_button = $('#play');
-
-play_button.click(function() {
-    player[player.paused ? 'play' : 'pause']();
-    $(this).toggleClass("fa-pause", !player.paused);
-    $(this).toggleClass("fa-play", player.paused);
-});
-
