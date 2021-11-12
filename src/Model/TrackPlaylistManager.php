@@ -9,9 +9,9 @@ class TrackPlaylistManager extends AbstractManager
     public const TABLE = 'trackPlaylist';
 
 
-    public function selectOnePlaylistById($id)
+    public function selectTracksInPlaylist($id)
     {
-        $statement = $this->pdo->prepare("SELECT track.name as title, track.artist as artist, track.album as album, playlist.name as playlist , playlist.description as description, playlist.img as image
+        $statement = $this->pdo->prepare("SELECT track.name as title, track.artist as artist, track.album as album, track.mp3 as mp3
         FROM " . static::TABLE . "
         INNER JOIN track ON track_id= track.id
         INNER JOIN playlist ON playlist.id=playlist_id
@@ -20,6 +20,6 @@ class TrackPlaylistManager extends AbstractManager
            
         $statement->execute();
 
-        return $statement->fetchAll(\PDO::FETCH_BOTH);
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

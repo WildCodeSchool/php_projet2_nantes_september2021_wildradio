@@ -29,10 +29,17 @@ class PlaylistController extends AbstractController
     public function show($id)
     {
         $trackPlaylistManager = new TrackPlaylistManager();
-        $selectedPlaylist = $trackPlaylistManager->selectOnePlaylistById($id);
+        $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
+       
+        $playlistManager = new PlaylistManager();
+        $playlist= $playlistManager->selectOneById($id);
 
-        //var_dump( $selectedPlaylist);
-        return $this->twig->render('front/playlist.html.twig', ['selectedPlaylist[]'=> $selectedPlaylist] );
+
+        //var_dump( $tracksInPlaylist);
+        //var_dump( $playlist);
+
+       
+        return $this->twig->render('front/playlist.html.twig', ['playlist'=>$playlist, 'tracksInPlaylist'=> $tracksInPlaylist]);
 
     }
        
