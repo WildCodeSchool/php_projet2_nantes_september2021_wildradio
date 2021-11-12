@@ -1,8 +1,10 @@
+<h2>Informations</h2>
+
 <form method="POST" action="{{action}}" enctype="multipart/form-data">
 
 	<input type="hidden" value="{{ track.id }}" name="id">
 
-	<div> 
+	<div id="input-form"> 
 		<label for="title"></label>
 		<input type="text" placeholder="Titre" value="{{ track.name }}" name="title" >
 		{% if errors.name is defined %}
@@ -11,28 +13,28 @@
 	
 	</div> 
 
-	<div> 
+	<div id="input-form"> 
 		<input type="text" placeholder="Artiste" value="{{ track.artist }}" name="artist" >
 		{% if errors.artist is defined %}
         	{{ errors.artist }}
 		{% endif %}
 	</div>
 
-	<div>
+	<div id="input-form">
 		<input type="text" placeholder="Album" value="{{ track.album }}" name="album" >
 		{% if errors.album is defined %}
         	{{ errors.album }}
 		{% endif %}
 	</div>
 
-	<div>
+	<div id="input-form">
 		<input type="file" name="mp3" id="mp3" >
 		{% if errors.mp3 is defined %}
         	{{ errors.mp3 }}
 		{% endif %}
 	</div>
 
-	<div>
+	<div id="add-to-flux">
 		<label for="flux"> Ajouter au flux</label>
 		<input type="checkbox"  name="flux" id="flux">
 	</div>
