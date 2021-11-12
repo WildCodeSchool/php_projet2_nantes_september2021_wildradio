@@ -4,9 +4,20 @@
 
 {% block content %}
 
-{% include '/admin/unallowedAccess.html.twig' %}
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+        {% include '/admin/unallowedAccess.html.twig' %}
+    <div id="contenu-admin-tracks">
 
-    <h1>Ajouter une nouvelle track</h1>
-    {% include 'admin/Track/_form.html.twig' %}
+        <h1>+ Ajouter une nouvelle track</h1>
+        
+            <div id="left-side-admin">
+                {% include 'admin/Track/_form.html.twig' %}
+            </div>
+
+            <div id="right-side-admin">
+                <h2>Ajouter à la playlist</h2>
+
+            </div>
+    </div>
 
 {% endblock %}
