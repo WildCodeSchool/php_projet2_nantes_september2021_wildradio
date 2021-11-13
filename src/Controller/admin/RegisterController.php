@@ -81,6 +81,20 @@ class RegisterController extends AbstractController
 
     }
 
+    public function logout()
+    {
+        session_start();
+        $_SESSION = array();
+        if(isset($_COOKIE[session_name()]))
+            {
+                setcookie(session_name(),'',time()-4200, '/');
+            }
+    
+        session_destroy();
+    
+        header('Location: /');
+    }
+
     // non utile pour la v1
     public function addMember(){
 

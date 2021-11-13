@@ -82,6 +82,27 @@ nav {
     border: none;
     border-radius: 5px;
     text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+#btn-nav-admin {
+    cursor:pointer;
+    padding: 10px;
+    width: 155px;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: #F39F81;
+    text-transform: uppercase;
+}
+
+#btn-nav-admin:hover {
+    border: solid 1px black;
+    background-color: #F39F81;
+    color: black;
 }
 
 nav a {
@@ -114,8 +135,8 @@ nav a {
 
 #icone-connect {
     margin-bottom: 20px;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 }
 
 #input-register {
@@ -229,6 +250,11 @@ th{
 #actions-track-box {
     text-align: center;
     padding-top: 10px;
+}
+
+#icones {
+    width: 20px;
+    height: 20px;
 }
 
 /* CSS de la page /admin/tracks/add */
