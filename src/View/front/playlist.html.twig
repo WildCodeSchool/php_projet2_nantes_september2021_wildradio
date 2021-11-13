@@ -7,16 +7,15 @@
  
 
 <div id="playlistpage" id="player">
-          <audio controls id="audioPlayer"></audio>
   <div id="left-playlistpage"> 
 
 		<div id="playlist-description"> 
     
-      <div class="parent"> <img class="imgPlaylist" src="{{playlist.img}}"> </img>
-
-            <div id="player">
-              <i id="play" class="fa fa-play"></i>
-            </div>
+      <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div>
+      
+      <audio controls id="audioPlayer"></audio>
+      <div id="player">
+        <i id="play" class="fa fa-play"></i>
       </div>
 
 		  <h2> {{playlist.name}} </h2>
@@ -29,7 +28,7 @@
       <h2> Tracks </h2>
 
         <ol id="playlist"> {% for track in tracksInPlaylist %}
-          <ul > <a href="{{track.mp3}}">
+          <ul> <a href="{{track.mp3}}">
           <strong>{{track.title}}  </strong>- {{track.artist}} </br>
           {{track.album}} </a></ul>
         {% endfor %}
