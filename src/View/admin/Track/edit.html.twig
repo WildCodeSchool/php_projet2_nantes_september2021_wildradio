@@ -14,13 +14,15 @@
             <div id="track-edit-left">
 
                 {% include 'admin/Track/_form.html.twig' %}
+
+                    <a href="admin/tracks/show?id={{ track.id }}"><button class="buttons">Retour</button></a>
+
             </div>
 
             <div id="track-edit-right">
                 <h2>Ajouter à la playlist</h2>
                 {% include 'admin/Track/addplaylist.html.twig' %}
 
-                <a href="admin/tracks/show?id={{ track.id }}"><button class="buttons">Retour</button></a>
             </div>
         </div>
     </div>

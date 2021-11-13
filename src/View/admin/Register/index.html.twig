@@ -5,33 +5,39 @@
 
 {% block content %}
 
-    <h1>Se connecter</h1>
-    
+<div id="register-page">    
 
-	<form method="POST" action="{{action}}">
+	<div id="connect">
 
-		<input type="hidden" value="{{ track.id }}" name="id">
+		<img id="icone-connect" src="/assets/images/user.svg">
 
-		<div> 
-			<label for="username"></label>
-			<input type="text" placeholder="Username" value="{{ log.username }}" name="username" >
-			{% if errors.username is defined %}
-				{{ errors.username }}
-			{% endif %}
-		
-		</div> 
+		<form method="POST" action="{{action}}">
 
-		<div> 
-			<input type="password" placeholder="Password" value="{{ log.password }}" name="password" >
-			{% if errors.password is defined %}
-				{{ errors.password }}
-			{% endif %}
-		</div>
+			<input type="hidden" value="{{ track.id }}" name="id">
 
-		
-		<div>
-			<button type="submit" value="Submit"> Se connecter</button>
-		</div>
+			<div> 
+				<label for="username"></label>
+				<input id="input-register" type="text" placeholder="Username" value="{{ log.username }}" name="username" >
+				{% if errors.username is defined %}
+					{{ errors.username }}
+				{% endif %}
+			
+			</div> 
+
+			<div> 
+				<input id="input-register" type="password" placeholder="Password" value="{{ log.password }}" name="password" >
+				{% if errors.password is defined %}
+					{{ errors.password }}
+				{% endif %}
+			</div>
+
+			<div>
+				<button id="btn-submit" type="submit" value="Submit"> Se connecter</button>
+			</div>
+		</form>
+	</div>
+</div>
+
 {% endblock %}
 
  
