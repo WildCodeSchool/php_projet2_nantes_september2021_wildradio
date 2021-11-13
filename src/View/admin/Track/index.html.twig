@@ -40,8 +40,8 @@
             <tbody>
                 {% for track in tracks %}
                 <tr>
-                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.artist}}</a></td>
-                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name}}</a></td>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.artist }}</a></td>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name }}</a></td>
                     <td id="actions-track-box"><input type="checkbox"  name="flux" id="flux"></td>
                     <td id="actions-track-box"> <a href="/admin/tracks/edit?id={{track.id}}">Modif.</a></td>
                     <td id="actions-track-box">Suppr.</td>

@@ -198,15 +198,14 @@ th{
     margin-bottom: 5vh;
 }
 
-
-input {
+#input-form {
     border: solid 1px black;
     border-radius: 5px;
     background: none;
-    width: 40%;
+    width: 80%; 
     height: 35px;
     margin-bottom: 10px;
-}
+} 
 
 input::placeholder {
     padding-left: 15px;
@@ -220,4 +219,27 @@ input::placeholder {
     align-items: center;
     justify-content: flex-start;
     width: 10%;
+}
+
+/* CSS de la page /admin/tracks/edit */
+
+#contenu-admin-track-add h1 { 
+    margin-top: 5vh;
+    margin-left: 10%;
+}
+
+#contenu-track-edit {
+    margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction:row;
+}
+
+#track-edit-left {
+    width: 50%;
+}
+
+#track-edit-right {
+    width: 50%;
 }

@@ -7,18 +7,21 @@
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
         {% include '/admin/unallowedAccess.html.twig' %}
 
-        <div id="contenu-admin-tracks">
+            <h1> Modifier la track </h1>
 
+        <div id="contenu-track-edit">
 
-            <h1> Modifier la track {{ track.name }}</h1>
+            <div id="track-edit-left">
 
-            {% include 'admin/Track/_form.html.twig' %}
+                {% include 'admin/Track/_form.html.twig' %}
+            </div>
 
-            <h2>Ajouter à la playlist</h2>
-            {% include 'admin/Track/addplaylist.html.twig' %}
+            <div id="track-edit-right">
+                <h2>Ajouter à la playlist</h2>
+                {% include 'admin/Track/addplaylist.html.twig' %}
 
-            <a href="admin/tracks/show?id={{ track.id }}"><button class="buttons">Retour</button></a>
-        
+                <a href="admin/tracks/show?id={{ track.id }}"><button class="buttons">Retour</button></a>
+            </div>
         </div>
     </div>
 

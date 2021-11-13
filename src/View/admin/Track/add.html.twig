@@ -8,10 +8,11 @@
 
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
         {% include '/admin/unallowedAccess.html.twig' %}
+        
+        <h1>Ajouter une nouvelle track</h1>
 
         <div id="contenu-admin-tracks">
 
-            <h1>Ajouter une nouvelle track</h1>
             {% include 'admin/Track/_form.html.twig' %}
 
             <a href="/admin/tracks"><button class="buttons">Retour</button></a>
