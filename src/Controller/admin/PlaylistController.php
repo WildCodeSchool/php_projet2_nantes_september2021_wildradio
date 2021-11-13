@@ -124,17 +124,15 @@ public function uploadFile() {
     // Poid de du JPG .. 
     $maxFileSize = 2000000;
 
- 
-
     if (isset ($_FILES['img']['tmp_name']) && filesize($_FILES['img']['tmp_name']) > $maxFileSize) {
         $this->errors["img"] ="L'image ne doit pas dépasser 2M";
-     } else {
+    } else {
 
-           // on précise le chemin du fichier pour la BDD
-           move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
+         // on précise le chemin du fichier pour la BDD
+         move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
      
            $this->playlist['img'] = $uploadFile;
-           }
+    }
     
 }
 
