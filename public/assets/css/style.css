@@ -9,7 +9,12 @@ h1{
     color:whitesmoke;
     text-transform: uppercase;
     font-size: 30px;
+}
 
+h2 {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 400;
 }
 
 p{
@@ -34,6 +39,7 @@ button {
 body{
     margin-left: 0px;
     margin-right: 0px;
+    background-color: #F39F81;
 }
 .sunset{
     position: fixed;
@@ -189,7 +195,106 @@ audio {
     display: none;
 }
 
-/* CSS de la page Playlists */
+/* CSS de la page Contact */
+
+#contenu-contact {
+    background-color: #F39F81;
+    display: flex;
+    flex-direction: row;
+}
+
+#contenu-left-contact {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 50%;
+    background-color: #4A517E;
+    height: 100%;
+}
+
+#contact-left {
+    padding-left: 20%;
+    padding-right: 10%;
+}
+
+#image-front {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#contact-left p {
+    margin-top: 20px;
+}
+
+#contenu-right-contact {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 50%;
+}
+
+#contact-right {
+    padding-left: 10%;
+    padding-right: 20%;
+    color: whitesmoke;
+}
+
+#input-form{
+    border: solid 1px white;
+    border-radius: 5px;
+    background: none;
+    height: 35px;
+    width: 100%;
+    margin-bottom: 10px;
+} 
+
+input::placeholder {
+    padding-left: 15px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.493);
+}
+
+input:focus {
+    padding-left: 15px;
+    font-size: 16px;
+    color: whitesmoke;
+}
+
+textarea {
+    height: 300px;
+    width: 100%;
+    border: solid 1px white;
+    border-radius: 5px;
+    background: none;
+}
+
+textarea::placeholder {
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.493);
+}
+
+textarea:focus {
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: whitesmoke;}
+
+#form-contact {
+    margin-top: 20px;
+}
+
+#btn-send-msg {
+    margin-top: 10px;
+    background-color: #4A517E;
+    justify-content: right;
+}
+
+#icones {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(226deg) brightness(105%) contrast(101%);
+}
 
 /* CSS responsive (min-width: 1023px)*/
 
