@@ -10,18 +10,22 @@
 
     <div id="left-admin">
 
-    {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
 
 
-    {% include '/admin/unallowedAccess.html.twig' %}
+        {% include '/admin/unallowedAccess.html.twig' %}
 
-        <div id="contenu-left-admin">
-        <h1> Bienvenue dans l'espace administrateur</h1>
-            <div id="buttons-admin">
-                <a href="/admin/tracks"><button class="buttons">Mes tracks</button></a>
-                <a href="/admin/playlists"><button class="buttons">Mes playlists</button></a>
-                <a href="/admin/tracks/flux"><button class="buttons">Mon flux</button></a>
+            <div id="contenu-left-admin">
+            <h1> Bienvenue dans l'espace administrateur</h1>
+                <div id="buttons-admin">
+                    <a href="/admin/tracks"><button class="buttons">Mes tracks</button></a>
+                    <a href="/admin/playlists"><button class="buttons">Mes playlists</button></a>
+                    <a href="/admin/tracks/flux"><button class="buttons">Mon flux</button></a>
+                </div>
             </div>
+        </div>
+        <div id="right-admin-homepage">
+                <p></p>
         </div>
     </div>
 

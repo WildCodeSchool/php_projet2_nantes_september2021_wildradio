@@ -8,6 +8,8 @@
 body{
     margin-left: 0px;
     margin-right: 0px;
+    background-color: #F39F81;
+
 }
 
 h1 {
@@ -168,6 +170,11 @@ nav a {
 
 /* CSS de la page /admin */
 
+#contenu-admin {
+    display: flex;
+    flex-direction:row;
+}
+
 #left-admin {
     background-color: #F39F81;
     width: 50%;
@@ -186,11 +193,18 @@ nav a {
     gap: 20px;
 }
 
+#right-admin-homepage {
+    width:50%;
+    position: relative;
+    background-image:url(/assets/images/demisunset.png);
+    background-size:100% 100%;
+    z-index: -1;
+}
+
 /* CSS de la page /admin/tracks */
 
 #admin-tracks {
     background-color: #F39F81;
-    height:auto;
 }
 
 #contenu-admin-tracks {
@@ -220,6 +234,7 @@ nav a {
     height:40px;
     float:left;
 }
+
 #searchbar button{
     background: none;
     width: 40px;
@@ -249,6 +264,51 @@ th{
 
 #actions-track-box {
     text-align: center;
+}
+
+/* CSS du formulaire tracks/add */
+
+#contenu-track-add {
+    /* margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%; */
+    padding: 0;
+    display: flex;
+    flex-direction:row;
+}
+
+#left-side-admin {
+    margin-top: 5vh;
+    width: 40%;
+    /* display: flex;
+    flex-direction:column;
+    align-items:center; */
+}
+
+#right-side-admin {
+    margin-top: 5vh;
+    width: 40%;
+    /* display: flex;
+    flex-direction:column;
+    align-items:center; */
+}
+
+#form-add-track {
+    margin-top: 5vh;
+    width: 100%;
+}
+
+input {
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: none;
+}
+
+input::placeholder {
+    color : rgba(0, 0, 0, 0.274);
     padding-top: 10px;
 }
 
