@@ -41,7 +41,7 @@ class TrackManager extends AbstractManager
 
     public function getTracksInFlux(): array
     {
-        $statement = $this->pdo->query("SELECT * FROM ". self::TABLE . "WHERE is_in_flux = '1'");
+        $statement = $this->pdo->query("SELECT * FROM track WHERE is_in_flux = '1'");
         $tracks = $statement->fetchAll();
 
         return $tracks;
