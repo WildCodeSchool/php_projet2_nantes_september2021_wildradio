@@ -47,7 +47,3 @@ class PlaylistManager extends AbstractManager
         return $statement->execute();
         }
     }
-<<<<<<< HEAD
-}
-=======
->>>>>>> ad4849ffac2ed9eb20a51c68023021c63aad722c
