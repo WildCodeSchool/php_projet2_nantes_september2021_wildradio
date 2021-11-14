@@ -65,7 +65,7 @@ public function add()
             $this->uploadFile();
             $playlistManager = new PlaylistManager();
             $playlistManager->insert($this->playlist);
-            header('Location:/playlists/add');
+            header('Location:admin/playlists/show');
 
         }
         
@@ -107,7 +107,7 @@ public function delete()
 public function uploadFile() {
 
     // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
-    $uploadDir = "/assets/images";
+    $uploadDir = "/assets/images/";
 
     // // Je récupère l'extension du fichier
     $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
@@ -157,12 +157,19 @@ public function edit(int $id)
     }
 
     return $this->twig->render('admin/Playlist/edit.html.twig', [
-        'playlist' => $this->track , 'action'=> "/playlists/edit?id=$id" 
+        'playlist' => $this->playlist , 'action'=> "/playlists/edit?id=$id" 
     ]);
 }
   
+// Afficher après création et modifier playlist
 
+public function show($id):string
+{
+    $playlistManager = new PlaylistManager();
+    $playlist= $playlistManager->selectOneById($id);
 
+    return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist]);
+}
 
 }
 
