@@ -110,13 +110,11 @@ class TrackController extends AbstractController
                 header('Location:/admin/tracks');
             }
             
-            return $this->twig->render('/admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/tracks/add"]);
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add", 'button'=>"Ajouter une track"]);
             
         }
       
-                        
-        return $this->twig->render('/admin/Track/add.html.twig');
-      
+        return $this->twig->render('admin/Track/add.html.twig', ['button'=>"Ajouter une track"]);
     }
 
 
@@ -128,7 +126,7 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $tracks = $trackManager->getAll();
 
-        return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
+        return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Toutes mes tracks']);
     }
 
 
@@ -167,7 +165,7 @@ class TrackController extends AbstractController
 
         $this->playlists = $this->browsePlaylists();
 
-        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists]);
+        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists, 'button'=> "Modifier une track"]);
     
     }
 
@@ -210,10 +208,25 @@ class TrackController extends AbstractController
       
     }
 
+    /**
+     * Permet d'afficher les playlists dans lesquels ajouter les tracks
+     */
     public function browsePlaylists()
     {
         $playlistManager = new PlaylistManager();
         return  $playlistManager->getAll();
+
+    }
+
+    /**
+     * Permet d'afficher les tracks présentes dans le flux 
+     */
+    public function browseFlux()
+    {
+        $trackManager = new TrackManager();
+        $tracks = $trackManager->getTracksInFlux();
+
+        return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Mon flux']);
 
     }
 
