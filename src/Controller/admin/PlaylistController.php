@@ -9,16 +9,12 @@ use App\Model\TrackManager;
 
 class PlaylistController extends AbstractController
 {
-
-
     public $playlist; 
     public $errors = [];
-    public $trackPlaylist;
-    
+    public $trackPlaylist;    
 
 public function verification() 
 {
-
         // clean $_POST data
         $this->playlist = array_map('trim', $_POST);
 
@@ -42,7 +38,6 @@ public function verification()
         if (!preg_match("/^[a-zA-Z ]*$/", $this->playlist['tag'])) {
             $this->errors['tag'] = "Seul les lettres et espaces sont autorisés";
         }
-
         
        // on indique 1 ou 0 si l'ajout au flux est coché
         $this->playlist['is_online'] = (isset($_POST['is_online'])) ? 1 : 0;
@@ -161,9 +156,4 @@ public function edit(int $id)
     ]);
 }
   
-
-
-
 }
-
-

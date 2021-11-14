@@ -5,6 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+
+
     <title>{% block title %}{% endblock %}</title>
 
     {% block stylesheet %}{% endblock %}
@@ -13,14 +17,20 @@
 
 </head>
 
+<header>
+</header>
 
+{% block content %}
 <body>
 
-   {% block header %}{% endblock %}
-   {% block content %} {% endblock %}
+     {% block header %}{% endblock %}
 
 
-   {% block javascript %}{% endblock %}
+
+
+    {% block javascript %}{% endblock %}
+    
 
 </body>
 </html>
+ {% endblock %}
