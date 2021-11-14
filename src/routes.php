@@ -26,6 +26,7 @@ return [
     'admin/tracks/delete' => ['admin\TrackController', 'delete',],
     'admin/tracks/edit' => ['admin\TrackController', 'edit', ['id']],
     'admin/tracks/update' => ['admin\TrackController', 'update', ['id']],
+    'admin/tracks/flux' => ['admin\TrackController', 'browseFlux' ],
     'admin/register' => ['admin\RegisterController', 'login'],
     'admin' => ['admin\HomeController', 'index'],
 

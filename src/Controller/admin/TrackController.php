@@ -216,10 +216,25 @@ class TrackController extends AbstractController
       
     }
 
+    /**
+     * Permet d'afficher les playlists dans lesquels ajouter les tracks
+     */
     public function browsePlaylists()
     {
         $playlistManager = new PlaylistManager();
         return  $playlistManager->getAll();
+
+    }
+
+    /**
+     * Permet d'afficher les tracks présentes dans le flux 
+     */
+    public function browseFlux()
+    {
+        $trackManager = new TrackManager();
+        $tracks = $trackManager->getTracksInFlux();
+
+        return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks]);
 
     }
 
