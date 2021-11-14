@@ -2,6 +2,10 @@
 
 namespace App\Controller\front;
 
+use App\Model\PlaylistManager;
+use App\Model\TrackPlaylistManager;
+
+
 class PlaylistController extends AbstractController
 {
     /**
@@ -22,12 +26,21 @@ class PlaylistController extends AbstractController
     /**
      * Show informations for a specific track
      */
-    public function show($id): string
+    public function show($id)
     {
-        // $playlistManager = new PlaylistManager();
-        // $playslist = $playlistManager->selectOneById($id);
+        $trackPlaylistManager = new TrackPlaylistManager();
+        $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
+       
+        $playlistManager = new PlaylistManager();
+        $playlist= $playlistManager->selectOneById($id);
 
-        return $this->twig->render('front/playlist.html.twig', ['track' => $track]);
+
+        //var_dump( $tracksInPlaylist);
+        //var_dump( $playlist);
+
+       
+        return $this->twig->render('front/playlist.html.twig', ['playlist'=>$playlist, 'tracksInPlaylist'=> $tracksInPlaylist]);
+
     }
        
 }    

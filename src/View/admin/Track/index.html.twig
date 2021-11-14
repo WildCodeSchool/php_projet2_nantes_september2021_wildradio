@@ -4,19 +4,53 @@
 
 {% block content %}
 
-    <h1>Toutes mes tracks </h1> 
+<div id="admin-tracks">
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+        {% include '/admin/unallowedAccess.html.twig' %}
+    <div id="contenu-admin-tracks">
+            <h1> {{ titre }} </h1> 
 
-    <div> <a href="/admin/tracks/add">Ajouter une track</a> </div> 
+        <div id="buttons-admin-tracks">
 
-    <ul>
-        {% for track in tracks %}
-            <li>
-                <a href="/admin/tracks/show?id={{track.id}}?>">
-                    {{ track.name}} - {{ track.artist}} - {{ track.album}}
-                </a>
-            </li>
-        {% endfor %}  
+            <div id="searchbar">
+                <form action="">
+                    <input class="champ" type="text"/>
+                    <button class="fa fa-search"></button>
+                </form>
+            </div>
 
-    </ul>
+            <div id="dubble-buttons">
+                <a href="/admin/tracks/add"><button class="buttons">+ Ajouter une track</button></a>
+                <a href="/admin/flux"><button class="buttons">Afficher mon flux</button></a>  
+            </div>
+        </div>
+
+        <div id="liste-tracks">
+
+            <table>
+            <thead>
+                <tr>
+                    <th>Artiste</th>
+                    <th>Titre</th>
+                    <th id="actions-track-box">Flux</th>
+                    <th id="actions-track-box">Modif.</th>
+                    <th id="actions-track-box">Suppr.</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for track in tracks %}
+                <tr>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.artist }}</a></td>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name }}</a></td>
+                    <td id="actions-track-box"><input type="checkbox"  name="flux" id="flux"></td>
+                    <td id="actions-track-box"> <a href="/admin/tracks/edit?id={{track.id}}">Modif.</a></td>
+                    <td id="actions-track-box">Suppr.</td>
+                </tr>
+                {% endfor %}  
+
+            </tbody>
+            </table>
+        </div>
+    </div>
 
 {% endblock %}
