@@ -1,40 +1,43 @@
+
 <form method="post" action="{{action}}" enctype="multipart/form-data">
 
-    <div> 
-        <label for="name"></label>
-        <input type="text" placeholder="name" value="{{ playlist.name }}" name="name" >
-            {% if errors.name is defined %}
-                {{ errors.name }}
-            {% endif %}
-    </div> 
+<div> 
+	<label for="name"></label>
+	<input type="text" placeholder="name" value="{{ playlist.name }}" name="name" >
+		{% if errors.name is defined %}
+        	{{ errors.name }}
+		{% endif %}	
+</div> 
 
-    <div>
+<div>
         <label for="description"></label>
         <textarea id="description" placeholder="Description" value="{{ playlist.name }}" name="description" ></textarea>
-        {% if errors.description is defined %}
-            {{ errors.description }}
-        {% endif %}
-    </div> 
+		{% if errors.description is defined %}
+        	{{ errors.description }}
+		{% endif %}	
+</div> 
 
-    <div>
-        <input type="file" name="img" id="img" >
-        {% if errors.jpg is defined %}
-            {{ errors.jpg }}
-        {% endif %}
-    </div>
+<div>
+		<input type="file" name="img" id="img" >
+		{% if errors.jpg is defined %}
+        	{{ errors.jpg }}
+		{% endif %}
+</div>
 
-    <div>
-        <input type="checkbox" id="is_online" name="is_online"
-                checked>
-        <label for="online">Mettre en ligne</label>
-    </div>
+<div>
+  <input type="checkbox" id="is_online" name="is_online"
+         checked>
+  <label for="online">Mettre en ligne</label>
+</div>
 
-    <div>
-        <input type="text" id="tag" name="tag" checked placeholder="tag">
-        <label for="tag"></label>
-    </div>
+<div>
+  <input type="text" id="tag" name="tag" checked placeholder="tag">
+  <label for="tag"></label>
+</div>
 
-    <div>
-        <button type="submit" name="save-playlist" value="submit"> Créer la playlist </button>
-    </div>
+<div>
+		<button type="submit" value="Submit"> Ajouter la playlist </button>
+</div>
+ 
+
 </form>

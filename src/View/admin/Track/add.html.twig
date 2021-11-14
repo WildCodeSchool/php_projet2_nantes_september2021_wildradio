@@ -1,23 +1,24 @@
+
 {% extends '/admin/layout.html.twig' %}
+
 
 {% block title %}Ajouter une track{% endblock %}
 
 {% block content %}
 
+    <div id="contenu-admin-track-add">
+
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
         {% include '/admin/unallowedAccess.html.twig' %}
-    <div id="contenu-admin-tracks">
-
-        <h1>+ Ajouter une nouvelle track</h1>
         
-            <div id="left-side-admin">
-                {% include 'admin/Track/_form.html.twig' %}
-            </div>
+        <h1>Ajouter une nouvelle track</h1>
 
-            <div id="right-side-admin">
-                <h2>Ajouter à la playlist</h2>
+        <div id="contenu-admin-tracks">
 
-            </div>
+            {% include 'admin/Track/_form.html.twig' %}
+
+            <a href="/admin/tracks"><button class="buttons">Retour</button></a>
+        </div>
     </div>
 
 {% endblock %}

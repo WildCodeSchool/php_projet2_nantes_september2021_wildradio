@@ -1,0 +1,34 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block title %}Mes Playlists{% endblock %}
+
+{% block content %}
+
+    <h1>Toutes mes playlists</h1> 
+
+    <div> <a href="/admin/playlists/add">Ajouter une playlist</a> </div> 
+
+    <ul>
+        {% for playlist in playlists %}
+            <li>
+                <a href="/admin/playlists/show?id={{playlist.id}}?>">
+                    {{ playlist.name}} - {{ playlist.artist}} - {{ playlist.album}}
+                </a>
+            </li>
+
+    <div>
+        <input type="checkbox" id="is_online" name="is_online"
+         checked>
+        <label for="online">Supprimer la playlist</label>
+    </div>
+
+        {% endfor %}  
+    
+    </ul>
+    
+    <form action="/playlists/delete" method="POST">
+        <input type="hidden" name="id" value="{{ playlist.id }}">
+        <button>Supprimer</button>
+    </form>
+
+{% endblock %}

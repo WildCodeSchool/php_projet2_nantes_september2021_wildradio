@@ -4,81 +4,46 @@ namespace App\Model;
 
 use App\Connection;
 
-class TrackManager extends AbstractManager
+class PlaylistManager extends AbstractManager
 {
     public const TABLE = 'playlist';
-    public const TRACK_PLAYLIST = 'trackPlaylist';
 
-    /**
-     * Create new playlist in database
-     */
-    public function createPlaylist(array $playlist)
+
+   // inserer nouvelle playlist dans database
+   
+    public function insert(array $playlist)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, description, img, tag, is_online)
-        VALUES (:name, :description, :img, :tag, :online)");
+        VALUES (:name, :description, :img, :tag, :is_online)");
         $statement->bindValue(':name', $playlist['name'], \PDO::PARAM_STR);
         $statement->bindValue(':description', $playlist['description'], \PDO::PARAM_STR);
         $statement->bindValue(':img', $playlist['img'], \PDO::PARAM_STR);
         $statement->bindValue(':tag', $playlist['tag'], \PDO::PARAM_STR);
-        $statement->bindValue(':online', $playlist['online'], \PDO::PARAM_STR);
-
+        $statement->bindValue(':is_online', $playlist['is_online'], \PDO::PARAM_INT);
         $statement->execute();
+    }
+    
 
-        // if($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['save_playlist'])
-        // {
-        //     $playlistId = isset($_POST['playlist']) ? $_POST['playlist']: NULL;
-        //         if($playlist){
-        //             save_playlist($playlist);
-        //             echo "Bravo ! La playlist a bien été créée";
-        //     }
-        // }
+    public function getAll(): array
+    {
+        $statement = $this->pdo->query("SELECT * FROM ". self::TABLE);
+        $playlists = $statement->fetchAll();
+
+        return $playlists;
     }
 
-    /**
-     * Ajouter un track à une playlist dans la base de données
-     */
-    public function add_to_playlist ($track, $playlistId)
-    {    
-        if($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['add_to_playlist'])
-        {
-            $playlistId = isset($_POST['add_to_playlist']) ? $_POST['add_to_playlist']: NULL;
-                if($playlistId){
-                    if(count($track) > 0) {
-                        foreach($track as $tr){
-                            save_to_playlist($tr, $playlistId);
-                        }
-                    }
-                }
+
+     // telecharger playlist dans dtbase
+
+     public function update(array $playlist): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :name,  description = :description, img = :img, online = :online WHERE id=:id");
+        $statement->bindValue('id', $playlist['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':name', $playlist['name'], \PDO::PARAM_STR);
+        $statement->bindValue(':description', $playlist['description'], \PDO::PARAM_STR);
+        $statement->bindValue(':img', $playlist['img'], \PDO::PARAM_STR);
+        $statement->bindValue(':online', $playlist['is_online'], \PDO::PARAM_STR);
+
+        return $statement->execute();
         }
     }
-
-//     public function save_to_playlist($trackId, $playlistId)
-//     {
-//         $statement = $this->pdo->prepare("INSERT INTO " . self::TRACK_PLAYLIST . " (track, playlist)
-//         VALUES (:track, :playlist)");
-
-//         $statement->execute($trackID, $playlistID);
-//     }
-// }
-    // public function getAll(): array
-    // {
-    //     $statement = $this->pdo->query("SELECT * FROM ". self::TABLE);
-    //     $tracks = $statement->fetchAll();
-
-    //     return $tracks;
-    // }
-
-    //  /**
-    //  * Update track in database
-    //  */
-    // public function update(array $track): bool
-    // {
-    //     $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, is_in_flux = :flux WHERE id=:id");
-    //     $statement->bindValue('id', $track['id'], \PDO::PARAM_INT);
-    //     $statement->bindValue(':title', $track['title'], \PDO::PARAM_STR);
-    //     $statement->bindValue(':artist', $track['artist'], \PDO::PARAM_STR);
-    //     $statement->bindValue(':album', $track['album'], \PDO::PARAM_STR);
-    //     $statement->bindValue(':flux', $track['flux'], \PDO::PARAM_STR);
-
-    //     return $statement->execute();
-}

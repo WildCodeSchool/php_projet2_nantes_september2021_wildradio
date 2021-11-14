@@ -4,11 +4,11 @@
 
 {% block content %}
 
- <div id="admin-tracks">
+<div id="admin-tracks">
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
         {% include '/admin/unallowedAccess.html.twig' %}
     <div id="contenu-admin-tracks">
-        <h1>Gérer mes tracks </h1> 
+            <h1> {{ titre }} </h1> 
 
         <div id="buttons-admin-tracks">
 
@@ -40,10 +40,10 @@
             <tbody>
                 {% for track in tracks %}
                 <tr>
-                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}?>">{{ track.artist}}</a></td>
-                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}?>">{{ track.name}}</a></td>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.artist }}</a></td>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name }}</a></td>
                     <td id="actions-track-box"><input type="checkbox"  name="flux" id="flux"></td>
-                    <td id="actions-track-box"> <a href="/admin/tracks/edit?id={{track.id}}?>">Modif.</a></td>
+                    <td id="actions-track-box"> <a href="/admin/tracks/edit?id={{track.id}}">Modif.</a></td>
                     <td id="actions-track-box">Suppr.</td>
                 </tr>
                 {% endfor %}  
