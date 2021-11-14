@@ -60,7 +60,6 @@ public function add()
             $playlistManager = new PlaylistManager();
             $playlistManager->insert($this->playlist);
             header('Location:/admin/playlists/show?id=' .$this->playlist['id']);
-
         }
         
         return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
@@ -129,7 +128,7 @@ public function uploadFile() {
     
 }
 
-// Editier une playlist
+// Editer une playlist
 
 public function edit(int $id)
 {
