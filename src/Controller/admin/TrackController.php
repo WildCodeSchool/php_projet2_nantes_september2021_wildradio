@@ -21,7 +21,6 @@ class TrackController extends AbstractController
         if (!isset($_SESSION['Connected'])) {
            header ("Location: /");
         }
-
     }
 
     // Permet de vérifier les données entrantes 
@@ -168,7 +167,6 @@ class TrackController extends AbstractController
 
         $this->playlists = $this->browsePlaylists();
 
-
         return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists]);
     
     }
@@ -194,25 +192,19 @@ class TrackController extends AbstractController
         }
     }
 
-   
     /**
      * Permet d'ajouter une track à une playlist
      */
     public function addTrackToPlaylist()
     {
-        var_dump($_POST);
-        die();
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-    
             if (empty($this->errors)){
                 $trackManager = new TrackManager();
                 $trackManager->link($_POST['id'], $_POST['addPlaylist']);
             }
             
-            return $this->twig->render('Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
-           
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);           
         }
         return $this->twig->render('admin/Track/add.html.twig');
       

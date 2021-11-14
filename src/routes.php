@@ -28,6 +28,7 @@ return [
     'admin/tracks/update' => ['admin\TrackController', 'update', ['id']],
     'admin/register' => ['admin\RegisterController', 'login'],
     'admin' => ['admin\HomeController', 'index'],
+    'admin/logout' => ['admin\RegisterController', 'logout'],
 
 
    // affichage playlists admin 
