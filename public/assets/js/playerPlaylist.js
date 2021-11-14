@@ -13,16 +13,26 @@ play_button.click(function() {
 
 //fonction gérant le lancement du son, l'enchainement des tracks, le 
 
-   function audioPlayer()
-    {
-        var currentSong = 0;
-        $("#audioPlayer")[0].src = $("#playlist ul a")[Math.floor(Math.random() * $("#playlist ul a").length)];
+function audioPlayer(){
+    var currentSong = 0;
+    $("#audioPlayer")[0].src = $("#playlist ul a")[0];
+    $("#playlist ul a").click(function(e){
+       e.preventDefault();
+       $("#audioPlayer")[0].src = this;
+       $("#audioPlayer")[0].play();
+       $(play_button.click);
+       $("#playlist ul").removeClass("current-song");
+        currentSong = $(this).parent().index();
+        $(this).parent().addClass("current-song");
+    });
     
-        $("#audioPlayer")[0].addEventListener("ended", function(){
-            currentSong++;
-            if(currentSong == $("#playlist ul a").length)
-                currentSong = 0;
-            $("#audioPlayer")[0].src = $("#playlist ul a")[currentSong].href;
-            $("#audioPlayer")[0].play();
-                });
-    }
+    $("#audioPlayer")[0].addEventListener("ended", function(){
+       currentSong++;
+        if(currentSong == $("#playlist ul a").length)
+            currentSong = 0;
+        $("#playlist ul").removeClass("current-song");
+        $("#playlist ul:eq("+currentSong+")").addClass("current-song");
+        $("#audioPlayer")[0].src = $("#playlist ul a")[currentSong].href;
+        $("#audioPlayer")[0].play();
+    });
+}

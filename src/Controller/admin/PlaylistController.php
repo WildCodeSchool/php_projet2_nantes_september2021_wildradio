@@ -55,9 +55,8 @@ public function add()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $verified = $this->verification(); 
-                    
-
+        $this->verification(); 
+                  
         if (empty($this->errors)){
 
         // validation et redirection 
@@ -65,13 +64,12 @@ public function add()
             $this->uploadFile();
             $playlistManager = new PlaylistManager();
             $playlistManager->insert($this->playlist);
-            header('Location:/playlists/add');
+            header('Location:/admin/playlists/show?id=' .$this->playlist['id']);
 
         }
         
         return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
-        var_dump($this->playlist);
-        var_dump($this->errors);
+       
     }
     return $this->twig->render('/admin/Playlist/add.html.twig');
   
