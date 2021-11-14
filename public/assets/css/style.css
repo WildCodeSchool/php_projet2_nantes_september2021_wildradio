@@ -87,7 +87,7 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
-.contenu-homepage {
+#contenu-homepage {
     margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
@@ -257,6 +257,13 @@ audio {
 
 /* CSS de la page Contact */
 
+#contenu-playlists {
+    margin-top: 10vh;
+
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 #contenu-contact {
     background-color: #F39F81;
     display: flex;
@@ -296,6 +303,9 @@ audio {
     padding-left: 10%;
     padding-right: 20%;
     color: whitesmoke;
+} */
+                        
+p{  display: block;
 }
 
 #input-form{

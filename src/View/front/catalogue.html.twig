@@ -4,9 +4,15 @@
 {% block background %}{% include "front/background.html.twig" %}{% endblock %}
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
-<div class="contenu-homepage">
+<div id="contenu-playlists">
+    <h1> Toutes les playlists</h1>
+    <p> Ecoutez nos playlists créees avec ❤ </p>
+</div>
 
-<<<<<<< HEAD
+<div>
+    {% for playlist in playlists %}
+
+
 <h2> Toutes nos playlists</h2>
     
 <p> Ecoutez nos playlists créees avec ❤ </p>
@@ -20,12 +26,6 @@
     <div> 
     {% endfor %}
 </div> 
-=======
-<h1> Toutes les playlists</h1>
-<p> Ecoutez nos playlists créees avec ❤ </p>
-
-</div>
->>>>>>> 5b28b9d24d9a63e48ddd91303da0bc69b53ffb96
 
 {% endblock %}
 
