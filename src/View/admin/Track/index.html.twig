@@ -6,7 +6,6 @@
 
 <div id="admin-tracks">
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
-        {% include '/admin/unallowedAccess.html.twig' %}
     <div id="contenu-admin-tracks">
             <h1> {{ titre }} </h1> 
 
@@ -21,7 +20,7 @@
 
             <div id="dubble-buttons">
                 <a href="/admin/tracks/add"><button class="buttons">+ Ajouter une track</button></a>
-                <a href="/admin/flux"><button class="buttons">Afficher mon flux</button></a>  
+                <a href="/admin/tracks/flux"><button class="buttons">Afficher mon flux</button></a>  
             </div>
         </div>
 

@@ -87,7 +87,7 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
-#contenu-homepage {
+.contenu-homepage {
     margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
@@ -257,13 +257,6 @@ audio {
 
 /* CSS de la page Contact */
 
-#contenu-playlists {
-    margin-top: 10vh;
-
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
 #contenu-contact {
     background-color: #F39F81;
     display: flex;
@@ -303,9 +296,6 @@ audio {
     padding-left: 10%;
     padding-right: 20%;
     color: whitesmoke;
-} */
-                        
-p{  display: block;
 }
 
 #input-form{
@@ -379,13 +369,6 @@ textarea:focus {
 
 #right-playlistpage {
     background-color:#F39F81;
-<<<<<<< HEAD
-}
-
-.imgPlaylistCarre{
-    width: 12rem;
-    height: 12rem;
-=======
     width: 50%;
 }
 #playlist-description{
@@ -401,22 +384,11 @@ textarea:focus {
 .imgPlaylist{
     width: 100%;
     height: 180px;
->>>>>>> 5b28b9d24d9a63e48ddd91303da0bc69b53ffb96
     border-radius: 5%;
     object-fit: cover;
     object-position: 20% 10%; 
 }
 
-<<<<<<< HEAD
-.allPlaylists{
-    background-color: yellow;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.onePlaylists{
-    justify-content : space-around;
-=======
 .parent {
     position: relative;
     display: flex; 
@@ -509,5 +481,4 @@ textarea:focus {
         text-align: center;
         margin-top: 5vh;
     }
->>>>>>> 5b28b9d24d9a63e48ddd91303da0bc69b53ffb96
 }

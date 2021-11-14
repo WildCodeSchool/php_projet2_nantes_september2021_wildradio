@@ -18,12 +18,8 @@ class HomeController extends AbstractController
 
     // permet d'afficher la page d'acceuil d'admin
 
-    public function index(){
-
-        session_start();
-        if (!isset($_SESSION['Connected'])) {
-           header ("Location: /admin/register");
-        }
+    public function index()
+    {
 
         return $this->twig->render('admin/index.html.twig');
     }
