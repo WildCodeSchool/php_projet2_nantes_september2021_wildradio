@@ -356,6 +356,68 @@ textarea:focus {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(226deg) brightness(105%) contrast(101%);
 }
 
+/* CSS playlist page */
+#playlistpage {
+    display: flex;
+}
+
+#left-playlistpage {
+    background-color: #4A517E;
+    width: 50%;
+}
+
+
+#right-playlistpage {
+    background-color:#F39F81;
+    width: 50%;
+}
+#playlist-description{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 5%;
+}
+#playlist-description h2{
+    padding-top: 5%;
+    font-size: 30px;
+    text-transform : uppercase;
+}
+.imgPlaylist{
+    width: 100%;
+    height: 180px;
+    border-radius: 5%;
+    object-fit: cover;
+    object-position: 20% 10%; 
+}
+
+.parent {
+    position: relative;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.child1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background: #F39F81;
+}
+
+#tracks-list{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 5%;
+    color:white;
+}
+
+#tracks-list h2{
+    padding-bottom: 5%;
+    font-size: 26px;
+    text-transform : uppercase;
+    text-align: left;
+}
+
 /* CSS responsive (min-width: 1023px)*/
 
 @media screen and (max-width: 1050px) {
@@ -419,5 +481,4 @@ textarea:focus {
         text-align: center;
         margin-top: 5vh;
     }
-
 }

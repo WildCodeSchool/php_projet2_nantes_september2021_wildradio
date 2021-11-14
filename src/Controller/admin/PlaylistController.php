@@ -50,9 +50,8 @@ public function add()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $verified = $this->verification(); 
-                    
-
+        $this->verification(); 
+                  
         if (empty($this->errors)){
 
         // validation et redirection 
@@ -60,13 +59,12 @@ public function add()
             $this->uploadFile();
             $playlistManager = new PlaylistManager();
             $playlistManager->insert($this->playlist);
-            header('Location:/playlists/add');
+            header('Location:/admin/playlists/show?id=' .$this->playlist['id']);
 
         }
         
         return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
-        var_dump($this->playlist);
-        var_dump($this->errors);
+       
     }
     return $this->twig->render('/admin/Playlist/add.html.twig');
   
@@ -102,7 +100,7 @@ public function delete()
 public function uploadFile() {
 
     // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
-    $uploadDir = "/assets/images";
+    $uploadDir = "/assets/images/";
 
     // // Je récupère l'extension du fichier
     $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
@@ -119,17 +117,15 @@ public function uploadFile() {
     // Poid de du JPG .. 
     $maxFileSize = 2000000;
 
- 
-
     if (isset ($_FILES['img']['tmp_name']) && filesize($_FILES['img']['tmp_name']) > $maxFileSize) {
         $this->errors["img"] ="L'image ne doit pas dépasser 2M";
-     } else {
+    } else {
 
-           // on précise le chemin du fichier pour la BDD
-           move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
+         // on précise le chemin du fichier pour la BDD
+         move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
      
            $this->playlist['img'] = $uploadFile;
-           }
+    }
     
 }
 
@@ -152,7 +148,7 @@ public function edit(int $id)
     }
 
     return $this->twig->render('admin/Playlist/edit.html.twig', [
-        'playlist' => $this->track , 'action'=> "/playlists/edit?id=$id" 
+        'playlist' => $this->playlist , 'action'=> "/playlists/edit?id=$id" 
     ]);
 }
   
