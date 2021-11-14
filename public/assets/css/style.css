@@ -4,6 +4,22 @@
     font-size: 18px;   
 }*
 
+h1{
+    color:whitesmoke;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+p{
+    color: whitesmoke;
+}
+
 a{
     text-decoration: none;
 }
@@ -11,7 +27,7 @@ a{
 
 button {
     cursor:pointer;
-    padding: 3%;
+    padding: 2%;
     border: none;
     border-radius: 5px;
     color: whitesmoke;
@@ -24,9 +40,11 @@ button {
 body{
     margin-left: 0px;
     margin-right: 0px;
+    background-color: #F39F81;
 }
 .sunset{
     position: fixed;
+    justify-content:center;
     z-index: -1;
     width: 100%;
     height: auto;
@@ -37,7 +55,6 @@ body{
 .wr{              
     width: 70px;
 }
-
 
 nav{                   
     display: flex;
@@ -70,8 +87,7 @@ nav a{
 
 /*CSS du contenu de la homepage*/
 
-
-#contenu-homepage {
+.contenu-homepage {
     margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
@@ -150,11 +166,11 @@ button:hover{
 }
 
 #wild{
-    font-size: 6em;
+    font-size: 4em;
 }
 
 #radio{
-    font-size: 6em;
+    font-size: 4em;
     font-style: italic;
     line-height: 55px;
     padding-left: 15%;
@@ -164,10 +180,18 @@ button:hover{
     margin-top: 5%;
 }
 
+/* CSS de la partie Playlists homepage */
+
 #playlists-homepage {
-    margin-top: 5%;
-    display:flex;
+    margin: 2% 10% 0 10%;
+    width: 40%;
+}
+
+#buttons-playlists {
+    display: flex;
+    flex-direction:row;
     justify-content: space-between;
+    width: 100%;
 }
 
 #button-playlists {
@@ -191,7 +215,6 @@ button:hover{
     background: rgba(255, 255, 255,0); 
 }
 
-
 /* CSS du côté droit de la page : player */
 
 #right-homepage {
@@ -204,8 +227,20 @@ audio {
 
 #player {
     color: whitesmoke;
-    text-align: center;
     margin-top: 20vh; 
+}
+
+#bouton-play-texte {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+#action {
+    font-size:4em;
+    margin-right: 20px;
+    text-transform: uppercase;
 }
 
 #play {
@@ -216,65 +251,153 @@ audio {
     display: none;
 }
 
-
 #infosTrack {
     display: none;
 }
 
+/* CSS de la page Contact */
 
-/* CSS de description page home*/
-
-
-h2{ text-align: center;
-    color: whitesmoke;
+#contenu-contact {
+    background-color: #F39F81;
+    display: flex;
+    flex-direction: row;
 }
 
-                        
-p{  display: block;
-    color: whitesmoke;
-    margin-left: 30px;
-    font-size: x-large;
-    font-size: 18px;
-    margin: 15px;
-    text-align:left;
-    
-}
-
-
-
-/* boutton 'envoyer' page contact*/
-
-.env{
-    width: 10%;
-    color: white;
-    font-size: 15px;
-    padding: 5px;
-    background-color:#F39F81;
-    border-radius: 10px;
-    text-transform: uppercase;
-    margin:auto;
-    display:block;    
-    border-color:none;
-}
-
-
-.PageGauche{
-  min-height: 100%;
+#contenu-left-contact {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 50%;
     background-color: #4A517E;
+    height: 100%;
 }
 
-.PageDroite{
+#contact-left {
+    padding-left: 20%;
+    padding-right: 10%;
+}
+
+#image-front {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#contact-left p {
+    margin-top: 20px;
+}
+
+#contenu-right-contact {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 50%;
+}
+
+#contact-right {
+    padding-left: 10%;
+    padding-right: 20%;
+    color: whitesmoke;
+}
+
+#input-form{
+    border: solid 1px white;
+    border-radius: 5px;
+    background: none;
+    height: 35px;
+    width: 100%;
+    margin-bottom: 10px;
+} 
+
+input::placeholder {
+    padding-left: 15px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.493);
+}
+
+input:focus {
+    padding-left: 15px;
+    font-size: 16px;
+    color: whitesmoke;
+}
+
+textarea {
+    height: 300px;
+    width: 100%;
+    border: solid 1px white;
+    border-radius: 5px;
+    background: none;
+}
+
+textarea::placeholder {
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.493);
+}
+
+textarea:focus {
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: whitesmoke;}
+
+#form-contact {
+    margin-top: 20px;
+}
+
+#btn-send-msg {
+    margin-top: 10px;
+    background-color: #4A517E;
+    justify-content: right;
+}
+
+#icones {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(226deg) brightness(105%) contrast(101%);
+}
+
+/* CSS playlist page */
+#playlistpage {
+    display: flex;
+}
+
+#left-playlistpage {
+    background-color: #4A517E;
+    width: 50%;
+}
+
+
+#right-playlistpage {
     background-color:#F39F81;
+<<<<<<< HEAD
 }
 
 .imgPlaylistCarre{
     width: 12rem;
     height: 12rem;
+=======
+    width: 50%;
+}
+#playlist-description{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 5%;
+}
+#playlist-description h2{
+    padding-top: 5%;
+    font-size: 30px;
+    text-transform : uppercase;
+}
+.imgPlaylist{
+    width: 100%;
+    height: 180px;
+>>>>>>> 5b28b9d24d9a63e48ddd91303da0bc69b53ffb96
     border-radius: 5%;
     object-fit: cover;
     object-position: 20% 10%; 
 }
 
+<<<<<<< HEAD
 .allPlaylists{
     background-color: yellow;
     display: flex;
@@ -283,4 +406,98 @@ p{  display: block;
 
 .onePlaylists{
     justify-content : space-around;
+=======
+.parent {
+    position: relative;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.child1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background: #F39F81;
+}
+
+#tracks-list{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 5%;
+    color:white;
+}
+
+#tracks-list h2{
+    padding-bottom: 5%;
+    font-size: 26px;
+    text-transform : uppercase;
+    text-align: left;
+}
+
+/* CSS responsive (min-width: 1023px)*/
+
+@media screen and (max-width: 1050px) {
+
+    body {
+        background-color: #F39F81;
+    }
+
+    .sunset{
+        position: fixed;
+        z-index: -1;
+        width: auto;
+        height: 100%;
+    }
+
+    .contenu-homepage {
+        margin-top: 2vh;
+        margin-left: 10%;
+        margin-right: 10%;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #wild{
+        font-size: 2em;
+    }
+    
+    #radio{
+        font-size: 2em;
+        font-style: italic;
+        line-height: 45px;
+        padding-left: 15%;
+    }
+    #left-homepage {
+        width: 100%;
+    }
+
+    #playlists-homepage {
+        margin-top: 0px;
+        display:flex;
+        flex-direction:column;
+        width: 80%;
+    }
+
+    #buttons-playlists {
+        display: flex;
+        flex-direction:column;
+        margin-top: 5%;
+    }
+
+    #button-playlists{
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    #player {
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 5vh;
+    }
+>>>>>>> 5b28b9d24d9a63e48ddd91303da0bc69b53ffb96
 }

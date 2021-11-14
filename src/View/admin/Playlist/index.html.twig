@@ -15,8 +15,20 @@
                     {{ playlist.name}} - {{ playlist.artist}} - {{ playlist.album}}
                 </a>
             </li>
-        {% endfor %}  
 
+    <div>
+        <input type="checkbox" id="is_online" name="is_online"
+         checked>
+        <label for="online">Supprimer la playlist</label>
+    </div>
+
+        {% endfor %}  
+    
     </ul>
+    
+    <form action="/playlists/delete" method="POST">
+        <input type="hidden" name="id" value="{{ playlist.id }}">
+        <button>Supprimer</button>
+    </form>
 
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block content %}
+{% include 'index.html.twig' %}
+
+    <h1>Playlist: {{ playlist.name }}</h1>
+    <p> Description : {{ playlist.description }} <br> 
+        Image : {{ playlist.img }}<br>
+    </p>
+
+    <a href="/admin/playlists/edit?id={{ playlist.id }}">Modifier la Playlist</a>
+
+    <form action="/playlists/delete" method="POST">
+        <input type="hidden" name="id" value="{{ playlist.id }}">
+        <button>Effacer</button>
+    </form>
+
+    <a href="/admin/playlists">Retour</a>
+
+{% endblock %}
