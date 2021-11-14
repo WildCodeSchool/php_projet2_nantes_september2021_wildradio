@@ -1,9 +1,8 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family:'Maven Pro';
-    font-size: 18px;
-}
+    font-size: 18px;   
+}*
 
 h1{
     color:whitesmoke;
@@ -25,6 +24,7 @@ a{
     text-decoration: none;
 }
 
+
 button {
     cursor:pointer;
     padding: 2%;
@@ -33,6 +33,7 @@ button {
     color: whitesmoke;
     text-transform: uppercase;
 }
+
 
 /* CSS du background video */
 
@@ -94,6 +95,65 @@ nav a{
     display: flex;
     flex-direction: row;
 }
+
+#description{
+    display:block;
+    text-align:left;
+    color:whitesmoke;
+    margin-top: 40px;
+}
+
+/* CSS bouttons playlist2 playlist2 et "Voir tout"*/
+
+button:hover{
+    background:transparent;
+   
+}
+
+#BTS {display: flex;
+     justify-content:flex-start;
+     flex-direction: row;
+     margin-left: 130px;  
+     margin-top: 20px;   
+}
+
+
+.play1{
+  
+    padding:5px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-color: whitesmoke;
+    border-radius: 10px;
+ }
+
+ .play2{
+  
+    padding:5px;
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-color: whitesmoke;
+    border-radius: 10px;
+    margin-left: 30px;
+ }
+ 
+ .Voir{
+
+    padding:5px;
+    text-align: center;
+    text-transform: uppercase;
+    background:transparent;
+    border-radius: 10px;
+    background-color:#F39F81;
+    border:none;
+    margin-left: 130px; 
+    margin-top:10px;
+ }
+
+
 
 /* CSS du côté gauche de homepage */
 
@@ -359,4 +419,5 @@ textarea:focus {
         text-align: center;
         margin-top: 5vh;
     }
+
 }

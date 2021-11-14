@@ -3,6 +3,7 @@
 {% block title %}WILD RADIO{% endblock %}
 
 {% block content %}
+{% block background %}{% include "front/background.html.twig" %}{% endblock %}
 
      <video class="sunset"  playsinline autoplay muted loop> 
 <source src="\assets\images\Sunset.mp4" type="video/mp4">
@@ -21,7 +22,6 @@
 
             <p id="description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae ligula lectus. Morbi diam ligula, tincidunt vitae nisi vitae, tempor ultrices quam. Aliquam porttitor eros mauris, vitae varius diam ultrices a.</p>
     </div>
-        
 
         <div id="right-homepage">
             <audio controls id="audioPlayer"></audio>
@@ -49,9 +49,8 @@
                     {% endfor %}
                 </ul>
         </div>
-
         {% block javascript %} 
-        
+
             <script src="/assets/js/playerFlux.js"></script>
             <script>
                 audioPlayer();
@@ -72,4 +71,3 @@
 
 </body>
 {% endblock %}
-

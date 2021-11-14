@@ -24,7 +24,8 @@ class RegisterController extends AbstractController
                 $this->sessionStart();
             }
         }
-        return $this->twig->render('admin/Register/index.html.twig', ["errors" => $this->errors ]);
+
+      return $this->twig->render('admin/Register/index.html.twig', ["errors" => $this->errors ]);
     }
 
     // Permet de vérifier les données entrées par l'utilisateur 
@@ -78,7 +79,6 @@ class RegisterController extends AbstractController
         session_start();
         $_SESSION['Connected'] = 'true';
         header('Location: /admin/');
-
     }
 
     public function logout()

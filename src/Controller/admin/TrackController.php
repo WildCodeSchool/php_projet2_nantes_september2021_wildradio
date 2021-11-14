@@ -195,7 +195,6 @@ class TrackController extends AbstractController
      */
     public function addTrackToPlaylist()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
             if (empty($this->errors)){
@@ -203,8 +202,7 @@ class TrackController extends AbstractController
                 $trackManager->link($_POST['id'], $_POST['addPlaylist']);
             }
             
-            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);
-           
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);           
         }
         return $this->twig->render('admin/Track/add.html.twig');
       
