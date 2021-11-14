@@ -13,7 +13,7 @@ return [
      
     '' => ['front\HomeController', 'index'],
     'playlists' => ['front\PlaylistController', 'browse' ],
-    'playlists/show' => ['front\PlaylistController', 'show', ['id']],
+    'playlist/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\ContactController', 'contact'],
     'error' => ['front\ErrorController' , 'error'],
 
@@ -28,6 +28,7 @@ return [
     'admin/tracks/update' => ['admin\TrackController', 'update', ['id']],
     'admin/register' => ['admin\RegisterController', 'login'],
     'admin' => ['admin\HomeController', 'index'],
+    'admin/logout' => ['admin\RegisterController', 'logout'],
 
 
    // affichage playlists admin 

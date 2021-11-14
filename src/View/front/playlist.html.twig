@@ -1,19 +1,49 @@
 {% extends '/front/layout.html.twig' %}
 
-{% block title %}PLAYLISTS{% endblock %}
-
-{# PAGE DE GAUCHE #}
+{% block title %}Playlist{% endblock %}
 
   {% block content %}
-
-
   {% block header %}{% include "front/header.html.twig" %}{% endblock %}
+ 
 
-  <div class="PageGauche"> 
-		
-		<h2>Nom_de_la_playlist </h2>
-		<p> description playlist</p> 
+<div id="playlistpage" id="player">
+  <div id="left-playlistpage"> 
+
+		<div id="playlist-description"> 
+    
+      <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div>
+      
+      <audio controls id="audioPlayer"></audio>
+      <div id="player">
+        <i id="play" class="fa fa-play"></i>
+      </div>
+
+		  <h2> {{playlist.name}} </h2>
+		  <p> {{playlist.description}}</p> 
+    </div>
   </div> 
 
- <div class="PageDroite"></div> 
+ <div id="right-playlistpage">
+    <div id="tracks-list"> 
+      <h2> Tracks </h2>
+
+        <ol id="playlist"> {% for track in tracksInPlaylist %}
+          <ul> <a href="{{track.mp3}}">
+          <strong>{{track.title}}  </strong>- {{track.artist}} </br>
+          {{track.album}} </a></ul>
+        {% endfor %}
+        </ol>
+
+    </div>
+ </div> 
+</div>
+
+
+  {% block javascript %} 
+    <script src="/assets/js/playerPlaylist.js"></script>
+      <script>
+       audioPlayer();
+      </script>
+  {% endblock %}
+
 {% endblock %}

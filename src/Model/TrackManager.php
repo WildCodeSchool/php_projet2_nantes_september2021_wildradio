@@ -47,20 +47,16 @@ class TrackManager extends AbstractManager
         return $statement->execute();
     }
 
-
-   
     public function link($track_id, $playlists_id)
-    {
+    {        
+        $statement = $this->pdo->prepare("INSERT INTO trackPlaylist 
+        (playlist_id, track_id) VALUES (:playlist_id, :track_id)"); 
 
-        var_dump($playlists_id);
-        die();
-        
-        $statement = $this->pdo->prepare("INSERT INTO" . self::TABLE . 
-        "WHERE id 
-        IN (SELECT track_id=" . ":track_id" . "FROM trackPlaylist WHERE playlist_id=:" . ":playlist_id)"); 
-        $statement->bindValue(':track_id', $track_id, \PDO::PARAM_INT);
-        $statement->bindValue(':playlist_id', $playlists_id, \PDO::PARAM_INT);
-        
-        $statement->execute();
+        foreach ($_POST ["addPlaylist"] as $playlists_id) {
+            $statement->bindValue(':track_id', $_POST['id'], \PDO::PARAM_INT);
+            $statement->bindValue(':playlist_id', $playlists_id, \PDO::PARAM_INT);        
+            
+            $statement->execute();
+        } 
     }
 }

@@ -9,16 +9,12 @@ use App\Model\TrackManager;
 
 class PlaylistController extends AbstractController
 {
-
-
     public $playlist; 
     public $errors = [];
-    public $trackPlaylist;
-    
+    public $trackPlaylist;    
 
 public function verification() 
 {
-
         // clean $_POST data
         $this->playlist = array_map('trim', $_POST);
 
@@ -42,7 +38,6 @@ public function verification()
         if (!preg_match("/^[a-zA-Z ]*$/", $this->playlist['tag'])) {
             $this->errors['tag'] = "Seul les lettres et espaces sont autorisés";
         }
-
         
        // on indique 1 ou 0 si l'ajout au flux est coché
         $this->playlist['is_online'] = (isset($_POST['is_online'])) ? 1 : 0;
@@ -55,9 +50,8 @@ public function add()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $verified = $this->verification(); 
-                    
-
+        $this->verification(); 
+                  
         if (empty($this->errors)){
 
         // validation et redirection 
@@ -65,13 +59,11 @@ public function add()
             $this->uploadFile();
             $playlistManager = new PlaylistManager();
             $playlistManager->insert($this->playlist);
-            header('Location:admin/playlists/show');
-
+            header('Location:/admin/playlists/show?id=' .$this->playlist['id']);
         }
         
         return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
-        var_dump($this->playlist);
-        var_dump($this->errors);
+       
     }
     return $this->twig->render('/admin/Playlist/add.html.twig');
   
@@ -124,21 +116,19 @@ public function uploadFile() {
     // Poid de du JPG .. 
     $maxFileSize = 2000000;
 
- 
-
     if (isset ($_FILES['img']['tmp_name']) && filesize($_FILES['img']['tmp_name']) > $maxFileSize) {
         $this->errors["img"] ="L'image ne doit pas dépasser 2M";
-     } else {
+    } else {
 
-           // on précise le chemin du fichier pour la BDD
-           move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
+         // on précise le chemin du fichier pour la BDD
+         move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
      
            $this->playlist['img'] = $uploadFile;
-           }
+    }
     
 }
 
-// Editier une playlist
+// Editer une playlist
 
 public function edit(int $id)
 {
@@ -161,16 +151,4 @@ public function edit(int $id)
     ]);
 }
   
-// Afficher après création et modifier playlist
-
-public function show($id):string
-{
-    $playlistManager = new PlaylistManager();
-    $playlist= $playlistManager->selectOneById($id);
-
-    return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist]);
 }
-
-}
-
-

@@ -18,9 +18,17 @@ function audioPlayer()
 
 var player = document.getElementById('audioPlayer');
 var play_button = $('#play');
+var text = $('#action');
 
 play_button.click(function() {
     player[player.paused ? 'play' : 'pause']();
     $(this).toggleClass("fa-pause", !player.paused);
+    
+    if (player.paused) {
+        text.text('Play');
+    }
+    else {
+        text.text('Pause');
+    }
     $(this).toggleClass("fa-play", player.paused);
 });
