@@ -37,7 +37,6 @@ class PlaylistController extends AbstractController
 
         //var_dump( $tracksInPlaylist);
         //var_dump( $playlist);
-
        
         return $this->twig->render('front/playlist.html.twig', ['playlist'=>$playlist, 'tracksInPlaylist'=> $tracksInPlaylist]);
 
