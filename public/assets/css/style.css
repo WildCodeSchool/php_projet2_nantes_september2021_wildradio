@@ -266,3 +266,21 @@ p{  display: block;
 .PageDroite{
     background-color:#F39F81;
 }
+
+.imgPlaylistCarre{
+    width: 12rem;
+    height: 12rem;
+    border-radius: 5%;
+    object-fit: cover;
+    object-position: 20% 10%; 
+}
+
+.allPlaylists{
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.onePlaylists{
+    justify-content : space-around;
+}

@@ -1,31 +1,23 @@
- {% extends '/front/layout.html.twig' %}
-
-{# PAGE DE GAUCHE #}
+{% extends '/front/layout.html.twig' %}
 
 {% block content %}
 {% block background %}{% include "front/background.html.twig" %}{% endblock %}
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
 
-<div class="PageGauche">
-
 <h2> Toutes nos playlists</h2>
+    
 <p> Ecoutez nos playlists créees avec ❤ </p>
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
-<img class="imgplaylist" src="">
 
-</div>
+<div class="allPlaylists"> {% for playlist in playlists %}
+    <div class="OnePlaylist">  
+        
+        <div> <a href="/playlist/show?id={{playlist.id}}?>"><img class="imgPlaylistCarre" src="{{playlist.img}}"> </img></a></div>
+         <a href="/playlist/show?id={{playlist.id}}?>"> <h3> {{playlist.name}}</h3> </a>
+        
+    <div> 
+    {% endfor %}
+</div> 
 
-<div class="PageDroite">
-
-
-
-</div>
 {% endblock %}
 
