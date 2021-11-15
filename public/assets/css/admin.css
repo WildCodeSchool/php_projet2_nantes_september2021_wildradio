@@ -231,7 +231,6 @@ nav a {
     border-radius: 5px;
     background: none;
     width:500px;
-    height:40px;
     float:left;
 }
 
@@ -300,7 +299,6 @@ th{
 
 input {
     padding: 10px;
-    width: 90%;
     margin-bottom: 10px;
     border: 1px solid black;
     border-radius: 5px;
@@ -377,4 +375,11 @@ input::placeholder {
 
 #track-edit-right {
     width: 50%;
+}
+
+/* CSS de la page /admin/playlists */
+
+#img-playlist {
+    width: 60px;
+    height: 60px;
 }
