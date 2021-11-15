@@ -106,8 +106,7 @@ class TrackController extends AbstractController
                 $this->uploadFile();
                 $trackManager = new TrackManager();
                 $trackManager->insert($this->track);
-                var_dump($this->track);
-                header('Location:/admin/tracks');
+                return $this->twig->render('admin/Track/add.html.twig', ["messageEnvoi" => "La track a bien été enregistrée" ,'action'=> "/tracks/add", 'button'=>"Ajouter une track"]);
             }
             
             return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add", 'button'=>"Ajouter une track"]);
