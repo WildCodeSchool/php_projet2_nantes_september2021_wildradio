@@ -80,7 +80,7 @@ class TrackController extends AbstractController
             $uploadFile = $uploadDir . uniqid() . "." . $extension;
 
             // Le poids max géré par PHP
-            $maxFileSize = 2000000;
+            $maxFileSize = 5000000;
   
             if (file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
                 $this->errors["mp3"] ="le poid max du fichier est de 2Mo";} 
