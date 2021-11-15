@@ -35,14 +35,14 @@ button {
     text-transform: uppercase;
 }
 
-
-/* CSS du background video */
-
 body{
     margin-left: 0px;
     margin-right: 0px;
     background-color: #F39F81;
 }
+
+/* CSS du background video */
+
 .sunset{
     position: fixed;
     justify-content:center;
@@ -57,13 +57,18 @@ body{
     width: 70px;
 }
 
-nav{                   
+nav {
+    position: absolute;
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+#nav-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-
 }
 
 #playlist{
@@ -75,8 +80,6 @@ nav{
 }
 
 #ligne{                
-    margin-left: 10%;
-    margin-right: 10%;
     background-color: whitesmoke;
     height: 1px;
 }
@@ -89,7 +92,6 @@ nav a{
 /*CSS du contenu de la homepage*/
 
 #contenu-homepage {
-    margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
 
@@ -154,12 +156,11 @@ button:hover{
     margin-top:10px;
  }
 
-
-
 /* CSS du côté gauche de homepage */
 
 #left-homepage{
     width: 50%;
+    padding-top: 100px;
 }
 
 #wildradio{
@@ -220,6 +221,8 @@ button:hover{
 
 #right-homepage {
     width: 50%;
+    padding-top: 100px;
+
 }
 
 audio { 
@@ -259,8 +262,7 @@ audio {
 /* CSS de la page Contact */
 
 #contenu-playlists {
-    margin-top: 10vh;
-
+    padding-top: 120px;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -272,11 +274,11 @@ audio {
 }
 
 #contenu-left-contact {
-    padding-top: 10vh;
     padding-bottom: 10vh;
     width: 50%;
     background-color: #4A517E;
     height: 100%;
+    padding-top: 110px;
 }
 
 #contact-left {
@@ -295,9 +297,10 @@ audio {
 }
 
 #contenu-right-contact {
-    padding-top: 10vh;
     padding-bottom: 10vh;
     width: 50%;
+    padding-top: 110px;
+
 }
 
 #contact-right {
@@ -444,7 +447,7 @@ textarea:focus {
         height: 100%;
     }
 
-    .contenu-homepage {
+    #contenu-homepage {
         margin-top: 2vh;
         margin-left: 10%;
         margin-right: 10%;
@@ -455,12 +458,16 @@ textarea:focus {
         justify-content: center;
     }
 
+    #wildradio {
+        align-items: center;
+    }
+
     #wild{
-        font-size: 2em;
+        font-size: 2.5em;
     }
     
     #radio{
-        font-size: 2em;
+        font-size: 2.5em;
         font-style: italic;
         line-height: 45px;
         padding-left: 15%;
