@@ -46,7 +46,12 @@
                     <td id="infos-track-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
                     <td id="actions-track-box"><input type="checkbox"  name="is_online" id="is_online" checked></td>
                     <td id="actions-track-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
-                    <td id="actions-track-box"><a href="/admin/playlists/" method="POST" type="hidden" name="id" value ="{{ playlist.id }}">Suppr.</a></td>
+                    <td id="actions-track-box">
+                       <form action="/admin/playlists/delete" method="POST">
+                         <input type="hidden" name="id" value="{{ playlist.id }}">
+                         <button>Effacer</button>
+                      </form>
+                   </td>
                 </tr>
                 {% endfor %}  
 
