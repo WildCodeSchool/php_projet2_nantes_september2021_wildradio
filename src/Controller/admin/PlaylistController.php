@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 
 use App\Model\PlaylistManager;
 use App\Model\TrackManager;
+use App\Model\TrackPlaylistManager;
 
 
 class PlaylistController extends AbstractController
@@ -149,16 +150,21 @@ public function edit(int $id)
         $playlistManager->update($this->playlist );
         header('Location: admin/playlists/show?id=' . $id);
     }
+        $trackPlaylistManager = new TrackPlaylistManager();
+        $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
 
     return $this->twig->render('admin/Playlist/edit.html.twig', [
-        'playlist' => $this->playlist , 'action'=> "/playlists/edit?id=$id" 
+        'playlist' => $this->playlist , 'action'=> "/playlists/edit?id=$id" , 'tracksInPlaylist' => $tracksInPlaylist
     ]);
+
+ 
 }
   
 // Afficher après création et modifier playlist
 
 public function show($id):string
 {
+
     $playlistManager = new PlaylistManager();
     $playlist= $playlistManager->selectOneById($id);
 
