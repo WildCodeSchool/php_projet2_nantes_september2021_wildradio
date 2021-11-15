@@ -45,5 +45,6 @@ class PlaylistManager extends AbstractManager
         $statement->bindValue(':online', $playlist['is_online'], \PDO::PARAM_STR);
 
         return $statement->execute();
-        }
-    }
+        }       
+
+}   
