@@ -11,7 +11,7 @@
 
 <div>
         <label for="description"></label>
-        <textarea id="description" placeholder="Description" value="{{ playlist.name }}" name="description" ></textarea>
+        <textarea id="description" placeholder="Description" value="{{ playlist.description }}" name="description" ></textarea>
 		{% if errors.description is defined %}
         	{{ errors.description }}
 		{% endif %}	

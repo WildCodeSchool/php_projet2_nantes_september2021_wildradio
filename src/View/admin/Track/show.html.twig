@@ -14,10 +14,12 @@
         Est dans le flux : {%  if track.flux == 1 %} Oui {% else %} Non {% endif %}
         </p>
         <a href="/admin/tracks/edit?id={{ track.id }}">Modifier la track</a>
-        <form action="/tracks/delete" method="POST">
+
+        <form action="admin/tracks/delete" method="POST">
             <input type="hidden" name="id" value="{{ track.id }}">
             <button>Effacer</button>
         </form>
+
         <a href="/admin/tracks">Retour</a>
     </div>
 </div>

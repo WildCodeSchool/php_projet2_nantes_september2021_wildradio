@@ -93,7 +93,7 @@ public function delete()
         $id = trim($_POST['id']);
         $playlistManager = new PlaylistManager();
         $playlistManager->delete($id);
-        header('Location:/playlists');
+        header('Location:/admin/playlists/');
     }
 }
 
@@ -167,6 +167,4 @@ public function show($id):string
 }
 
 }
-
-
 

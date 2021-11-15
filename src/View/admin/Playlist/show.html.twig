@@ -8,12 +8,11 @@
     
     <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
 
-
     <a href="/admin/playlists/edit?id={{ playlist.id }}">Modifier la Playlist</a>
 
-    <form action="/playlists/delete" method="POST">
+    <form action="/admin/playlists/delete" method="POST">
         <input type="hidden" name="id" value="{{ playlist.id }}">
-        <button>Effacer</buttogit pushn>
+        <button>Effacer</button>
     </form>
 
     <a href="/admin/playlists">Retour</a>
