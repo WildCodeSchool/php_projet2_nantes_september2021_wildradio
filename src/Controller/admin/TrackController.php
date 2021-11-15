@@ -83,7 +83,7 @@ class TrackController extends AbstractController
             $maxFileSize = 5000000;
   
             if (file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
-                $this->errors["mp3"] ="le poid max du fichier est de 2Mo";} 
+                $this->errors["mp3"] ="le poid max du fichier est de 5Mo";} 
 
             // on précise le chemin du fichier pour la BDD
             move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
@@ -106,8 +106,7 @@ class TrackController extends AbstractController
                 $this->uploadFile();
                 $trackManager = new TrackManager();
                 $trackManager->insert($this->track);
-                var_dump($this->track);
-                header('Location:/admin/tracks');
+                return $this->twig->render('admin/Track/add.html.twig', ["messageEnvoi" => "La track a bien été enregistrée" ,'action'=> "/tracks/add", 'button'=>"Ajouter une track"]);
             }
             
             return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add", 'button'=>"Ajouter une track"]);

@@ -1,6 +1,4 @@
- {% extends '/front/layout.html.twig' %}
-
-{# PAGE DE GAUCHE #}
+{% extends '/front/layout.html.twig' %}
 
 {% block content %}
 {% block background %}{% include "front/background.html.twig" %}{% endblock %}
@@ -14,11 +12,19 @@
 <div>
     {% for playlist in playlists %}
 
-        <p>{{ playlist.name }}</p>
 
-    {% endfor %}
+<h2> Toutes nos playlists</h2>
     
-</div>
+<p> Ecoutez nos playlists créees avec ❤ </p>
 
+<div class="allPlaylists"> {% for playlist in playlists %}
+    <div class="OnePlaylist">  
+        
+        <div> <a href="/playlist/show?id={{playlist.id}}?>"><img class="imgPlaylistCarre" src="{{playlist.img}}"> </img></a></div>
+         <a href="/playlist/show?id={{playlist.id}}?>"> <h3> {{playlist.name}}</h3> </a>
+        
+    <div> 
+    {% endfor %}
+</div>
 {% endblock %}
 

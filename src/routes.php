@@ -40,3 +40,5 @@ return [
     'admin/playlists/delete' => ['admin\PlaylistController', 'delete' ,],
     'admin/playlists/edit' => ['admin\PlaylistController', 'edit' , ['id']],
 ];
+
+// modifier 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller\front;
+use App\Model\PlaylistManager;
 
 use App\Model\PlaylistManager;
 use App\Model\TrackPlaylistManager;
@@ -20,7 +21,10 @@ class PlaylistController extends AbstractController
          
     public function browse()
     {
-        return $this->twig->render('front/catalogue.html.twig');
+        $playlistManager = new PlaylistManager();
+        $playlists = $playlistManager->getAll();
+
+        return $this->twig->render('front/catalogue.html.twig', ['playlists' => $playlists]);
     }
 
     /**
@@ -34,10 +38,14 @@ class PlaylistController extends AbstractController
         $playlistManager = new PlaylistManager();
         $playlist= $playlistManager->selectOneById($id);
 
+<<<<<<< HEAD
+      
+=======
 
         //var_dump( $tracksInPlaylist);
         //var_dump( $playlist);
        
+>>>>>>> 5b28b9d24d9a63e48ddd91303da0bc69b53ffb96
         return $this->twig->render('front/playlist.html.twig', ['playlist'=>$playlist, 'tracksInPlaylist'=> $tracksInPlaylist]);
 
     }
