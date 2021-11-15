@@ -509,21 +509,15 @@ textarea:focus {
     /* CSS responsive de la homepage (min-width: 1023px)*/
 
     #contenu-contact {
-        display: flex;
         flex-direction: column;
     }
 
     #contenu-left-contact {
-        padding-bottom: 10vh;
         width: 100%;
-        background-color: #4A517E;
-        height: 100%;
-        padding-top: 110px;
     }
 
     #contact-left {
         padding-left: 10%;
-        padding-right: 10%;
     }
 
     #contenu-right-contact {
