@@ -30,8 +30,9 @@
             <table>
             <thead>
                 <tr>
-                    <th>Titre</th>
-                    <th id="actions-track-box">Flux</th>
+                    <th>IMG</th>
+                    <th id="actions-track-box">Titre</th>
+                    <th id="actions-track-box">En ligne</th>
                     <th id="actions-track-box">Modif.</th>
                     <th id="actions-track-box">Suppr.</th>
                 </tr>
@@ -41,6 +42,7 @@
                 {% for playlist in playlists %}
 
                 <tr>
+                    <td><img id="img-playlist" src="{{playlist.img}}"></td>
                     <td id="infos-track-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
                     <td id="actions-track-box"><input type="checkbox"  name="is_online" id="is_online" checked></td>
                     <td id="actions-track-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
