@@ -147,7 +147,7 @@ public function edit(int $id)
 
         // validation et redirection
         $playlistManager->update($this->playlist );
-        header('Location: /playlists/show?id=' . $id);
+        header('Location: admin/playlists/show?id=' . $id);
     }
 
     return $this->twig->render('admin/Playlist/edit.html.twig', [
