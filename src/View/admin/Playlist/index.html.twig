@@ -4,31 +4,55 @@
 
 {% block content %}
 
+<div id="admin-tracks">
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+    <div id="contenu-admin-tracks">
+
     <h1>Toutes mes playlists</h1> 
 
-    <div> <a href="/admin/playlists/add">Ajouter une playlist</a> </div> 
+    <div id="buttons-admin-tracks">
 
-    <ul>
-        {% for playlist in playlists %}
-            <li>
-                <a href="/admin/playlists/show?id={{playlist.id}}?>">
-                    {{ playlist.name}} - {{ playlist.artist}} - {{ playlist.album}}
-                </a>
-            </li>
+            <div id="searchbar" >
+                <form action="">
+                    <input class="champ" type="text"/>
+                    <button class="fa fa-search"></button>
+                </form>
+            </div>
 
-    <div>
-        <input type="checkbox" id="is_online" name="is_online"
-         checked>
-        <label for="online">Supprimer la playlist</label>
+            <div id="dubble-buttons">
+                <a href="/admin/playlists/add"><button class="buttons">+ Ajouter une playlist</button></a>
+                <a href="/admin/tracks/flux"><button class="buttons">Afficher mon flux</button></a>  
+            </div>
+        </div>
+
+        <div id="liste-tracks">
+
+            <table>
+            <thead>
+                <tr>
+                    <th>IMG</th>
+                    <th id="actions-track-box">Titre</th>
+                    <th id="actions-track-box">En ligne</th>
+                    <th id="actions-track-box">Modif.</th>
+                    <th id="actions-track-box">Suppr.</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for playlist in playlists %}
+
+                <tr>
+                    <td><img id="img-playlist" src="{{playlist.img}}"></td>
+                    <td id="infos-track-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
+                    <td id="actions-track-box"><input type="checkbox"  name="is_online" id="is_online" checked></td>
+                    <td id="actions-track-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
+                    <td id="actions-track-box"><a href="/admin/playlists/" method="POST" type="hidden" name="id" value ="{{ playlist.id }}">Suppr.</a></td>
+                </tr>
+                {% endfor %}  
+
+            </tbody>
+        </table>
     </div>
-
-        {% endfor %}  
-    
-    </ul>
-    
-    <form action="/playlists/delete" method="POST">
-        <input type="hidden" name="id" value="{{ playlist.id }}">
-        <button>Supprimer</button>
-    </form>
+</div>
 
 {% endblock %}
