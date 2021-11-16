@@ -17,13 +17,13 @@ function audioPlayer(){
     var currentSong = 0;
     $("#audioPlayer")[0].src = $("#playlist ul a")[0];
     $("#playlist ul a").click(function(e){
-       e.preventDefault();
-       $("#audioPlayer")[0].src = this;
+             e.preventDefault();
+       $("#audioPlayer")[0].src = this.href;
        $("#audioPlayer")[0].play();
        $(play_button.click);
-       $("#playlist ul").removeClass("current-song");
-        currentSong = $(this).parent().index();
-        $(this).parent().addClass("current-song");
+      // $("#playlist ul").removeClass("current-song");
+      //  currentSong = $(this).parent().index();
+      //  $(this).parent().addClass("current-song");
     });
     
     $("#audioPlayer")[0].addEventListener("ended", function(){
