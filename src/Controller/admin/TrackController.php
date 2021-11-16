@@ -84,7 +84,7 @@ class TrackController extends AbstractController
             $maxFileSize = 50000000;
   
             if (file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
-                $this->errors["mp3"] ="le poid max du fichier est de 5Mo";} 
+                $this->errors["mp3"] ="le poid max du fichier est de 50Mo";} 
 
             // on précise le chemin du fichier pour la BDD
             move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
