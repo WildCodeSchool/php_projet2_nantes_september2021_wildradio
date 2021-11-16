@@ -29,17 +29,16 @@
                     <p id="action">Play</p><i id="play" class="fa fa-play"></i>
                 </div>
 
-            <div id="currentTrack"> </div> 
-             
-            </div>
+                    <div id="currentTrack"> </div> 
 
                 <ul id="playlist">
                     {% for track in tracks %}
-                    <li class="current-song">
-                        <a href="{{ track.mp3 }}"> {{track.name}} </a>
+                    <li>
+                        <a href="{{ track.mp3 }}"> {{ track.artist }} - {{track.name}}</a>
                     </li>
                     {% endfor %}
                 </ul>
+            </div>
         </div>
         {% block javascript %} 
 

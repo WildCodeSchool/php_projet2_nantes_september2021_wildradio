@@ -159,7 +159,7 @@ button:hover{
 
 #left-homepage{
     width: 50%;
-    padding-top: 120px;
+    padding-top: 25vh;
 }
 
 #wildradio{
@@ -230,7 +230,15 @@ audio {
 
 #player {
     color: whitesmoke;
-    margin-top: 20vh; 
+    margin-top: 25vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#playlist li {
+    display:none;
+    text-align: center;
 }
 
 #bouton-play-texte {
