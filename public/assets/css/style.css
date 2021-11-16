@@ -34,14 +34,14 @@ button {
     text-transform: uppercase;
 }
 
-
-/* CSS du background video */
-
 body{
     margin-left: 0px;
     margin-right: 0px;
     background-color: #F39F81;
 }
+
+/* CSS du background video */
+
 .sunset{
     position: fixed;
     justify-content:center;
@@ -56,13 +56,18 @@ body{
     width: 70px;
 }
 
-nav{                   
+nav {
+    position: absolute;
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+#nav-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-
 }
 
 #playlist{
@@ -74,8 +79,6 @@ nav{
 }
 
 #ligne{                
-    margin-left: 10%;
-    margin-right: 10%;
     background-color: whitesmoke;
     height: 1px;
 }
@@ -88,7 +91,6 @@ nav a{
 /*CSS du contenu de la homepage*/
 
 #contenu-homepage {
-    margin-top: 10vh;
     margin-left: 10%;
     margin-right: 10%;
 
@@ -153,12 +155,11 @@ button:hover{
     margin-top:10px;
  }
 
-
-
 /* CSS du côté gauche de homepage */
 
 #left-homepage{
     width: 50%;
+    padding-top: 120px;
 }
 
 #wildradio{
@@ -219,6 +220,8 @@ button:hover{
 
 #right-homepage {
     width: 50%;
+    padding-top: 120px;
+
 }
 
 audio { 
@@ -258,8 +261,7 @@ audio {
 /* CSS de la page Contact */
 
 #contenu-playlists {
-    margin-top: 10vh;
-
+    padding-top: 120px;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -271,11 +273,11 @@ audio {
 }
 
 #contenu-left-contact {
-    padding-top: 10vh;
     padding-bottom: 10vh;
     width: 50%;
     background-color: #4A517E;
     height: 100%;
+    padding-top: 110px;
 }
 
 #contact-left {
@@ -294,16 +296,17 @@ audio {
 }
 
 #contenu-right-contact {
-    padding-top: 10vh;
     padding-bottom: 10vh;
     width: 50%;
+    padding-top: 110px;
+
 }
 
 #contact-right {
     padding-left: 10%;
     padding-right: 20%;
     color: whitesmoke;
-} */
+} 
                         
 p{  display: block;
 }
@@ -443,7 +446,7 @@ textarea:focus {
     text-align: left;
 }
 
-/* CSS responsive (min-width: 1023px)*/
+/* CSS responsive de la homepage (min-width: 1023px)*/
 
 @media screen and (max-width: 1050px) {
 
@@ -458,8 +461,7 @@ textarea:focus {
         height: 100%;
     }
 
-    .contenu-homepage {
-        margin-top: 2vh;
+    #contenu-homepage {
         margin-left: 10%;
         margin-right: 10%;
     
@@ -469,17 +471,27 @@ textarea:focus {
         justify-content: center;
     }
 
+    #wildradio {
+        align-items: center;
+    }
+
     #wild{
-        font-size: 2em;
+        font-size: 2.5em;
     }
     
     #radio{
-        font-size: 2em;
+        font-size: 2.5em;
         font-style: italic;
         line-height: 45px;
         padding-left: 15%;
     }
     #left-homepage {
+        padding-top: 90px;
+        width: 100%;
+    }
+
+    #right-homepage {
+        padding-top: 0px;
         width: 100%;
     }
 
@@ -488,6 +500,7 @@ textarea:focus {
         display:flex;
         flex-direction:column;
         width: 80%;
+        padding-bottom: 5vh;
     }
 
     #buttons-playlists {
@@ -506,4 +519,31 @@ textarea:focus {
         text-align: center;
         margin-top: 5vh;
     }
+
+    /* CSS responsive de la homepage (min-width: 1023px)*/
+
+    #contenu-contact {
+        flex-direction: column;
+    }
+
+    #contenu-left-contact {
+        width: 100%;
+    }
+
+    #contact-left {
+        padding-left: 10%;
+    }
+
+    #contenu-right-contact {
+        padding-bottom: 10vh;
+        width: 100%;
+        padding-top: 50px;
+    }
+
+    #contact-right {
+        padding-left: 10%;
+        padding-right: 10%;
+    } 
+
 }
+

@@ -149,7 +149,7 @@ class TrackController extends AbstractController
             $id = trim($_POST['id']);
             $trackManager = new TrackManager();
             $trackManager->delete($id);
-            header('Location:/admin/tracks');
+            header('Location: /admin/tracks');
         }
     }
 
