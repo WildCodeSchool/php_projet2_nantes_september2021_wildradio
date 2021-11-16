@@ -277,9 +277,10 @@ audio {
 /* CSS de la page Contact */
 
 #contenu-playlists {
-    padding-top: 120px;
+    padding-top: 150px;
     margin-left: 10%;
     margin-right: 10%;
+    color: whitesmoke;
 }
 
 #contenu-contact {
@@ -386,7 +387,7 @@ textarea:focus {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(226deg) brightness(105%) contrast(101%);
 }
 
-/* CSS playlist page */
+/* CSS d'une page playlist/show */
 
 #playlist-left {
     padding-top: 50px;
@@ -440,38 +441,37 @@ textarea:focus {
     color: whitesmoke;
 }
 
-/* .imgPlaylist{
+/* CSS de la page /playlists */
+
+#allPlaylists {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+#allPlaylists a {
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+#image-playlists {
     width: 100%;
-    height: 180px;
-    border-radius: 5%;
-    object-fit: cover;
-    object-position: 20% 10%; 
-} */
-
-/* .allPlaylists{
-    background-color: yellow;
-    display: flex;
-    flex-wrap: wrap;
+    height: 340px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #F39F81;
+    transition: transform .2s;
 }
 
-.onePlaylists{
-    justify-content : space-around;
+#image-playlists:hover {
+    transform: scale(1.05);
 }
 
-.parent {
-    position: relative;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+h3:hover {
+    font-weight: bold;
 }
-
-.child1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.7;
-    background: #F39F81;
-} */
 
 /* CSS responsive de la homepage (min-width: 1023px)*/
 
@@ -572,5 +572,18 @@ textarea:focus {
         padding-right: 10%;
     } 
 
+    /* CSS responsive d'une page playlist/show' (min-width: 1023px)*/
+
+    #playlist-left {
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    #image-playlist {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
 }
 
