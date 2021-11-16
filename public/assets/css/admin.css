@@ -383,3 +383,10 @@ input::placeholder {
     width: 60px;
     height: 60px;
 }
+
+/* CSS de la page /admin/playlists/show */
+
+#imgPlaylist {
+    width: 80%;
+    border-radius: 5px;
+}

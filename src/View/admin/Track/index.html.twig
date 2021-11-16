@@ -43,10 +43,12 @@
                     <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name }}</a></td>
                     <td id="actions-track-box"><input type="checkbox"  name="flux" id="flux"></td>
                     <td id="actions-track-box"><a href="/admin/tracks/edit?id={{track.id}}">Modif.</a></td>
-                    <td id="actions-track-box"><a href="/admin/tracks/delete?id={{track.id}}">Suppr.</a></td>
-
-
-    {# <?php unlink ("images/jpeg/toto.jpg"); ?> #}
+                    <td id="actions-track-box">
+                        <form action="/admin/tracks/delete" method="POST">
+                         <input type="hidden" name="id" value="{{ track.id }}">
+                         <button>Effacer</button>
+                      </form>
+                    </td>
 
                 </tr>
                 {% endfor %}  

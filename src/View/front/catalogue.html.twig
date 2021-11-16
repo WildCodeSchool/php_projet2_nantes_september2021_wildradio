@@ -4,20 +4,22 @@
 {% block background %}{% include "front/background.html.twig" %}{% endblock %}
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
-<div>
+<div id="contenu-playlists">
 
 <h2> Toutes nos playlists</h2>
     
 <p> Ecoutez nos playlists créees avec ❤ </p>
 
-<div class="allPlaylists"> {% for playlist in playlists %}
-    <div class="OnePlaylist">  
-        
-        <div> <a href="/playlist/show?id={{playlist.id}}?>"><img class="imgPlaylistCarre" src="{{playlist.img}}"> </img></a></div>
-         <a href="/playlist/show?id={{playlist.id}}?>"> <h3> {{playlist.name}}</h3> </a>
-        
-    <div> 
-    {% endfor %}
+    <div class="allPlaylists"> {% for playlist in playlists %}
+        <div class="OnePlaylist">  
+            
+            <div> <a href="/playlist/show?id={{playlist.id}}?>"><img class="imgPlaylistCarre" src="{{playlist.img}}"> </img></a></div>
+            <a href="/playlist/show?id={{playlist.id}}?>"> <h3> {{playlist.name}}</h3> </a>
+            
+        <div> 
+        {% endfor %}
+    </div> 
 </div>
+
 {% endblock %}
 

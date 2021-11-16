@@ -2,6 +2,7 @@
 
 namespace App\Controller\front;
 use App\Model\PlaylistManager;
+
 use App\Model\TrackPlaylistManager;
 
 
@@ -35,7 +36,7 @@ class PlaylistController extends AbstractController
        
         $playlistManager = new PlaylistManager();
         $playlist= $playlistManager->selectOneById($id);
-        
+
         return $this->twig->render('front/playlist.html.twig', ['playlist'=>$playlist, 'tracksInPlaylist'=> $tracksInPlaylist]);
 
     }
