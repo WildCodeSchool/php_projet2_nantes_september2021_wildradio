@@ -70,10 +70,10 @@ class TrackController extends AbstractController
         if (file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
             $this->errors["mp3"] ="Le poids max du fichier est de 40Mo";} 
 
-        // // Je récupère l'extension du fichier
+        // Je récupère l'extension du fichier
         $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
 
-        // // Les extensions autorisées
+        // Les extensions autorisées
         $authorizedExtensions = ['mp3'];
         if( (!in_array($extension, $authorizedExtensions))){
             $this->errors['mp3'] = 'Veuillez sélectionner un fichier mp3 !';
@@ -88,7 +88,7 @@ class TrackController extends AbstractController
             // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
             $uploadDir = "/assets/audio/";
 
-            // // Je récupère l'extension du fichier
+            // Je récupère l'extension du fichier
             $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
 
             // le nom de fichier
