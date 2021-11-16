@@ -13,7 +13,7 @@
         <div id="input-form"> Titre : {{ track.name }}</div> 
         <div id="input-form"> Artiste : {{ track.artist }}</div>
         <div id="input-form">Album : {{ track.album }}</div> 
-        <div> Est dans le flux : {%  if track.flux == 1 %} Oui {% else %} Non {% endif %}</div>
+        <div> Est dans le flux : {% if track.is_in_flux == 1 %} Oui {% else %} Non {% endif %}</div>
         <br/>
         
         <a class="buttons" href="/admin/tracks/edit?id={{ track.id }}">Modifier la track</a>
