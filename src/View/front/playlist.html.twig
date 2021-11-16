@@ -1,41 +1,47 @@
 {% extends '/front/layout.html.twig' %}
 
-{% block title %}Playlist{% endblock %}
+{% block title %}Playlist - {{playlist.name}} {% endblock %}
 
   {% block content %}
-  {% block header %}{% include "front/header.html.twig" %}{% endblock %}
+  {% block header %}{% include "front/header.html.twig" %}
+  {% endblock %}
  
 
-<div id="playlistpage" id="player">
-  <div id="left-playlistpage"> 
+<div id="contenu-contact">
 
-		<div id="playlist-description"> 
-    
-      <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div>
-      
-      <audio controls id="audioPlayer"></audio>
-      <div id="player">
-        <i id="play" class="fa fa-play"></i>
-      </div>
+{# PAGE DE GAUCHE #}
 
-		  <h2> {{playlist.name}} </h2>
-		  <p> {{playlist.description}}</p> 
-    </div>
-  </div> 
+            <div id="playlist-left"> 
+              
+                <audio controls id="audioPlayer"></audio>
+                    <span id="player">
+                      <i id="play" class="fa fa-play"></i>
+                    </span>
 
- <div id="right-playlistpage">
-    <div id="tracks-list"> 
-      <h2> Tracks </h2>
+                      <img id="image-playlist" src="{{playlist.img}}"> 
+                      </img>
 
-        <ol id="playlist"> {% for track in tracksInPlaylist %}
-          <ul> <a href="{{track.mp3}}">
-          <strong>{{track.title}}  </strong>- {{track.artist}} </br>
-          {{track.album}} </a></ul>
-        {% endfor %}
-        </ol>
+                          <h1> {{playlist.name}} </h1>
+                          <p> {{playlist.description}}</p> 
+            </div>
 
-    </div>
- </div> 
+{# PAGE DE DROITE #}
+
+            <div id="playlist-right">
+
+                <div id="contenu-playlist-right">
+
+                        <ol id="playlist"> {% for track in tracksInPlaylist %}
+                          <ul> <a href="{{track.mp3}}">
+                          <span id="player-track-title">{{track.title}}</span> - {{track.artist}} </br>
+                          <span id="player-track-album">{{track.album}}</span> </a></ul>
+                        {% endfor %}
+                        </ol>
+                        
+                </div>
+
+            </div> 
+            
 </div>
 
 
