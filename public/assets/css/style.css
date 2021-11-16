@@ -237,7 +237,7 @@ audio {
     align-items: center;
 }
 
-#player-track-title {
+#player-track-artist {
     font-weight: bold;
 }
 
@@ -247,7 +247,6 @@ audio {
 
 #playlist li {
     display:none;
-    text-align: center;
 }
 
 #bouton-play-texte {
@@ -548,7 +547,7 @@ textarea:focus {
         margin-top: 5vh;
     }
 
-    /* CSS responsive de la homepage (min-width: 1023px)*/
+    /* CSS responsive de la page contact (min-width: 1023px)*/
 
     #contenu-contact {
         flex-direction: column;

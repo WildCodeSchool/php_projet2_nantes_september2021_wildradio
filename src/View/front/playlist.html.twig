@@ -33,7 +33,7 @@
 
                         <ol id="playlist"> {% for track in tracksInPlaylist %}
                           <ul> <a href="{{track.mp3}}">
-                          <span id="player-track-title">{{track.title}}</span> - {{track.artist}} </br>
+                          <span id="player-track-artist">{{track.title}}</span> - {{track.artist}} </br>
                           <span id="player-track-album">{{track.album}}</span> </a></ul>
                         {% endfor %}
                         </ol>
