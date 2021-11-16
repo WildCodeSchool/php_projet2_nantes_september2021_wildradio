@@ -22,6 +22,7 @@ return [
     'admin/tracks/playlistAdd' => ['admin\TrackController', 'addTrackToPlaylist'],
     'admin/tracks/add' => ['admin\TrackController', 'add'],
     'admin/tracks' => ['admin\TrackController', 'browse' ],
+    'admin/tracks/search' => ['admin\TrackController', 'search', ['item']],
     'admin/tracks/show' => ['admin\TrackController', 'show', ['id']],
     'admin/tracks/delete' => ['admin\TrackController', 'delete',],
     'admin/tracks/edit' => ['admin\TrackController', 'edit', ['id']],
@@ -31,14 +32,13 @@ return [
     'admin' => ['admin\HomeController', 'index'],
     'admin/logout' => ['admin\RegisterController', 'logout'],
 
-
    // affichage playlists admin 
 
     'admin/playlists/add' => ['admin\PlaylistController', 'add'],
     'admin/playlists' => ['admin\PlaylistController', 'browse'],
     'admin/playlists/show' => ['admin\PlaylistController', 'show' , ['id']],
-    'admin/playlists/delete' => ['admin\PlaylistController', 'delete' ,],
+    'admin/playlists/delete' => ['admin\PlaylistController', 'delete'],
     'admin/playlists/edit' => ['admin\PlaylistController', 'edit' , ['id']],
-];
+    'admin/playlists/search' => ['admin\PlaylistController', 'search', ['item']],
 
-// modifier 
+];

@@ -54,7 +54,7 @@ class TrackManager extends AbstractManager
     public function update(array $track): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, is_in_flux = :flux WHERE id = :id");
-        $statement->bindValue('id', $track['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':id', $track['id'], \PDO::PARAM_INT);
         $statement->bindValue(':title', $track['title'], \PDO::PARAM_STR);
         $statement->bindValue(':artist', $track['artist'], \PDO::PARAM_STR);
         $statement->bindValue(':album', $track['album'], \PDO::PARAM_STR);
@@ -74,5 +74,18 @@ class TrackManager extends AbstractManager
             
             $statement->execute();
         } 
+    }
+
+    /**
+    * Récupérer toutes les tracks comprenant le mot clé recherché  
+    */
+    public function getElementsFiltered($item)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE artist LIKE :item OR name LIKE :item  OR album LIKE :item ");
+        $statement->bindValue(':item', "%". $item. "%", \PDO::PARAM_STR);
+        $statement->execute();
+        $tracks = $statement->fetchAll();
+    
+        return $tracks;
     }
 }

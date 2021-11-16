@@ -35,6 +35,7 @@ class PlaylistController extends AbstractController
        
         $playlistManager = new PlaylistManager();
         $playlist= $playlistManager->selectOneById($id);
+        
         return $this->twig->render('front/playlist.html.twig', ['playlist'=>$playlist, 'tracksInPlaylist'=> $tracksInPlaylist]);
 
     }

@@ -11,6 +11,7 @@ class TrackController extends AbstractController
     public $track; 
     public $playlists;
     public $errors = [];
+    public $item;
 
     // constructeur permet de sécuriser l'acces pour 
 
@@ -177,7 +178,7 @@ class TrackController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verification
-            $verified = $this->verification(); 
+            $this->verification(); 
 
             // if validation is ok, update 
             if (empty($this->errors)){
@@ -227,6 +228,24 @@ class TrackController extends AbstractController
 
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Mon flux']);
 
+    }
+
+    /**
+     * Afficher une vue des tracks filtrées en fonction du mot rechercher
+     */
+    public function search()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $this->item = $_GET['search'];
+            $trackManager = new TrackManager();
+            $tracks = $trackManager->getElementsFiltered($this->item);
+
+            return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Toutes mes tracks']);
+        } 
+
+        $this->browse();
     }
 
 }
