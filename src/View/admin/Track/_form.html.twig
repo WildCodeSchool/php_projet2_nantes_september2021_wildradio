@@ -1,12 +1,12 @@
+<h2>Informations</h2>
 
-<form method="POST" action="{{action}}" enctype="multipart/form-data">
-
+<form id="form-track" method="POST" action="{{action}}" enctype="multipart/form-data">
 
 	<input type="hidden" value="{{ track.id }}" name="id">
 
 	<div> 
 		<label for="title"></label>
-		<input type="text" placeholder="Titre" value="{{ track.name }}" name="title" >
+		<input id="input-form" type="text" placeholder="Titre" value="{{ track.name }}" name="title" >
 		{% if errors.name is defined %}
         	{{ errors.name }}
 		{% endif %}
@@ -14,35 +14,38 @@
 	</div> 
 
 	<div> 
-		<input type="text" placeholder="Artiste" value="{{ track.artist }}" name="artist" >
+		<input id="input-form" type="text" placeholder="Artiste" value="{{ track.artist }}" name="artist" >
 		{% if errors.artist is defined %}
         	{{ errors.artist }}
 		{% endif %}
 	</div>
 
 	<div>
-		<input type="text" placeholder="Album" value="{{ track.album }}" name="album" >
+		<input id="input-form" type="text" placeholder="Album" value="{{ track.album }}" name="album" >
 		{% if errors.album is defined %}
         	{{ errors.album }}
 		{% endif %}
 	</div>
 
 	<div>
-		<input type="file" name="mp3" id="mp3" >
+		<input id="input-form" type="file" name="mp3" id="mp3" >
 		{% if errors.mp3 is defined %}
         	{{ errors.mp3 }}
 		{% endif %}
 	</div>
 
-	<div>
+	<div id="add-to-flux">
 		<label for="flux"> Ajouter au flux</label>
-		<input type="checkbox"  name="flux" id="flux">
+		<input type="checkbox"  name="flux" id="flux" {% if track.is_in_flux == 1 %}  checked {% endif %} >
 	</div>
 
 	<div>
-		<button type="submit" value="Submit"> Ajouter une track </button>
+
+    <button id="btn-submit" type="submit" value="Submit"> {{button}} </button>
+
 	</div>
 
-</form> 
+	<div>{{messageEnvoi}}</div>
 
+</form>
  

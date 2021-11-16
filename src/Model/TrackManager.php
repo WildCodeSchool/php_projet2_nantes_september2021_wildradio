@@ -24,6 +24,9 @@ class TrackManager extends AbstractManager
         $statement->execute();
     }
     
+     /**
+     * Récupérer toutes les tracks enregistrées dans la BDD 
+     */
     public function getAll(): array
     {
         $statement = $this->pdo->query("SELECT * FROM ". self::TABLE);
@@ -32,13 +35,26 @@ class TrackManager extends AbstractManager
         return $tracks;
     }
 
+    /**
+     * Récupérer toutes les tracks présentes dans le flux (=1)
+     */
+
+    public function getTracksInFlux(): array
+    {
+        $statement = $this->pdo->query("SELECT * FROM track WHERE is_in_flux = '1'");
+        $tracks = $statement->fetchAll();
+
+        return $tracks;
+
+    }
+
      /**
      * Update track in database
      */
     public function update(array $track): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, is_in_flux = :flux WHERE id=:id");
-        $statement->bindValue('id', $track['id'], \PDO::PARAM_INT);
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :title,  artist = :artist, album = :album, is_in_flux = :flux WHERE id = :id");
+        $statement->bindValue(':id', $track['id'], \PDO::PARAM_INT);
         $statement->bindValue(':title', $track['title'], \PDO::PARAM_STR);
         $statement->bindValue(':artist', $track['artist'], \PDO::PARAM_STR);
         $statement->bindValue(':album', $track['album'], \PDO::PARAM_STR);
@@ -47,20 +63,29 @@ class TrackManager extends AbstractManager
         return $statement->execute();
     }
 
-
-   
     public function link($track_id, $playlists_id)
-    {
+    {        
+        $statement = $this->pdo->prepare("INSERT INTO trackPlaylist 
+        (playlist_id, track_id) VALUES (:playlist_id, :track_id)"); 
 
-        var_dump($playlists_id);
-        die();
-        
-        $statement = $this->pdo->prepare("INSERT INTO" . self::TABLE . 
-        "WHERE id 
-        IN (SELECT track_id=" . ":track_id" . "FROM trackPlaylist WHERE playlist_id=:" . ":playlist_id)"); 
-        $statement->bindValue(':track_id', $track_id, \PDO::PARAM_INT);
-        $statement->bindValue(':playlist_id', $playlists_id, \PDO::PARAM_INT);
-        
+        foreach ($_POST ["addPlaylist"] as $playlists_id) {
+            $statement->bindValue(':track_id', $_POST['id'], \PDO::PARAM_INT);
+            $statement->bindValue(':playlist_id', $playlists_id, \PDO::PARAM_INT);        
+            
+            $statement->execute();
+        } 
+    }
+
+    /**
+    * Récupérer toutes les tracks comprenant le mot clé recherché  
+    */
+    public function getElementsFiltered($item)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE artist LIKE :item OR name LIKE :item  OR album LIKE :item ");
+        $statement->bindValue(':item', "%". $item. "%", \PDO::PARAM_STR);
         $statement->execute();
+        $tracks = $statement->fetchAll();
+    
+        return $tracks;
     }
 }

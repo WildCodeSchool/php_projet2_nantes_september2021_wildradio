@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<<<<<<< HEAD
     <h1> Ma playlist </h1>
     <p>Playlist: {{ playlist.name }}</p>
     <p>Description : {{ playlist.description }}</p><br> 
@@ -18,5 +19,36 @@
     <a href="/admin/playlists">Retour</a>
 
     
+=======
+    <div id="contenu-admin-track-add">
+
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+
+        <h1>Informations de la playlist</h1>
+
+            <div id="contenu-admin-tracks">
+
+
+    <div id="input-form"> Titre de la playlist : {{ playlist.name }}</div>
+    <div id="input-form"> Description : {{ playlist.description }}</div><br> 
+    
+    <div> <img id="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
+
+        <br/>
+
+    <a class="buttons" href="/admin/playlists/edit?id={{ playlist.id }}">Modifier la Playlist</a>
+
+        <br/>
+
+    <form action="/admin/playlists/delete" method="POST">
+        <input type="hidden" name="id" value="{{ playlist.id }}">
+                    <br/>
+
+        <button class="buttons">Effacer</button>
+    </form>
+                <br/>
+
+    <a class="buttons" href="/admin/playlists">Retour</a>
+>>>>>>> 0e9a536559faad6838931e7500546edc78fac9ee
 
 {% endblock %}

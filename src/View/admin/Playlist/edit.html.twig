@@ -2,8 +2,18 @@
  
 {% block content %}
 
-    <h1> Editer la playlist {{ playlist.name }}</h1>
-    {% include 'Playlist/form.html.twig' %}
-    
+    <div id="contenu-admin-track-add">
 
+            {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+
+    <h1> Editer la playlist {{ playlist.name }}</h1>
+
+        <div id="contenu-track-edit">
+
+            {% include '/admin/Playlist/form.html.twig' %}
+
+        </div>
+        
+    </div>
+    
 {% endblock %}

@@ -45,5 +45,19 @@ class PlaylistManager extends AbstractManager
         $statement->bindValue(':online', $playlist['is_online'], \PDO::PARAM_STR);
 
         return $statement->execute();
-        }
+        }       
+
+    /**
+    * Récupérer toutes les tracks comprenant le mot clé recherché  
+    */
+    public function getElementsFiltered($item)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE name LIKE :item OR description LIKE :item ");
+        $statement->bindValue(':item', "%". $item. "%", \PDO::PARAM_STR);
+        $statement->execute();
+        $playlists = $statement->fetchAll();
+    
+        return $playlists;
     }
+
+}   

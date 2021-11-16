@@ -5,52 +5,38 @@
 {% block content %}
 {% block background %}{% include "front/background.html.twig" %}{% endblock %}
 
+     <video class="sunset"  playsinline autoplay muted loop> 
+<source src="\assets\images\Sunset.mp4" type="video/mp4">
+</video>
 
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
-<body>
     <div id="contenu-homepage">
         <div id="left-homepage">
 
             <h1 id="wildradio">
-                <span id="wild">WILD</span>
+                <span id="wild">WILD</span><br>
                 <span id="radio">RADIO</span></h1>
 
             <p id="description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae ligula lectus. Morbi diam ligula, tincidunt vitae nisi vitae, tempor ultrices quam. Aliquam porttitor eros mauris, vitae varius diam ultrices a.</p>
-
-            <div id="playlists-homepage">
-                <a href="/playlist"><button id="button-playlists">► Playlist 1</button></a>
-                <a href="/playlist"><button id="button-playlists">► Playlist 2</button></a>
-            </div>
-
-                <a href="/playlists"><button id="button-allplaylists">Écouter toutes nos playlists</button></a>
-
-        </div>
-
-
+    </div>
 
         <div id="right-homepage">
             <audio controls id="audioPlayer"></audio>
 
             <div id="player">
-                <div>
-                    <i id="play" class="fa fa-play"></i>
+                <div id="bouton-play-texte">
+                    <p id="action">Play</p><i id="play" class="fa fa-play"></i>
                 </div>
-                <div id="infosTrack">
-                    {% for track in tracks %}
 
-                    <p>Artiste : {{ track.artist }}</p>
-                    <p>Titre : {{ track.name }}</p>
-
-                    {% endfor %}
-
-                </div>
+            <div id="currentTrack"> </div> 
+             
             </div>
 
                 <ul id="playlist">
                     {% for track in tracks %}
                     <li class="current-song">
-                        <a href="{{ track.mp3 }}"> </a>
+                        <a href="{{ track.mp3 }}"> {{track.name}} </a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -65,5 +51,14 @@
         {% endblock %}
 
     </div>
-</body>
+
+            <div id="playlists-homepage">
+                <div id="buttons-playlists">
+                    <a href="/playlist/show?id=28?"><button id="button-playlists">► Winter lo-fi</button></a>
+                    <a href="/playlist/show?id=29?"><button id="button-playlists">► Workout hip hop</button></a>
+                </div>
+                
+                <a href="/playlists"><button id="button-allplaylists">Écouter toutes nos playlists</button></a>
+            </div>
+
 {% endblock %}

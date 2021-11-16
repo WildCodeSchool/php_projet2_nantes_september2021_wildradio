@@ -29,8 +29,7 @@ class RegisterManager extends AbstractManager
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE username=:username");
         $statement->bindValue('username', $username, \PDO::PARAM_STR);
         $statement->execute();
-        
-        return $statement->fetch();
 
+        return $statement->fetch();
     }
 }
