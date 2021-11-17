@@ -165,12 +165,9 @@ class TrackController extends AbstractController
     {
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
+        $Allplaylists = $this->browsePlaylists();
 
-        $this->isInPlaylist();
-        
-        $this->playlists = $this->browsePlaylists();
-
-        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists, 'button'=> "Modifier une track"]);
+        return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $Allplaylists, 'button'=> "Modifier la track", 'selectedPlaylists' => $this->isInPlaylist()]);
     
     }
 
@@ -221,11 +218,8 @@ class TrackController extends AbstractController
     public function isInPlaylist()
     {
         $trackPlaylistManager = new TrackPlaylistManager();
-        $trackPlaylistManager->getAllSelectedPlaylists($_GET['id']);
-        
-        //$newarray = array_column($toto, 'playlist_id');
-        //$selectedPlaylists = []; 
-        //foreach (playlist_id in trackPlaylist in $toto ) , 
+        return $trackPlaylistManager->getAllSelectedPlaylists($_GET['id']);
+
     }
 
 
