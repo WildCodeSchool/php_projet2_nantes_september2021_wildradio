@@ -14,7 +14,9 @@
 
 <div>
         <label for="description"></label>
-        <input type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
+
+        <input id="input-description" type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
+
 		{% if errors.description is defined %}
         	{{ errors.description }}
 		{% endif %}	
@@ -40,9 +42,12 @@
 </div>
 
 <div>
-	<button id="btn-submit" type="submit" value="Submit"> {{button}} </button>
+
+		<button id="btn-submit" type="submit" value="Submit"> {{button}} </button>
 </div>
  
-<div> {{messageEnvoi}} </div>
+		<div id="messageEnvoi">  {{messageEnvoi}} </div>
+
 
 </form>
+

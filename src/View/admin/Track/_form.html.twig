@@ -8,7 +8,7 @@
 		<label for="title"></label>
 		<input id="input-form" type="text" placeholder="Titre" value="{{ track.name }}" name="title" >
 		{% if errors.name is defined %}
-        	{{ errors.name }}
+        	<div id="messageErreur">{{ errors.name }}</div>
 		{% endif %}
 	
 	</div> 
@@ -16,26 +16,26 @@
 	<div> 
 		<input id="input-form" type="text" placeholder="Artiste" value="{{ track.artist }}" name="artist" >
 		{% if errors.artist is defined %}
-        	{{ errors.artist }}
+        	<div id="messageErreur">{{ errors.artist }}</div>
 		{% endif %}
 	</div>
 
 	<div>
 		<input id="input-form" type="text" placeholder="Album" value="{{ track.album }}" name="album" >
 		{% if errors.album is defined %}
-        	{{ errors.album }}
+        	<div id="messageErreur"> {{ errors.album }}</div>
 		{% endif %}
 	</div>
 
 	<div>
 		<input id="input-form" type="file" name="mp3" id="mp3" >
 		{% if errors.mp3 is defined %}
-        	{{ errors.mp3 }}
+        	<div id="messageErreur"> {{ errors.mp3 }} </div>
 		{% endif %}
 	</div>
 
-	<div id="add-to-flux">
-		<label for="flux"> Ajouter au flux</label>
+	<div>
+		<label for="flux"> Dans le flux</label>
 		<input type="checkbox"  name="flux" id="flux" {% if track.is_in_flux == 1 %}  checked {% endif %} >
 	</div>
 
@@ -45,7 +45,7 @@
 
 	</div>
 
-	<div>{{messageEnvoi}}</div>
+	<div id="messageEnvoi"> {{ messageEnvoi }} </div>
 
 </form>
  

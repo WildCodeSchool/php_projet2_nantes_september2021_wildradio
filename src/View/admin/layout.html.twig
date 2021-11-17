@@ -18,7 +18,7 @@
 </head>
 
 <header>
-
+    
 </header>
 
 {% block content %}
@@ -26,12 +26,18 @@
 
      {% block header %}{% endblock %}
 
-
-
-
     {% block javascript %}{% endblock %}
-    
 
 </body>
-</html>
+
+
+
  {% endblock %}
+
+{% block footer %}
+    {% include "admin/footer.html.twig" %}
+{% endblock %}
+
+
+
+</html>

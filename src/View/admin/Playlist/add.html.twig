@@ -4,7 +4,21 @@
 
 {% block content %}
 
+    <div id="contenu-admin-track-add">
+
+            {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+
     <h1>Créer une nouvelle playlist</h1>
+
+            <div id="contenu-admin-tracks">
+
     {% include 'admin/Playlist/form.html.twig' %}
+
+            <br/>
+
+        <a href="/admin/tracks"><button id="retour">Retour</button></a>
+
+            </div>
+    </div>
 
 {% endblock %}
