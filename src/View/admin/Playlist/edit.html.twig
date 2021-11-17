@@ -1,14 +1,12 @@
  {% extends '/admin/layout.html.twig' %}
  
 {% block content %}
-
-<div id="contenu-admin-playlist-add">
-    
+  
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+    
+    <div id="contenu-admin-tracks">
 
-
-    <h1> Modifier la playlist {{ playlist.name }}</h1>
-        <div id="contenu-playlist-edit">
+    <h1> Modifier la playlist </h1>
 
             <div id="playlist-edit-left">
 
@@ -18,7 +16,6 @@
 
     </div>
         
-        
     <div id="playlist-edit-right">
         
         <h2>Les tracks</h2><br>
@@ -26,7 +23,7 @@
     
         <ol id="playlist"> 
           {% for track in tracksInPlaylist %}
-           <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
+           <ul><strong>{{track.title}}</strong> - {{track.artist}} </br>{{track.album}}</ul>
         {% endfor %}
         </ol>
 
@@ -35,7 +32,5 @@
         
     </div>
       
-    {% endblock %}
-
 {% endblock content %}
 
