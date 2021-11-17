@@ -33,6 +33,18 @@
 
                     
         </div>
+        
+        <div>
+       <h2>Liste des tracks dans cette playlist</h2>
+                
+     <ol id="playlist">
+     {% for track in tracksInPlaylist %} 
+        <ul> 
+           <a href="{{track.mp3}}"><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}} </a>
+        </ul>
+    {% endfor %}
+    </ol>
+        </div> 
 
     <br/>
 
@@ -40,4 +52,4 @@
 
     <br/>
 
-{% endblock %}
+{% endblock %}                
