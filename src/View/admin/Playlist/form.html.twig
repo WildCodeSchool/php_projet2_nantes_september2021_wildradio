@@ -26,17 +26,17 @@
 
 <div>
   <input type="checkbox" id="is_online" name="is_online"
-         checked>
-  <label for="online">Mettre en ligne</label>
+         {% if playlist.is_online == 1 %}  checked {% endif %}>
+  <label for="online"> En ligne </label>
 </div>
 
 <div>
-  <input type="text" id="tag" name="tag" checked placeholder="tag">
+  <input type="text" id="tag" name="tag" placeholder="tag">
   <label for="tag"></label>
 </div>
 
 <div>
-		<button class="buttons"type="submit" value="Submit"> Ajouter la playlist </button>
+	<button class="buttons"type="submit" value="Submit"> {{button}} </button>
 </div>
  
 <div> {{messageEnvoi}}</div>
