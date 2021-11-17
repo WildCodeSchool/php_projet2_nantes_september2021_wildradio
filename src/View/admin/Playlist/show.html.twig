@@ -2,24 +2,6 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-    <h1> Ma playlist </h1>
-    <p>Playlist: {{ playlist.name }}</p>
-    <p>Description : {{ playlist.description }}</p><br> 
-    
-    <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
-
-    <a href="/admin/playlists/edit?id={{ playlist.id }}">Modifier la Playlist</a>
-
-    <form action="/admin/playlists/delete" method="POST">
-        <input type="hidden" name="id" value="{{ playlist.id }}">
-        <button>Effacer</button>
-    </form>
-
-    <a href="/admin/playlists">Retour</a>
-
-    
-=======
     <div id="contenu-admin-track-add">
 
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
@@ -49,6 +31,5 @@
                 <br/>
 
     <a class="buttons" href="/admin/playlists">Retour</a>
->>>>>>> 0e9a536559faad6838931e7500546edc78fac9ee
 
 {% endblock %}
