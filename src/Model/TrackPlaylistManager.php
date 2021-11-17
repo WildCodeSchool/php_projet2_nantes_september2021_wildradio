@@ -54,11 +54,12 @@ class TrackPlaylistManager extends AbstractManager
         $statement->bindValue(':track_id', $_GET['id'], \PDO::PARAM_INT);
         $statement->execute();
         $toto = $statement->fetchAll();
-        
-        var_dump($toto);
+
+        $tutu = array_column($toto, 'playlist_id');
+
+        return $tutu;
+        var_dump($tutu);
         die();
-    
-        return $toto;
     }
 
 }

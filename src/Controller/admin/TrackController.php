@@ -200,9 +200,7 @@ class TrackController extends AbstractController
      */
     public function addTrackToPlaylist()
     {
-        $this->isInPlaylist();
-        var_dump($playlists);
-
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
             if (empty($this->errors)){
@@ -218,13 +216,14 @@ class TrackController extends AbstractController
     }
 
     /**
-     * Determine la list des playlists selectionnés 
+     * Determine la liste des playlists selectionnés 
      */
     public function isInPlaylist()
     {
         $trackPlaylistManager = new TrackPlaylistManager();
         $trackPlaylistManager->getAllSelectedPlaylists($_GET['id']);
         
+        //$newarray = array_column($toto, 'playlist_id');
         //$selectedPlaylists = []; 
         //foreach (playlist_id in trackPlaylist in $toto ) , 
     }
@@ -236,6 +235,7 @@ class TrackController extends AbstractController
      */
     public function browsePlaylists()
     {
+
         $playlistManager = new PlaylistManager();
         return  $playlistManager->getAll();
 
