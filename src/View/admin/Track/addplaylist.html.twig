@@ -1,4 +1,4 @@
-<form method="POST" action="{{action}}">
+<form method="POST" action="/admin/tracks/playlistAdd">
 	<table>
 		<tr>
 			<th> </th>
@@ -14,9 +14,8 @@
 				<td>
 					<input type="hidden" value="{{ track.id }}" name="id">
 
-
 					<label for="addPlaylist-{{ playlist.id }}"></label>
-					<input type="checkbox"  name="addPlaylist[]" id="addPlaylist-{{ playlist.id }}" value="{{ playlist.id }}">
+					<input type="checkbox"  name="addPlaylist[]"  id="addPlaylist-{{ playlist.id }}" value="{{ playlist.id }}" {% if playlist.id in selectedPlaylists %} checked {% endif %}>
 			
 				</td>
 

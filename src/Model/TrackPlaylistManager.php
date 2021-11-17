@@ -53,13 +53,10 @@ class TrackPlaylistManager extends AbstractManager
         $statement = $this->pdo->prepare("SELECT playlist_id FROM trackPlaylist WHERE track_id = :track_id");
         $statement->bindValue(':track_id', $_GET['id'], \PDO::PARAM_INT);
         $statement->execute();
-        $toto = $statement->fetchAll();
-
-        $tutu = array_column($toto, 'playlist_id');
-
-        return $tutu;
-        var_dump($tutu);
-        die();
+        $selectedPlaylists = $statement->fetchAll();
+        $selectedPlaylistsId = array_column($selectedPlaylists, 'playlist_id');
+        
+        return $selectedPlaylistsId ;
     }
 
 }
