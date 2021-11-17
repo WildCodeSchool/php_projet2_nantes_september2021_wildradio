@@ -457,12 +457,6 @@ input::placeholder {
     height: 60px;
 }
 
-/* CSS de la page /admin/playlists/show + edit */
-
-#imgPlaylist{
-    width: 60px;
-    height: 60px;
-
 /* CSS de la page /admin/playlists/show */
 
 #imgPlaylist {
