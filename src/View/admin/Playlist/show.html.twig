@@ -6,30 +6,38 @@
 
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
 
-        <h1>Informations de la playlist</h1>
+            <h1>Informations de la playlist</h1>
 
-            <div id="contenu-admin-tracks">
+        <div id="contenu-track-edit">
+
+                <div id="track-edit-left">
+        
+                    <div id="input-description"> Titre :
+                        <span id="playlist-name"> {{ playlist.name }}</span>
+                    </div>
+                    
+                    <div id="input-description"> Description : 
+                        {{ playlist.description }}</div>
+                    
+                    <div> <img id="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
 
 
-    <div id="input-form"> Titre de la playlist : {{ playlist.name }}</div>
-    <div id="input-form"> Description : {{ playlist.description }}</div><br> 
-    
-    <div> <img id="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
+        <div id="buttons-admin-playlists">
 
-        <br/>
+                <a href="/admin/playlists/edit?id={{ playlist.id }}"><button class="buttons-playlists">Modifier la Playlist</button></a>
 
-    <a class="buttons" href="/admin/playlists/edit?id={{ playlist.id }}">Modifier la Playlist</a>
+                <form action="/admin/playlists/delete" method="POST">
+                    <input type="hidden" name="id" value="{{ playlist.id }}">
+                    <button class="buttons-playlists">Effacer</button>
+                </form>
 
-        <br/>
+                    
+        </div>
 
-    <form action="/admin/playlists/delete" method="POST">
-        <input type="hidden" name="id" value="{{ playlist.id }}">
-                    <br/>
+    <br/>
 
-        <button class="buttons">Effacer</button>
-    </form>
-                <br/>
+    <a href="/admin/playlists"><button id="retour">Retour</button></a>
 
-    <a class="buttons" href="/admin/playlists">Retour</a>
+    <br/>
 
 {% endblock %}

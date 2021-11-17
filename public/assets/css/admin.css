@@ -14,7 +14,7 @@ body{
     margin-right: 0px;
     background-color: #F39F81;
     height:100%;
-
+    position: relative;
 }
 
 h1 {
@@ -52,6 +52,7 @@ a:hover {
     border-radius: 5px;
     background-color:black;
     color: #F39F81;
+    margin-bottom: 20px;
 }
 
 #retour:hover {
@@ -78,21 +79,30 @@ a:hover {
 }
 
 footer {
-    position:relative;
-    margin-left: 10%;
+    position:fixed;
+    bottom: 0;
+    left:0;
+    right:0;
 }
 
 #footer {
-    padding-right: 20px;
-    padding-bottom: 20px;
+    padding : 10px 10% 10px 10%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     font-size: 12px;
+    background-color: #F39F81;
+    border-top: 1px solid rgba(0, 0, 0, 0.301);
+    -webkit-box-shadow: 0px 0px 19px 2px rgba(0, 0, 0, 0.37); 
+    box-shadow: 0px 0px 19px 2px rgba(0, 0, 0, 0.356);
 }
 
 #logout {
     font-size: 12px;
-    margin-right: 20px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #logout:hover {
@@ -368,10 +378,6 @@ input::placeholder {
     height:100vh;
 }
 
-#contenu-admin-track-add h2 {
-    margin-top: 5vh;
-}
-
 #form-track {
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -384,6 +390,7 @@ input::placeholder {
     width: 80%; 
     height: 35px;
     margin-bottom: 10px;
+    padding-left: 10px;
 } 
 
 input::placeholder {
@@ -434,8 +441,46 @@ input::placeholder {
 /* CSS de la page /admin/playlists/show */
 
 #imgPlaylist {
-    width: 80%;
+    width: 85%;
     border-radius: 5px;
+}
+
+#playlist-name {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#input-description {
+    border: solid 1px black;
+    border-radius: 5px;
+    background: none;
+    width: 80%; 
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#buttons-admin-playlists {
+    display: flex;
+    flex-direction:row;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.buttons-playlists {
+    cursor:pointer;
+    padding: 10px;
+    width: 220px;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: #F39F81;
+    text-transform: uppercase;
+}
+
+.buttons-playlists:hover {
+    border: solid 1px black;
+    background-color: #F39F81;
+    color: black;
 }
 
 /*Demo CSS code checkbox custom
@@ -482,7 +527,7 @@ input::placeholder {
     top: 2px; left: 5px;
 }
 
-/* on checked */
+/* on checked 
 [type="checkbox"]:checked + label:before {
     background:#34495E; 
 }
