@@ -8,34 +8,28 @@
 
 
     <h1> Modifier la playlist {{ playlist.name }}</h1>
+        
         <div id="contenu-playlist-edit">
 
             <div id="playlist-edit-left">
+            {% include 'admin/Playlist/form.html.twig' %}
+            <a href="/admin/playlists/show?id={{ playlist.id }}"><button id="retour">Retour</button></a>
+            </div>
 
-        {% include 'admin/Playlist/form.html.twig' %}
-
-       <a href="/admin/playlists/show?id={{ playlist.id }}"><button id="retour">Retour</button></a>
-
-    </div>
+        </div>
         
         
-    <div id="playlist-edit-right">
+        <div id="playlist-edit-right">
         
-        <h2>Les tracks</h2><br>
+            <h2>Les tracks</h2><br>
 
-    
-        <ol id="playlist"> 
-          {% for track in tracksInPlaylist %}
-           <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
-        {% endfor %}
-        </ol>
-
-     </div>
-
-        
-    </div>
+            <ol id="playlist"> 
+            {% for track in tracksInPlaylist %}
+            <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
+            {% endfor %}
+            </ol>
+        </div>
       
-    {% endblock %}
-
+</div>
 {% endblock content %}
 

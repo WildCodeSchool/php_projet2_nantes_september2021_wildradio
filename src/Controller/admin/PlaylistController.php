@@ -103,7 +103,12 @@ public function edit(int $id)
     $playlistManager = new PlaylistManager();
     $this->playlist = $playlistManager->selectOneById($id);
 
-    return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'button'=> "Modifier une track"]);
+    $trackPlaylistManager = new TrackPlaylistManager();
+    $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
+
+    
+
+    return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'tracksInPlaylist' => $tracksInPlaylist, 'button'=> "Modifier une track"]);
 }
 
 public function update(int $id)
