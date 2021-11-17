@@ -22,6 +22,7 @@ function audioPlayer(){
        $("#audioPlayer")[0].play();
        $(play_button.click);
        });
+
     
     $("#audioPlayer")[0].addEventListener("ended", function(){
        currentSong++;
