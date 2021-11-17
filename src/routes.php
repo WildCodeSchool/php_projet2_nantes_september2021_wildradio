@@ -44,6 +44,6 @@ return [
     'admin/playlists/delete' => ['admin\PlaylistController', 'delete'],
     'admin/playlists/edit' => ['admin\PlaylistController', 'edit' , ['id']],
     'admin/playlists/search' => ['admin\PlaylistController', 'search', ['item']],
-    'admin/playlists/update' => ['admin\PlaylistController', 'show', ['id']],
+    'admin/playlists/update' => ['admin\PlaylistController', 'update', ['id']],
     
 ];

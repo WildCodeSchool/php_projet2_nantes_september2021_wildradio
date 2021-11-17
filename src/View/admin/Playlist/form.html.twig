@@ -1,5 +1,6 @@
 
 <form method="post" action="{{action}}" enctype="multipart/form-data">
+<input type="hidden" value="{{ track.id }}" name="id">
 
 <div> 
 	<label for="name"></label>
@@ -11,7 +12,7 @@
 
 <div>
         <label for="description"></label>
-        <textarea id="description" placeholder="Description" value="{{ playlist.description }}" name="description" ></textarea>
+        <input type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
 		{% if errors.description is defined %}
         	{{ errors.description }}
 		{% endif %}	
@@ -31,7 +32,7 @@
 </div>
 
 <div>
-  <input type="text" id="tag" name="tag" checked placeholder="tag">
+  <input type="text" id="tag" name="tag" value="{{ playlist.tag }}">
   <label for="tag"></label>
 </div>
 
@@ -39,6 +40,6 @@
 		<button class="buttons"type="submit" value="Submit"> Ajouter la playlist </button>
 </div>
  
-<div> {{messageEnvoi}}</div>
+<div> {{messageEnvoi}} </div>
 
 </form>
