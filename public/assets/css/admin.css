@@ -251,7 +251,6 @@ nav a {
 #right-admin-homepage {
     width:50%;
     position: relative;
-    background-image:url(/assets/images/demisunset.png);
     background-size:100% 100%;
     z-index: -1;
 }
@@ -444,6 +443,7 @@ input::placeholder {
 
 #playlist-edit-left {
     width: 50%;
+    padding-top: 30px;
 }
 
 #playlist-edit-right {
@@ -473,8 +473,8 @@ input::placeholder {
 #input-description {
     border: solid 1px black;
     border-radius: 5px;
-    background: none;
-    width: 80%; 
+    width: 70%; 
+    size: 200;
     margin-bottom: 10px;
     padding: 10px;
 }

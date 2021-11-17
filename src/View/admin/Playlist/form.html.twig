@@ -1,3 +1,4 @@
+<h2> Informations </h2>
 
 <form method="post" action="{{action}}" enctype="multipart/form-data">
 <input type="hidden" value="{{ track.id }}" name="id">
@@ -30,9 +31,9 @@
 </div>
 
 <div>
+  <label for="online"> En ligne </label>
   <input type="checkbox" id="is_online" name="is_online"
          {% if playlist.is_online == 1 %}  checked {% endif %}>
-  <label for="online"> En ligne </label>
 </div>
 
 <div>
