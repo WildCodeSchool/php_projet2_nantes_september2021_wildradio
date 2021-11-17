@@ -21,7 +21,6 @@
                     
                     <div> <img id="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
 
-
         <div id="buttons-admin-playlists">
 
                 <a href="/admin/playlists/edit?id={{ playlist.id }}"><button class="buttons-playlists">Modifier la Playlist</button></a>
@@ -30,8 +29,7 @@
                     <input type="hidden" name="id" value="{{ playlist.id }}">
                     <button class="buttons-playlists">Effacer</button>
                 </form>
-
-                    
+  
         </div>
 
     <br/>
@@ -39,5 +37,19 @@
     <a href="/admin/playlists"><button id="retour">Retour</button></a>
 
     <br/>
+    
+    
+    <div id="playlist-edit-right">
+        
+        <h2>Les tracks</h2><br>
+        
+        <ol id="playlist"> 
+        {% for track in tracksInPlaylist %}
+          <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
+        {% endfor %}
+        </ol>
 
-{% endblock %}
+    </div>
+
+
+{% endblock %}                

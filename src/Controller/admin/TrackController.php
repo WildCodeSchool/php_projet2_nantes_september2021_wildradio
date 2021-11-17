@@ -4,6 +4,8 @@ namespace App\Controller\admin;
 
 use App\Model\TrackManager;
 use App\Model\PlaylistManager;
+use App\Model\TrackPlaylistManager;
+
 
 class TrackController extends AbstractController
 {
@@ -12,8 +14,9 @@ class TrackController extends AbstractController
     public $playlists;
     public $errors = [];
     public $item;
+    public $toto;
 
-    // constructeur permet de sécuriser l'acces pour 
+    // constructeur permet de sécuriser l'acces  
 
     public function __construct()
     {
@@ -39,27 +42,18 @@ class TrackController extends AbstractController
             if ($this->track['title'] == "") {
                 $this->errors['title'] = "Le nom de la track est obligatoire";
             }
-
-            // check if only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['title'])) {
-                $this->errors['title'] = "Seul les lettres et espaces sont autorisés";
-            }
+            
             if ($this->track['artist'] == "") {
                 $this->errors['artist'] = "Le nom de l'artiste est obligatoire";
             }
 
-            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['artist'])) {
-                $this->errors['artist'] = "Seul les lettres et espaces sont autorisés";
-            }
-
             if ($this->track['album'] == "") {
                 $this->errors['album'] = "Le nom de l'album est obligatoire";
-            }
-            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['album'])) {
-                $this->errors['album'] = "Seul les lettres et espaces sont autorisés";
+        ;
             }
 
     }
+
     // vérifie taille de l'upload // 
     public function verifFile()
     {
@@ -140,7 +134,6 @@ class TrackController extends AbstractController
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Toutes mes tracks']);
     }
 
-
     /**
      * Show informations for a specific track
      */
@@ -165,7 +158,6 @@ class TrackController extends AbstractController
         }
     }
 
-    
     /**
      * permet d'afficher le formulaire pré-rempli 
      */
@@ -174,6 +166,8 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
 
+        $this->isInPlaylist();
+        
         $this->playlists = $this->browsePlaylists();
 
         return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists, 'button'=> "Modifier une track"]);
@@ -206,24 +200,42 @@ class TrackController extends AbstractController
      */
     public function addTrackToPlaylist()
     {
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
             if (empty($this->errors)){
-                $trackManager = new TrackManager();
-                $trackManager->link($_POST['id'], $_POST['addPlaylist']);
+                $trackPlaylistManager = new TrackPlaylistManager();
+                $trackPlaylistManager->unlink($_POST['id']);
+                $trackPlaylistManager->link($_POST['id'], $_POST['addPlaylist']);
+                header ('Location: /admin/tracks');
             }
             
-            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);           
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/tracks/playlistAdd"]);           
         }
-        return $this->twig->render('admin/Track/add.html.twig');
-      
+        return $this->twig->render('admin/Track/show.html.twig', ["id" => "track.id"]);
     }
+
+    /**
+     * Determine la liste des playlists selectionnés 
+     */
+    public function isInPlaylist()
+    {
+        $trackPlaylistManager = new TrackPlaylistManager();
+        $trackPlaylistManager->getAllSelectedPlaylists($_GET['id']);
+        
+        //$newarray = array_column($toto, 'playlist_id');
+        //$selectedPlaylists = []; 
+        //foreach (playlist_id in trackPlaylist in $toto ) , 
+    }
+
+
 
     /**
      * Permet d'afficher les playlists dans lesquels ajouter les tracks
      */
     public function browsePlaylists()
     {
+
         $playlistManager = new PlaylistManager();
         return  $playlistManager->getAll();
 

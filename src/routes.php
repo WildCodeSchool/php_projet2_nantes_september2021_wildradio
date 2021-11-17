@@ -17,6 +17,12 @@ return [
     'contact' => ['front\ContactController', 'contact'],
     'error' => ['front\ErrorController' , 'error'],
 
+    // s'enregistrer et se balader dans admin 
+
+    'admin/register' => ['admin\RegisterController', 'login'],
+    'admin' => ['admin\HomeController', 'index'],
+    'admin/logout' => ['admin\RegisterController', 'logout'],
+
    // affichage track admin
 
     'admin/tracks/playlistAdd' => ['admin\TrackController', 'addTrackToPlaylist'],
@@ -28,17 +34,17 @@ return [
     'admin/tracks/edit' => ['admin\TrackController', 'edit', ['id']],
     'admin/tracks/update' => ['admin\TrackController', 'update', ['id']],
     'admin/tracks/flux' => ['admin\TrackController', 'browseFlux' ],
-    'admin/register' => ['admin\RegisterController', 'login'],
-    'admin' => ['admin\HomeController', 'index'],
-    'admin/logout' => ['admin\RegisterController', 'logout'],
 
+ 
    // affichage playlists admin 
 
+   'admin/playlists' => ['admin\PlaylistController', 'browse'],
     'admin/playlists/add' => ['admin\PlaylistController', 'add'],
-    'admin/playlists' => ['admin\PlaylistController', 'browse'],
     'admin/playlists/show' => ['admin\PlaylistController', 'show' , ['id']],
-    'admin/playlists/delete' => ['admin\PlaylistController', 'delete'],
     'admin/playlists/edit' => ['admin\PlaylistController', 'edit' , ['id']],
+    'admin/playlists/delete' => ['admin\PlaylistController', 'delete'],
+    'admin/playlists/update' => ['admin\PlaylistController', 'update', ['id']],
     'admin/playlists/search' => ['admin\PlaylistController', 'search', ['item']],
-
+    'admin/playlists/update' => ['admin\PlaylistController', 'update', ['id']],
+    
 ];
