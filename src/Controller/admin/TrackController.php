@@ -4,6 +4,8 @@ namespace App\Controller\admin;
 
 use App\Model\TrackManager;
 use App\Model\PlaylistManager;
+use App\Model\TrackPlaylistManager;
+
 
 class TrackController extends AbstractController
 {
@@ -12,8 +14,9 @@ class TrackController extends AbstractController
     public $playlists;
     public $errors = [];
     public $item;
+    public $toto;
 
-    // constructeur permet de sécuriser l'acces pour 
+    // constructeur permet de sécuriser l'acces  
 
     public function __construct()
     {
@@ -50,6 +53,7 @@ class TrackController extends AbstractController
             }
 
     }
+
     // vérifie taille de l'upload // 
     public function verifFile()
     {
@@ -130,7 +134,6 @@ class TrackController extends AbstractController
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Toutes mes tracks']);
     }
 
-
     /**
      * Show informations for a specific track
      */
@@ -155,7 +158,6 @@ class TrackController extends AbstractController
         }
     }
 
-    
     /**
      * permet d'afficher le formulaire pré-rempli 
      */
@@ -164,6 +166,8 @@ class TrackController extends AbstractController
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
 
+        $this->isInPlaylist();
+        
         $this->playlists = $this->browsePlaylists();
 
         return $this->twig->render('admin/Track/edit.html.twig', ['track' => $track , 'action'=> "/admin/tracks/update?id=$id", 'playlists' => $this->playlists, 'button'=> "Modifier une track"]);
@@ -196,18 +200,36 @@ class TrackController extends AbstractController
      */
     public function addTrackToPlaylist()
     {
+        $this->isInPlaylist();
+        var_dump($playlists);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
             if (empty($this->errors)){
-                $trackManager = new TrackManager();
-                $trackManager->link($_POST['id'], $_POST['addPlaylist']);
+                $trackPlaylistManager = new TrackPlaylistManager();
+                $trackPlaylistManager->unlink($_POST['id']);
+                $trackPlaylistManager->link($_POST['id'], $_POST['addPlaylist']);
+                header ('Location: /admin/tracks');
             }
             
-            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/tracks/add"]);           
+            return $this->twig->render('admin/Track/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/tracks/playlistAdd"]);           
         }
-        return $this->twig->render('admin/Track/add.html.twig');
-      
+        return $this->twig->render('admin/Track/show.html.twig', ["id" => "track.id"]);
     }
+
+    /**
+     * Determine la list des playlists selectionnés 
+     */
+    public function isInPlaylist()
+    {
+        $trackPlaylistManager = new TrackPlaylistManager();
+        $trackPlaylistManager->getAllSelectedPlaylists($_GET['id']);
+        
+        //$selectedPlaylists = []; 
+        //foreach (playlist_id in trackPlaylist in $toto ) , 
+    }
+
+
 
     /**
      * Permet d'afficher les playlists dans lesquels ajouter les tracks

@@ -44,7 +44,7 @@
                 <tr>
                     <td><img id="img-playlist" src="{{playlist.img}}"></td>
                     <td id="infos-track-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
-                    <td id="actions-track-box"><input type="checkbox"  name="is_online" id="is_online" checked></td>
+                    <td id="actions-track-box">{% if playlist.is_online == 1 %} Oui {% else %} Non {% endif %}</td>
                     <td id="actions-track-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
                     <td id="actions-track-box">
                        <form action="/admin/playlists/delete" method="POST">
