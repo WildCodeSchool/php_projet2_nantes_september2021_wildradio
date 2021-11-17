@@ -171,5 +171,23 @@ public function show($id):string
     return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist]);
 }
 
+     /**
+     * Afficher une vue des playlists filtrées en fonction du mot recherché
+     */
+    public function search()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $this->item = $_GET['search'];
+            $playlistManager = new PlaylistManager();
+            $playlists = $playlistManager->getElementsFiltered($this->item);
+
+            return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
+        } 
+
+        $this->browse();
+    }
+
 }
 

@@ -12,8 +12,8 @@
         <div id="buttons-admin-tracks">
 
             <div id="searchbar">
-                <form action="">
-                    <input class="champ" type="text"/>
+                <form action="/admin/tracks/search" method="GET">
+                    <input class="champ" type="text" name="search" placeholder="Rechercher un titre, artiste ou album" />
                     <button class="fa fa-search"></button>
                 </form>
             </div>
@@ -42,8 +42,14 @@
                     <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.artist }}</a></td>
                     <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name }}</a></td>
                     <td id="actions-track-box"><input type="checkbox"  name="flux" id="flux"></td>
-                    <td id="actions-track-box"> <a href="/admin/tracks/edit?id={{track.id}}">Modif.</a></td>
-                    <td id="actions-track-box">Suppr.</td>
+                    <td id="actions-track-box"><a href="/admin/tracks/edit?id={{track.id}}">Modif.</a></td>
+                    <td id="actions-track-box">
+                        <form action="/admin/tracks/delete" method="POST">
+                         <input type="hidden" name="id" value="{{ track.id }}">
+                         <button>Effacer</button>
+                      </form>
+                    </td>
+
                 </tr>
                 {% endfor %}  
 

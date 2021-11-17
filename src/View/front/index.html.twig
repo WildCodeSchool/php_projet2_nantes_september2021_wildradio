@@ -11,7 +11,6 @@
 
 {% block header %}{% include "front/header.html.twig" %}{% endblock %}
 
-<body>
     <div id="contenu-homepage">
         <div id="left-homepage">
 
@@ -29,24 +28,19 @@
                 <div id="bouton-play-texte">
                     <p id="action">Play</p><i id="play" class="fa fa-play"></i>
                 </div>
-                <div id="infosTrack">
-                    {% for track in tracks %}
 
-                    <p>Artiste : {{ track.artist }}</p>
-                    <p>Titre : {{ track.name }}</p>
-
-                    {% endfor %}
-
-                </div>
-            </div>
+                    <div id="currentTrack"> </div> 
 
                 <ul id="playlist">
                     {% for track in tracks %}
-                    <li class="current-song">
-                        <a href="{{ track.mp3 }}"> </a>
+                    <li>
+                        <a href="{{ track.mp3 }}"> 
+                            <span id="player-track-artist">{{ track.artist }}</span> - {{track.name}} </br>
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>
+            </div>
         </div>
         {% block javascript %} 
 
@@ -61,12 +55,11 @@
 
             <div id="playlists-homepage">
                 <div id="buttons-playlists">
-                    <a href="/playlist/show?id=28?"><button id="button-playlists">► Winter lo-fi</button></a>
-                    <a href="/playlist/show?id=29?"><button id="button-playlists">► Workout hip hop</button></a>
+                    <a href="/playlist/show?id=27?"><button id="button-playlists">► Sweet music</button></a>
+                    <a href="/playlist/show?id=29?"><button id="button-playlists">► Lo-fi & Cie</button></a>
                 </div>
                 
                 <a href="/playlists"><button id="button-allplaylists">Écouter toutes nos playlists</button></a>
             </div>
 
-</body>
 {% endblock %}

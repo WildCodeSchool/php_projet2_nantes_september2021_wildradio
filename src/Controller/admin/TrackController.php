@@ -11,6 +11,7 @@ class TrackController extends AbstractController
     public $track; 
     public $playlists;
     public $errors = [];
+    public $item;
 
     // constructeur permet de sécuriser l'acces pour 
 
@@ -59,6 +60,26 @@ class TrackController extends AbstractController
             }
 
     }
+    // vérifie taille de l'upload // 
+    public function verifFile()
+    {
+
+        // Le poids max géré par PHP
+        $maxFileSize = 40000000;
+  
+        if (file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
+            $this->errors["mp3"] ="Le poids max du fichier est de 40Mo";} 
+
+        // // Je récupère l'extension du fichier
+        $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
+
+        // // Les extensions autorisées
+        $authorizedExtensions = ['mp3'];
+        if( (!in_array($extension, $authorizedExtensions))){
+            $this->errors['mp3'] = 'Veuillez sélectionner un fichier mp3 !';
+        }
+
+    }
     
     /// Traiement de l'upload des fichiers mp3 :
     public function uploadFile() 
@@ -70,25 +91,15 @@ class TrackController extends AbstractController
             // // Je récupère l'extension du fichier
             $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
 
-            // // Les extensions autorisées
-            $authorizedExtensions = ['mp3'];
-            if( (!in_array($extension, $authorizedExtensions))){
-                $this->errors['mp3'] = 'Veuillez sélectionner un fichier mp3 !';
-            }
-
             // le nom de fichier
             $uploadFile = $uploadDir . uniqid() . "." . $extension;
 
-            // Le poids max géré par PHP
-            $maxFileSize = 5000000;
-  
-            if (file_exists($_FILES['mp3']['tmp_name']) && filesize($_FILES['mp3']['tmp_name']) > $maxFileSize) {
-                $this->errors["mp3"] ="le poid max du fichier est de 5Mo";} 
-
+            
             // on précise le chemin du fichier pour la BDD
-            move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);
-                
-             $this->track['mp3'] = $uploadFile;
+          
+            move_uploaded_file($_FILES['mp3']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);  
+            $this->track['mp3'] = $uploadFile;
+            
                 
     }
 
@@ -101,6 +112,7 @@ class TrackController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $this->verification(); 
+            $this->verifFile();
                         
             if (empty($this->errors)){
                 $this->uploadFile();
@@ -149,7 +161,7 @@ class TrackController extends AbstractController
             $id = trim($_POST['id']);
             $trackManager = new TrackManager();
             $trackManager->delete($id);
-            header('Location:/admin/tracks');
+            header('Location: /admin/tracks');
         }
     }
 
@@ -177,7 +189,7 @@ class TrackController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verification
-            $verified = $this->verification(); 
+            $this->verification(); 
 
             // if validation is ok, update 
             if (empty($this->errors)){
@@ -227,6 +239,24 @@ class TrackController extends AbstractController
 
         return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Mon flux']);
 
+    }
+
+    /**
+     * Afficher une vue des tracks filtrées en fonction du mot rechercher
+     */
+    public function search()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $this->item = $_GET['search'];
+            $trackManager = new TrackManager();
+            $tracks = $trackManager->getElementsFiltered($this->item);
+
+            return $this->twig->render('admin/Track/index.html.twig', ['tracks' => $tracks, 'titre' => 'Toutes mes tracks']);
+        } 
+
+        $this->browse();
     }
 
 }

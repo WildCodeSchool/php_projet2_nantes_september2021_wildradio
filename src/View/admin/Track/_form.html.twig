@@ -36,7 +36,7 @@
 
 	<div id="add-to-flux">
 		<label for="flux"> Ajouter au flux</label>
-		<input type="checkbox"  name="flux" id="flux">
+		<input type="checkbox"  name="flux" id="flux" {% if track.is_in_flux == 1 %}  checked {% endif %} >
 	</div>
 
 	<div>
