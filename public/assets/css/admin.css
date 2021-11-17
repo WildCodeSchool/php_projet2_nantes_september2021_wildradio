@@ -414,3 +414,8 @@ input::placeholder {
     width: 80%;
     border-radius: 5px;
 }
+
+
+#playlist-edit-right {
+    width: 50%;
+}

@@ -37,7 +37,7 @@ class PlaylistManager extends AbstractManager
 
      public function update(array $playlist): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :name,  description = :description, img = :img, online = :online WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET name = :name,  description = :description, img = :img, is_online = :online WHERE id=:id");
         $statement->bindValue('id', $playlist['id'], \PDO::PARAM_INT);
         $statement->bindValue(':name', $playlist['name'], \PDO::PARAM_STR);
         $statement->bindValue(':description', $playlist['description'], \PDO::PARAM_STR);

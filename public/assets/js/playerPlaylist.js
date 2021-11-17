@@ -9,20 +9,17 @@ play_button.click(function() {
     $(this).toggleClass("fa-play", player.paused);
 });
 
-
-
 //fonction gérant le lancement du son, l'enchainement des tracks, le 
 
 function audioPlayer(){
     var currentSong = 0;
     $("#audioPlayer")[0].src = $("#playlist ul a")[0];
     $("#playlist ul a").click(function(e){
-        e.preventDefault();
-       $("#audioPlayer")[0].src = this.href;
+       e.preventDefault();
+       $("#audioPlayer")[0].src = this;
        $("#audioPlayer")[0].play();
        $(play_button.click);
-       });
-
+    });
     
     $("#audioPlayer")[0].addEventListener("ended", function(){
        currentSong++;
