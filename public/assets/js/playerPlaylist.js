@@ -9,8 +9,6 @@ play_button.click(function() {
     $(this).toggleClass("fa-play", player.paused);
 });
 
-
-
 //fonction gérant le lancement du son, l'enchainement des tracks, le 
 
 function audioPlayer(){
@@ -21,9 +19,6 @@ function audioPlayer(){
        $("#audioPlayer")[0].src = this.href;
        $("#audioPlayer")[0].play();
        $(play_button.click);
-      // $("#playlist ul").removeClass("current-song");
-      //  currentSong = $(this).parent().index();
-      //  $(this).parent().addClass("current-song");
     });
     
     $("#audioPlayer")[0].addEventListener("ended", function(){

@@ -12,6 +12,7 @@ class PlaylistController extends AbstractController
     public $playlist; 
     public $errors = [];
     public $trackPlaylist;
+    public $item;
     
 public function verification() 
 {
@@ -183,5 +184,21 @@ public function show($id):string
         $this->browse();
     }
 
+    public function update(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Verification
+            $this->verification(); 
+
+            // if validation is ok, update 
+            if (empty($this->errors)){
+                
+                $trackManager = new TrackManager();
+                $trackManager->update($this->track );
+                header('Location: /admin/tracks/show?id=' . $id);
+            }    
+        }
+    }    
 }
 
