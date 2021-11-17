@@ -5,7 +5,7 @@ namespace App\Controller\admin;
 
 use App\Model\PlaylistManager;
 use App\Model\TrackManager;
-
+use App\Model\TrackPlaylistManager;
 
 class PlaylistController extends AbstractController
 {
@@ -14,6 +14,19 @@ class PlaylistController extends AbstractController
     public $trackPlaylist;
     public $item;
     
+
+    // empêche d'afficher l'admin coté playlist 
+
+public function __construct()
+{
+        parent::__construct();
+        session_start();
+        if (!isset($_SESSION['Connected'])) {
+           header ("Location: /");
+        }
+}
+
+
 public function verification() 
 {
      // clean $_POST data
@@ -30,16 +43,8 @@ public function verification()
         }
 
         // Verifier les caractères spéciaux tu titre
-
-        if (!preg_match("/^[a-zA-Z ]*$/", $this->playlist['name'])) {
-            $this->errors['name'] = "Seul les lettres et espaces sont autorisés";
-        }
-
-        
-        if (!preg_match("/^[a-zA-Z ]*$/", $this->playlist['tag'])) {
-            $this->errors['tag'] = "Seul les lettres et espaces sont autorisés";
-        }
    
+
        // on indique 1 ou 0 si l'ajout au flux est coché
         $this->playlist['is_online'] = (isset($_POST['is_online'])) ? 1 : 0;
 }
@@ -184,21 +189,7 @@ public function show($id):string
         $this->browse();
     }
 
-    public function update(int $id)
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  
+}    
 
-            // Verification
-            $this->verification(); 
-
-            // if validation is ok, update 
-            if (empty($this->errors)){
-                
-                $trackManager = new TrackManager();
-                $trackManager->update($this->track );
-                header('Location: /admin/tracks/show?id=' . $id);
-            }    
-        }
-    }    
-}
 
