@@ -1,4 +1,4 @@
- {% extends '/admin/layout.html.twig' %}
+{% extends '/admin/layout.html.twig' %}
  
 {% block content %}
 
@@ -6,7 +6,7 @@
 
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
 
-            <h1> Modifier la track </h1>
+        <h1> Modifier la track </h1>
 
         <div id="contenu-track-edit">
 
@@ -14,7 +14,7 @@
 
                 {% include 'admin/Track/_form.html.twig' %}
 
-                    <a href="admin/tracks/show?id={{ track.id }}"><button id="retour">Retour</button></a>
+                <a href="admin/tracks/show?id={{ track.id }}"><button id="retour">Retour</button></a>
 
             </div>
 
@@ -26,4 +26,4 @@
         </div>
     </div>
 
-{% endblock %}
+{% endblock content %}
