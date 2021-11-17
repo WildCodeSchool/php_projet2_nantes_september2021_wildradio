@@ -106,56 +106,6 @@ nav a{
     margin-top: 40px;
 }
 
-/* CSS bouttons playlist2 playlist2 et "Voir tout"
-
-button:hover{
-    background:transparent;
-   
-}
-
-#BTS {display: flex;
-     justify-content:flex-start;
-     flex-direction: row;
-     margin-left: 130px;  
-     margin-top: 20px;   
-}
-
-
-.play1{
-  
-    padding:5px;
-    
-    text-align: center;
-    text-transform: uppercase;
-    background:transparent;
-    border-color: whitesmoke;
-    border-radius: 10px;
- }
-
- .play2{
-  
-    padding:5px;
-    text-align: center;
-    text-transform: uppercase;
-    background:transparent;
-    border-color: whitesmoke;
-    border-radius: 10px;
-    margin-left: 30px;
- }
- 
- .Voir{
-
-    padding:5px;
-    text-align: center;
-    text-transform: uppercase;
-    background:transparent;
-    border-radius: 10px;
-    background-color:#F39F81;
-    border:none;
-    margin-left: 130px; 
-    margin-top:10px;
- } */
-
 /* CSS du côté gauche de homepage */
 
 #left-homepage{
@@ -445,6 +395,7 @@ textarea:focus {
 
 #allPlaylists {
     padding-top: 30px;
+    padding-bottom: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
@@ -576,14 +527,37 @@ h3:hover {
 
     #playlist-left {
         padding-top: 20px;
-        width: 100%;
+        width: 85%;
+        height: 100vh;
     }
 
     #image-playlist {
-        width: 100%;
+        width: 95%;
         height: auto;
         margin-bottom: 20px;
         border-radius: 5px;
     }
+
+    #playlist-right {
+        padding-top: 20px;
+        width: 85%;
+        height: 100vh;
+    }
+
+    #playlist-left span {
+        margin: 0px;
+        position: relative;
+        top: 210px;
+    }
+
+    #contenu-playlist-right {
+        padding-top: 20px;
+        padding-left: 10%;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+    }
+
+    
 }
 

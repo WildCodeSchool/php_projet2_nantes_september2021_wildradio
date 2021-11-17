@@ -2,6 +2,8 @@
 <form method="post" action="{{action}}" enctype="multipart/form-data">
 <input type="hidden" value="{{ track.id }}" name="id">
 
+<input type="hidden" value="{{ playlist.id }}" name="id">
+
 <div> 
 	<label for="name"></label>
 	<input type="text" placeholder="name" value="{{ playlist.name }}" name="name" >
@@ -12,7 +14,9 @@
 
 <div>
         <label for="description"></label>
-        <input type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
+
+        <input id="input-description" type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
+
 		{% if errors.description is defined %}
         	{{ errors.description }}
 		{% endif %}	
@@ -27,19 +31,23 @@
 
 <div>
   <input type="checkbox" id="is_online" name="is_online"
-         checked>
-  <label for="online">Mettre en ligne</label>
+         {% if playlist.is_online == 1 %}  checked {% endif %}>
+  <label for="online"> En ligne </label>
 </div>
 
 <div>
-  <input type="text" id="tag" name="tag" value="{{ playlist.tag }}">
+
+  <input type="text" id="tag" name="tag" value="{{ playlist.tag }}" placeholder="tag">
   <label for="tag"></label>
 </div>
 
+
 <div>
-	<button class="buttons"type="submit" value="Submit"> Ajouter la playlist </button>
+
+		<button id="btn-submit" type="submit" value="Submit"> {{button}} </button>
 </div>
  
-<div> {{messageEnvoi}} </div>
+		<div id="messageEnvoi">  {{messageEnvoi}} </div>
 
 </form>
+

@@ -1,25 +1,57 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Lena-hub 
+WildCodeSchool
+/
+php_projet2_nantes_september2021_wildradio
+Private
+generated from WildCodeSchool/simple-mvc
+6
+0
+0
+Code
+Issues
+Pull requests
+1
+Actions
+Projects
+Wiki
+Security
+Insights
+php_projet2_nantes_september2021_wildradio/src/View/admin/Playlist/edit.html.twig
+@AliceBraye44
+AliceBraye44 Merge branch 'dev' into WR-61a
+Latest commit db54400 24 minutes ago
+ History
+ 3 contributors
+@Lena-hub@AliceBraye44@Johan-Mb
+41 lines (21 sloc)  883 Bytes
+   
  {% extends '/admin/layout.html.twig' %}
  
 {% block content %}
 
-
-    <div id="contenu-admin-playlist-add">
-
+<div id="contenu-admin-playlist-add">
+    
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
-         
-            <h1> Modifier la playlist </h1>
 
-    <div id="contenu-playlist-edit">
 
-    <div id="playlist-edit-left">
+    <h1> Modifier la playlist {{ playlist.name }}</h1>
+        <div id="contenu-playlist-edit">
+
+            <div id="playlist-edit-left">
 
         {% include 'admin/Playlist/form.html.twig' %}
 
-    <div>
-	    <a href="/admin/playlists"><button class="buttons">Retour </button></a>
+       <a href="/admin/playlists/show?id={{ playlist.id }}"><button id="retour">Retour</button></a>
+
     </div>
-  
-    </div>
+        
         
     <div id="playlist-edit-right">
         
@@ -27,14 +59,14 @@
 
     
         <ol id="playlist"> 
-        {% for track in tracksInPlaylist %}
-          <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
+          {% for track in tracksInPlaylist %}
+           <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
         {% endfor %}
         </ol>
 
-            </div>
-        </div>
+     </div>
+
+        
     </div>
       
     {% endblock %}
-
