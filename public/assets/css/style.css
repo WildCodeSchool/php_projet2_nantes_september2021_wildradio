@@ -25,7 +25,6 @@ a{
     text-decoration: none;
 }
 
-
 button {
     cursor:pointer;
     padding: 2%;
@@ -55,6 +54,8 @@ body{
 
 .wr{              
     width: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 nav {
@@ -69,14 +70,6 @@ nav {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-}
-
-#playlist{
-    margin-right: 20px;
-}
-
-#contact{
-    margin-left: 20px;
 }
 
 #ligne{                
@@ -558,6 +551,18 @@ h3:hover {
         justify-content: center;
     }
 
-    
+    /* CSS responsive de la page playlists (min-width: 1023px)*/
+
+    #allPlaylists {
+        padding-top: 30px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #image-playlists {
+        height: 100%;
+    }
 }
 

@@ -251,7 +251,6 @@ nav a {
 #right-admin-homepage {
     width:50%;
     position: relative;
-    background-image:url(/assets/images/demisunset.png);
     background-size:100% 100%;
     z-index: -1;
 }
