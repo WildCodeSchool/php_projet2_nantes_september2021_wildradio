@@ -1,8 +1,9 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-size: 18px;   
-}*
+    font-size: 18px;
+    font-family: 'Maven Pro', sans-serif;
+}
 
 h1{
     color:whitesmoke;
@@ -105,7 +106,7 @@ nav a{
     margin-top: 40px;
 }
 
-/* CSS bouttons playlist2 playlist2 et "Voir tout"*/
+/* CSS bouttons playlist2 playlist2 et "Voir tout"
 
 button:hover{
     background:transparent;
@@ -153,13 +154,13 @@ button:hover{
     border:none;
     margin-left: 130px; 
     margin-top:10px;
- }
+ } */
 
 /* CSS du côté gauche de homepage */
 
 #left-homepage{
     width: 50%;
-    padding-top: 120px;
+    padding-top: 25vh;
 }
 
 #wildradio{
@@ -230,7 +231,22 @@ audio {
 
 #player {
     color: whitesmoke;
-    margin-top: 20vh; 
+    margin-top: 25vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#player-track-artist {
+    font-weight: bold;
+}
+
+#player-track-album {
+    font-style: italic;
+}
+
+#playlist li {
+    display:none;
 }
 
 #bouton-play-texte {
@@ -261,9 +277,10 @@ audio {
 /* CSS de la page Contact */
 
 #contenu-playlists {
-    padding-top: 120px;
+    padding-top: 150px;
     margin-left: 10%;
     margin-right: 10%;
+    color: whitesmoke;
 }
 
 #contenu-contact {
@@ -277,7 +294,7 @@ audio {
     width: 50%;
     background-color: #4A517E;
     height: 100%;
-    padding-top: 110px;
+    padding-top: 150px;
 }
 
 #contact-left {
@@ -287,6 +304,7 @@ audio {
 
 #image-front {
     width: 100%;
+    height: 340px;
     margin-bottom: 20px;
     border-radius: 5px;
 }
@@ -298,7 +316,7 @@ audio {
 #contenu-right-contact {
     padding-bottom: 10vh;
     width: 50%;
-    padding-top: 110px;
+    padding-top: 150px;
 
 }
 
@@ -369,81 +387,90 @@ textarea:focus {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(226deg) brightness(105%) contrast(101%);
 }
 
-/* CSS playlist page */
-#playlistpage {
-    display: flex;
-}
+/* CSS d'une page playlist/show */
 
-#left-playlistpage {
+#playlist-left {
+    padding-top: 50px;
+    padding-left: 10%;
+    padding-right: 5%;
+    height: 100vh;
+    color: white;
+    width: 50%;
     background-color: #4A517E;
-    width: 50%;
 }
 
-
-#right-playlistpage {
-    background-color:#F39F81;
-}
-
-.imgPlaylistCarre{
-    width: 12rem;
-    height: 12rem;
-    width: 50%;
-}
-#playlist-description{
-    margin-left: 20%;
-    margin-right: 20%;
-    padding: 5%;
-}
-#playlist-description h2{
-    padding-top: 5%;
-    font-size: 30px;
-    text-transform : uppercase;
-}
-.imgPlaylist{
+#image-playlist {
     width: 100%;
-    height: 180px;
-    border-radius: 5%;
-    object-fit: cover;
-    object-position: 20% 10%; 
+    height: 340px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
-.allPlaylists{
-    background-color: yellow;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.onePlaylists{
-    justify-content : space-around;
-}
-
-.parent {
+#playlist-left span {
+    margin: 0px;
     position: relative;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+    top: 230px;
 }
 
-.child1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.7;
-    background: #F39F81;
+#playlist-left p {
+    padding-top: 20px;
 }
 
-#tracks-list{
-    margin-left: 20%;
-    margin-right: 20%;
-    padding: 5%;
-    color:white;
+
+#playlist-right {
+    padding-left: 5%;
+    padding-right: 10%;
+    height: 100vh;
+    color: white;
+    width: 50%;
 }
 
-#tracks-list h2{
-    padding-bottom: 5%;
-    font-size: 26px;
-    text-transform : uppercase;
-    text-align: left;
+#contenu-playlist-right {
+    padding-top: 140px;
+}
+
+#contenu-playlist-right #playlist {
+    padding-top: 20px;
+}
+
+#contenu-playlist-right ul {
+    padding-bottom: 10px;
+}
+
+#contenu-playlist-right a {
+    color: whitesmoke;
+}
+
+/* CSS de la page /playlists */
+
+#allPlaylists {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+#allPlaylists a {
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+#image-playlists {
+    width: 100%;
+    height: 340px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #F39F81;
+    transition: transform .2s;
+}
+
+#image-playlists:hover {
+    transform: scale(1.05);
+}
+
+h3:hover {
+    font-weight: bold;
 }
 
 /* CSS responsive de la homepage (min-width: 1023px)*/
@@ -520,7 +547,7 @@ textarea:focus {
         margin-top: 5vh;
     }
 
-    /* CSS responsive de la homepage (min-width: 1023px)*/
+    /* CSS responsive de la page contact (min-width: 1023px)*/
 
     #contenu-contact {
         flex-direction: column;
@@ -545,5 +572,18 @@ textarea:focus {
         padding-right: 10%;
     } 
 
+    /* CSS responsive d'une page playlist/show' (min-width: 1023px)*/
+
+    #playlist-left {
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    #image-playlist {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
 }
 

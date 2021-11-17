@@ -21,6 +21,8 @@ function audioPlayer(){
        $("#audioPlayer")[0].src = this.href;
        $("#audioPlayer")[0].play();
        $(play_button.click);
+
+       // // Fonction permettant de mettre en surbrillance le titre joué
       // $("#playlist ul").removeClass("current-song");
       //  currentSong = $(this).parent().index();
       //  $(this).parent().addClass("current-song");

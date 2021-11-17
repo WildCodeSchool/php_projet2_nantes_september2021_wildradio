@@ -6,17 +6,20 @@
 
 <div id="contenu-playlists">
 
-<h2> Toutes nos playlists</h2>
-    
+<h1> Toutes nos playlists</h1>
+    <br/>
 <p> Ecoutez nos playlists créees avec ❤ </p>
 
-    <div class="allPlaylists"> {% for playlist in playlists %}
+    <div id="allPlaylists"> 
+    
+    {% for playlist in playlists %}
+
         <div class="OnePlaylist">  
             
-            <div> <a href="/playlist/show?id={{playlist.id}}?>"><img class="imgPlaylistCarre" src="{{playlist.img}}"> </img></a></div>
+            <div> <a href="/playlist/show?id={{playlist.id}}?>"><img id="image-playlists" src="{{playlist.img}}"> </img></a></div>
             <a href="/playlist/show?id={{playlist.id}}?>"> <h3> {{playlist.name}}</h3> </a>
             
-        <div> 
+        </div> 
         {% endfor %}
     </div> 
 </div>
