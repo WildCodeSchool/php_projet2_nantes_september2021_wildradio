@@ -376,6 +376,24 @@ input::placeholder {
 #track-edit-right {
     width: 50%;
 }
+/* CSS de la page /admin/playlist/edit */
+
+#contenu-playlist-edit {
+    margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction:row;
+}
+
+
+#playlist-edit-left {
+    width: 50%;
+}
+
+#playlist-edit-right {
+    width: 50%;
+}
 
 /* CSS de la page /admin/playlists */
 
@@ -384,9 +402,20 @@ input::placeholder {
     height: 60px;
 }
 
+/* CSS de la page /admin/playlists/show + edit */
+
+#imgPlaylist{
+    width: 60px;
+    height: 60px;
+
 /* CSS de la page /admin/playlists/show */
 
 #imgPlaylist {
     width: 80%;
     border-radius: 5px;
+}
+
+
+#playlist-edit-right {
+    width: 50%;
 }

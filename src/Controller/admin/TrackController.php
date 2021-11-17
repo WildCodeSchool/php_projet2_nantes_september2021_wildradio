@@ -42,24 +42,14 @@ class TrackController extends AbstractController
             if ($this->track['title'] == "") {
                 $this->errors['title'] = "Le nom de la track est obligatoire";
             }
-
-            // check if only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['title'])) {
-                $this->errors['title'] = "Seul les lettres et espaces sont autorisés";
-            }
+            
             if ($this->track['artist'] == "") {
                 $this->errors['artist'] = "Le nom de l'artiste est obligatoire";
             }
 
-            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['artist'])) {
-                $this->errors['artist'] = "Seul les lettres et espaces sont autorisés";
-            }
-
             if ($this->track['album'] == "") {
                 $this->errors['album'] = "Le nom de l'album est obligatoire";
-            }
-            if (!preg_match("/^[a-zA-Z ]*$/", $this->track['album'])) {
-                $this->errors['album'] = "Seul les lettres et espaces sont autorisés";
+        ;
             }
 
     }
