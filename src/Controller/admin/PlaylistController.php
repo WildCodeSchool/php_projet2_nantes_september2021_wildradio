@@ -38,13 +38,13 @@ public function __construct()
  
          if (empty($this->errors)){
  
-         // validation et redirection 
- 
-             $this->uploadFile();
-             $playlistManager = new PlaylistManager();
-             $playlistManager->insert($this->playlist);
-             return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add"]);
-         }
+        // validation et redirection 
+
+        $this->uploadFile();
+        $playlistManager = new PlaylistManager();
+        $playlistManager->insert($this->playlist);
+        return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add"]);
+        }
          
          return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
          var_dump($this->playlist);
@@ -69,9 +69,6 @@ public function verification()
         if ($this->playlist['description'] == "") {
             $this->errors['description'] = "Ajoutez une description";
         }
-
-        // Verifier les caractères spéciaux tu titre
-   
 
        // on indique 1 ou 0 si l'ajout au flux est coché
         $this->playlist['is_online'] = (isset($_POST['is_online'])) ? 1 : 0;
@@ -99,7 +96,11 @@ public function show($id):string
     $playlistManager = new PlaylistManager();
     $playlist= $playlistManager->selectOneById($id);
 
-    return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist]);
+    $trackPlaylistManager = new TrackPlaylistManager();
+    $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
+
+    return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist, 'tracksInPlaylist' => $tracksInPlaylist]);
+    
 }
 
 
@@ -147,7 +148,7 @@ public function verifFile()
     {
 
         // Le poids max géré par PHP
-        $maxFileSize = 20000000;
+        $maxFileSize = 2000000;
   
         if (file_exists($_FILES['img']['tmp_name']) && filesize($_FILES['img']['tmp_name']) > $maxFileSize) {
             $this->errors["img"] ="L'image ne doit pas dépasser 2Mo";} 
@@ -195,7 +196,6 @@ public function search()
 
     return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
 } 
-
         $this->browse();
     }
 
@@ -210,9 +210,9 @@ public function update(int $id)
     // if validation is ok, update 
     if (empty($this->errors)){
         
-        $trackManager = new TrackManager();
-        $trackManager->update($this->track );
-        header('Location: /admin/tracks/show?id=' . $id);
+        $playlistManager = new PlaylistManager();
+        $playlistManager->update($this->playlist );
+        header('Location: /admin/playlists/show?id=' . $id);
     }
     } 
   }

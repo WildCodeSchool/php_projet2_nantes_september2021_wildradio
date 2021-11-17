@@ -6,32 +6,40 @@
     <div id="contenu-admin-playlist-add">
 
         {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
-
-         <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
          
             <h1> Modifier la playlist </h1>
 
-        <div id="contenu-playlist-edit">
+    <div id="contenu-playlist-edit">
 
-            <div id="playlist-edit-left">
+    <div id="playlist-edit-left">
 
-                {% include 'admin/Playlist/form.html.twig' %}
+        {% include 'admin/Playlist/form.html.twig' %}
 
-                    <a href="admin/playlists/show?id={{ playlist.id }}"><button class="buttons">Retour</button></a>
+        
+    <div>
+	    <a href="/admin/playlists"><button class="buttons">Ajouter </button></a>
+    </div>
 
-            </div>
-            <div id="playlist-edit-right">
-             <h2>liste des tracks dans cette playlist</h2>
-             
+    <div>
+	    <a href="/admin/playlists"><button class="buttons">Retour </button></a>
+    </div>
+  
+    </div>
+        
+    <div id="playlist-edit-right">
+        
+        <h2>Les tracks</h2><br>
 
-        <ol id="playlist"> {% for track in tracksInPlaylist %}
-          <ul> <strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}} </ul>
-          
-
+    
+        <ol id="playlist"> 
+        {% for track in tracksInPlaylist %}
+          <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
         {% endfor %}
         </ol>
 
             </div>
         </div>
     </div>
+      
+    {% endblock %}
 
