@@ -2,27 +2,58 @@
 
 {% block content %}
 
-{% block header %}{% include "admin/header.html.twig" %}{% endblock %}
-         
-    <h1> Ma playlist </h1>
-    <p>Playlist: {{ playlist.name }}</p>
-    <p>Description : {{ playlist.description }}</p><br> 
 
-    <div> <img class="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
-      
-    <div>
-        <a href="/admin/playlists/edit?id={{ playlist.id }}">Modifier la Playlist</a>
-    </div>
+    <div id="contenu-admin-track-add">
 
-    <form action="/admin/playlists/delete" method="POST">
-        <input type="hidden" name="id" value="{{ playlist.id }}">
-        <button class="buttons"></button>
-    </form>
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
 
-    <div>
-	    <a href="/admin/playlists"><button class="buttons">Retour </button></a>
-    </div>
-  
+            <h1>Informations de la playlist</h1>
+
+        <div id="contenu-track-edit">
+
+                <div id="track-edit-left">
+        
+                    <div id="input-description"> Titre :
+                        <span id="playlist-name"> {{ playlist.name }}</span>
+                    </div>
+                    
+                    <div id="input-description"> Description : 
+                        {{ playlist.description }}</div>
+                    
+                    <div> <img id="imgPlaylist" src="{{playlist.img}}"> </img></div> <br>
+
+
+        <div id="buttons-admin-playlists">
+
+                <a href="/admin/playlists/edit?id={{ playlist.id }}"><button class="buttons-playlists">Modifier la Playlist</button></a>
+
+                <form action="/admin/playlists/delete" method="POST">
+                    <input type="hidden" name="id" value="{{ playlist.id }}">
+                    <button class="buttons-playlists">Effacer</button>
+                </form>
+
+                    
+        </div>
+        
+        <div>
+       <h2>Liste des tracks dans cette playlist</h2>
+                
+     <ol id="playlist">
+     {% for track in tracksInPlaylist %} 
+        <ul> 
+           <a href="{{track.mp3}}"><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}} </a>
+        </ul>
+    {% endfor %}
+    </ol>
+        </div> 
+
+    <br/>
+
+    <a href="/admin/playlists"><button id="retour">Retour</button></a>
+
+    <br/>
+    
+    
     <div id="playlist-edit-right">
         
         <h2>Les tracks</h2><br>
@@ -34,5 +65,6 @@
         </ol>
 
     </div>
-    
+
+
 {% endblock %}                
