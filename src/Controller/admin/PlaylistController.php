@@ -149,31 +149,33 @@ public function edit(int $id)
 {
     $playlistManager = new PlaylistManager();
     $this->playlist = $playlistManager->selectOneById($id);
-    return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'button'=> "Modifier une track"]);
 
+    return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'button'=> "Modifier une track"]);
 }
 
 public function update(int $id)
 {
+    var_dump($_POST);
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $this->verification(); 
 
         // if validation is ok, update 
-        if (empty($this->errors)){
+       
 
             // validation et redirection
             $playlistManager = new PlaylistManager();
-            $playlistManager->update($this->playlist );
+            $playlistManager->update($this->playlist);
             header('Location: /admin/playlists/show?id=' . $id);
-        }
-            
+        
+        
+        
+        
     }
-    
-    return $this->twig->render('admin/Playlist/edit.html.twig', [
-        'playlist' => $this->playlist , 'action'=> "/admin/playlists/edit?id=$id" , 'button' => 'Modifier la playlist' 
-    ]);
-  
+
+    echo "oups";
+
 }
   
 // Afficher après création et modifier playlist

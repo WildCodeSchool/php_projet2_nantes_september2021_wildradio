@@ -34,11 +34,11 @@ return [
 
    // affichage playlists admin 
 
+   'admin/playlists' => ['admin\PlaylistController', 'browse'],
     'admin/playlists/add' => ['admin\PlaylistController', 'add'],
-    'admin/playlists' => ['admin\PlaylistController', 'browse'],
     'admin/playlists/show' => ['admin\PlaylistController', 'show' , ['id']],
-    'admin/playlists/delete' => ['admin\PlaylistController', 'delete'],
     'admin/playlists/edit' => ['admin\PlaylistController', 'edit' , ['id']],
+    'admin/playlists/delete' => ['admin\PlaylistController', 'delete'],
     'admin/playlists/update' => ['admin\PlaylistController', 'update', ['id']],
     'admin/playlists/search' => ['admin\PlaylistController', 'search', ['item']],
 
