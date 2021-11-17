@@ -5,21 +5,18 @@ namespace App\Controller\admin;
 
 use App\Model\PlaylistManager;
 use App\Model\TrackManager;
+use App\Model\TrackPlaylistManager;
 
 
 class PlaylistController extends AbstractController
 {
-
-
     public $playlist; 
     public $errors = [];
     public $trackPlaylist;
     
-
 public function verification() 
 {
-
-        // clean $_POST data
+     // clean $_POST data
         $this->playlist = array_map('trim', $_POST);
 
         // Valider le format
@@ -42,8 +39,7 @@ public function verification()
         if (!preg_match("/^[a-zA-Z ]*$/", $this->playlist['tag'])) {
             $this->errors['tag'] = "Seul les lettres et espaces sont autorisés";
         }
-
-        
+   
        // on indique 1 ou 0 si l'ajout au flux est coché
         $this->playlist['is_online'] = (isset($_POST['is_online'])) ? 1 : 0;
 }
@@ -65,8 +61,7 @@ public function add()
             $this->uploadFile();
             $playlistManager = new PlaylistManager();
             $playlistManager->insert($this->playlist);
-            header('Location:/playlists/add');
-
+            return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add"]);
         }
         
         return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
@@ -98,7 +93,7 @@ public function delete()
         $id = trim($_POST['id']);
         $playlistManager = new PlaylistManager();
         $playlistManager->delete($id);
-        header('Location:/playlists');
+        header('Location:/admin/playlists/');
     }
 }
 
@@ -107,7 +102,7 @@ public function delete()
 public function uploadFile() {
 
     // chemin vers un dossier sur le serveur qui va recevoir les fichiers transférés
-    $uploadDir = "/assets/images";
+    $uploadDir = "/assets/images/";
 
     // // Je récupère l'extension du fichier
     $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
@@ -153,17 +148,46 @@ public function edit(int $id)
 
         // validation et redirection
         $playlistManager->update($this->playlist );
-        header('Location: /playlists/show?id=' . $id);
+        header('Location: admin/playlists/show?id=' . $id);
     }
+        $trackPlaylistManager = new TrackPlaylistManager();
+        $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
 
     return $this->twig->render('admin/Playlist/edit.html.twig', [
-        'playlist' => $this->track , 'action'=> "/playlists/edit?id=$id" 
+        'playlist' => $this->playlist , 'action'=> "/playlists/edit?id=$id" , 'tracksInPlaylist' => $tracksInPlaylist
     ]);
+
+ 
 }
   
+// Afficher après création et modifier playlist
 
+public function show($id):string
+{
 
+    $playlistManager = new PlaylistManager();
+    $playlist= $playlistManager->selectOneById($id);
 
+    return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist]);
 }
 
+     /**
+     * Afficher une vue des playlists filtrées en fonction du mot recherché
+     */
+    public function search()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $this->item = $_GET['search'];
+            $playlistManager = new PlaylistManager();
+            $playlists = $playlistManager->getElementsFiltered($this->item);
+
+            return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
+        } 
+
+        $this->browse();
+    }
+
+}
 

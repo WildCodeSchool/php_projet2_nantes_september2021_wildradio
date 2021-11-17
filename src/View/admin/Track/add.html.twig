@@ -6,7 +6,18 @@
 
 {% block content %}
 
-    <h1>Ajouter une nouvelle track</h1>
-    {% include 'admin/Track/_form.html.twig' %}
+    <div id="contenu-admin-track-add">
+
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+        
+        <h1>Ajouter une nouvelle track</h1>
+
+        <div id="contenu-admin-tracks">
+
+            {% include 'admin/Track/_form.html.twig' %}
+
+            <a href="/admin/tracks"><button class="buttons">Retour</button></a>
+        </div>
+    </div>
 
 {% endblock %}

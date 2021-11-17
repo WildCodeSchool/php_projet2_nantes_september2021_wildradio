@@ -11,7 +11,7 @@
 
 <div>
         <label for="description"></label>
-        <textarea id="description" placeholder="Description" value="{{ playlist.name }}" name="description" ></textarea>
+        <input type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
 		{% if errors.description is defined %}
         	{{ errors.description }}
 		{% endif %}	
@@ -22,7 +22,7 @@
 		{% if errors.jpg is defined %}
         	{{ errors.jpg }}
 		{% endif %}
-	</div>
+</div>
 
 <div>
   <input type="checkbox" id="is_online" name="is_online"
@@ -31,13 +31,14 @@
 </div>
 
 <div>
-  <input type="text" id="tag" name="tag" checked placeholder="tag">
+  <input type="text" id="tag" name="tag" value="{{ playlist.tag }}">
   <label for="tag"></label>
 </div>
 
 <div>
-		<button type="submit" value="Submit"> Ajouter la playlist </button>
+		<button class="buttons"type="submit" value="Submit"> Ajouter la playlist </button>
 </div>
  
+<div> {{messageEnvoi}}</div>
 
 </form>

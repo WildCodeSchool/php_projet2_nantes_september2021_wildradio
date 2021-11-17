@@ -2,20 +2,36 @@
 
 {% block content %}
 
-    <h1>Track: {{ track.name }}</h1>
-    <p> Titre : {{ track.name }} <br> 
-    Artiste : {{ track.artist }}<br> 
-    Album : {{ track.album }}<br> 
-    Est dans le flux : {%  if track.flux == 1 %} Oui {% else %} Non {% endif %}
-    </p>
+    <div id="contenu-admin-track-add">
 
-    <a href="/admin/tracks/edit?id={{ track.id }}">Modifier la track</a>
+    {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
 
-    <form action="/tracks/delete" method="POST">
-        <input type="hidden" name="id" value="{{ track.id }}">
-        <button>Effacer</button>
-    </form>
+        <h1>Informations du track</h1>
 
-    <a href="/admin/tracks">Retour</a>
+            <div id="contenu-admin-tracks">
+
+        <div id="input-form"> Titre : {{ track.name }}</div> 
+        <div id="input-form"> Artiste : {{ track.artist }}</div>
+        <div id="input-form">Album : {{ track.album }}</div> 
+        <div> Est dans le flux : {% if track.is_in_flux == 1 %} Oui {% else %} Non {% endif %}</div>
+        <br/>
+        
+        <a class="buttons" href="/admin/tracks/edit?id={{ track.id }}">Modifier la track</a>
+
+            <br/>
+
+        <form action="/admin/tracks/delete" method="POST">
+            <input type="hidden" name="id" value="{{ track.id }}">
+                        <br/>
+
+            <button class="buttons">Effacer</button>
+        </form>
+
+            <br/>
+
+        <a class="buttons" href="/admin/tracks">Retour</a>
+
+    </div>
+</div>
 
 {% endblock %}

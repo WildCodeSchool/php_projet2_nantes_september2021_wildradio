@@ -1,0 +1,416 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:'Maven Pro';
+    font-size: 18px;
+}
+
+body{
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #F39F81;
+
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.sunset{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;    
+    color: black;          
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.buttons {
+    cursor:pointer;
+    padding: 10px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: #F39F81;
+    text-transform: uppercase;
+}
+
+.buttons:hover {
+    border: solid 1px black;
+    background-color: #F39F81;
+    color: black;
+}
+
+/* CSS du header */
+
+.wr{              
+    width: 70px;
+}
+
+nav {           
+    margin-left: 10%;
+    margin-right: 10%;        
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+
+#nav-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+#nav-right {
+    cursor:pointer;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+#btn-nav-admin {
+    cursor:pointer;
+    padding: 10px;
+    width: 155px;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: #F39F81;
+    text-transform: uppercase;
+}
+
+#btn-nav-admin:hover {
+    border: solid 1px black;
+    background-color: #F39F81;
+    color: black;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;          
+}
+
+#ligne {                
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: black;
+    height: 1px;
+}
+
+/* CSS de la page Register */
+
+#register-page {
+    background-color: #F39F81;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#connect {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+#icone-connect {
+    margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+#input-register {
+    border: solid 1px black;
+    border-radius: 5px;
+    background: none;
+    height: 35px;
+    width : 250px;
+    margin-bottom: 10px;
+} 
+
+#btn-submit {
+    border: solid 1px black;
+    border-radius: 5px;
+    background: black;
+    color: #F39F81;
+    height: 35px;
+    width : 250px;
+}
+
+#btn-submit:hover {
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: transparent;
+    color: black;
+    height: 35px;
+    width : 250px;
+}
+
+/* CSS de la page /admin */
+
+#contenu-admin {
+    display: flex;
+    flex-direction:row;
+}
+
+#left-admin {
+    background-color: #F39F81;
+    width: 50%;
+    height: 100vh;
+}
+
+#contenu-left-admin {
+    margin-top: 10vh;
+    margin-left: 10%;
+}
+
+#buttons-admin {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#right-admin-homepage {
+    width:50%;
+    position: relative;
+    background-image:url(/assets/images/demisunset.png);
+    background-size:100% 100%;
+    z-index: -1;
+}
+
+/* CSS de la page /admin/tracks */
+
+#admin-tracks {
+    background-color: #F39F81;
+}
+
+#contenu-admin-tracks {
+    margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#buttons-admin-tracks {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+#searchbar{
+    height:auto;
+    display:inline-block;
+}
+
+#searchbar .champ{
+    background: none;
+    border: solid 1px black;
+    border-radius: 5px;
+    background: none;
+    width:500px;
+    float:left;
+}
+
+#searchbar button{
+    background: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border:none;
+    float:left;
+}
+
+table {
+    width: 100%;
+    margin-top: 5vh;
+    border-collapse: separate; 
+    border-spacing:10px;
+}
+
+th{
+    text-align: left;
+    text-transform: uppercase;
+}
+
+#infos-track-box {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#actions-track-box {
+    text-align: center;
+}
+
+/* CSS du formulaire tracks/add */
+
+#contenu-track-add {
+    /* margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%; */
+    padding: 0;
+    display: flex;
+    flex-direction:row;
+}
+
+#left-side-admin {
+    margin-top: 5vh;
+    width: 40%;
+    /* display: flex;
+    flex-direction:column;
+    align-items:center; */
+}
+
+#right-side-admin {
+    margin-top: 5vh;
+    width: 40%;
+    /* display: flex;
+    flex-direction:column;
+    align-items:center; */
+}
+
+#form-add-track {
+    margin-top: 5vh;
+    width: 100%;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: none;
+}
+
+input::placeholder {
+    color : rgba(0, 0, 0, 0.274);
+    padding-top: 10px;
+}
+
+#icones {
+    width: 20px;
+    height: 20px;
+}
+
+/* CSS de la page /admin/tracks/add */
+
+#contenu-admin-track-add {
+    background-color: #F39F81;
+    height:100vh;
+}
+
+#contenu-admin-track-add h2 {
+    margin-top: 5vh;
+}
+
+#form-track {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+#input-form {
+    border: solid 1px black;
+    border-radius: 5px;
+    background: none;
+    width: 80%; 
+    height: 35px;
+    margin-bottom: 10px;
+} 
+
+input::placeholder {
+    padding-left: 15px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.37);
+}
+
+#add-to-flux {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 10%;
+}
+
+/* CSS de la page /admin/tracks/edit */
+
+#contenu-admin-track-add h1 { 
+    margin-top: 5vh;
+    margin-left: 10%;
+}
+
+#contenu-track-edit {
+    margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction:row;
+}
+
+#track-edit-left {
+    width: 50%;
+}
+
+#track-edit-right {
+    width: 50%;
+}
+/* CSS de la page /admin/playlist/edit */
+
+#contenu-playlist-edit {
+    margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction:row;
+}
+
+
+#playlist-edit-left {
+    width: 50%;
+}
+
+#playlist-edit-right {
+    width: 50%;
+}
+
+/* CSS de la page /admin/playlists */
+
+#img-playlist {
+    width: 60px;
+    height: 60px;
+}
+
+/* CSS de la page /admin/playlists/show + edit */
+
+#imgPlaylist{
+    width: 60px;
+    height: 60px;
+
+/* CSS de la page /admin/playlists/show */
+
+#imgPlaylist {
+    width: 80%;
+    border-radius: 5px;
+}
