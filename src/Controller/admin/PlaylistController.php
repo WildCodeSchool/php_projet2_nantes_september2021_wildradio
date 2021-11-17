@@ -12,6 +12,20 @@ class PlaylistController extends AbstractController
     public $playlist; 
     public $errors = [];
     public $trackPlaylist;
+
+
+ // constructeur permet de sécuriser l'acces  
+
+ public function __construct()
+ {
+     parent::__construct();
+     session_start();
+     if (!isset($_SESSION['Connected'])) {
+        header ("Location: /");
+     }
+ }
+
+
     
 public function verification() 
 {
