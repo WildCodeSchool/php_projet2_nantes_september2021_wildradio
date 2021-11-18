@@ -178,6 +178,12 @@ audio {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 1.2s;
+    object-fit: cover;
+}
+
+#player:hover {
+    transform: scale(1.05);
 }
 
 #player-track-artist {
@@ -250,6 +256,7 @@ audio {
     height: 340px;
     margin-bottom: 20px;
     border-radius: 5px;
+    object-fit: cover;
 }
 
 #contact-left p {
@@ -336,10 +343,14 @@ textarea:focus {
     padding-top: 50px;
     padding-left: 10%;
     padding-right: 5%;
-    height: 100vh;
     color: white;
     width: 50%;
     background-color: #4A517E;
+}
+
+#contenu-playlist-left {
+    background-color: #4A517E;
+    padding-bottom: 50px;
 }
 
 #image-playlist {
@@ -347,6 +358,7 @@ textarea:focus {
     height: 340px;
     margin-bottom: 20px;
     border-radius: 5px;
+    object-fit: cover;
 }
 
 #playlist-left span {
@@ -407,6 +419,7 @@ textarea:focus {
     border-radius: 5px;
     background-color: #F39F81;
     transition: transform 1.2s;
+    object-fit: cover;
 }
 
 #image-playlists:hover {
@@ -529,6 +542,7 @@ h3:hover {
         height: auto;
         margin-bottom: 20px;
         border-radius: 5px;
+        object-fit: cover;
     }
 
     #playlist-right {
@@ -563,6 +577,8 @@ h3:hover {
 
     #image-playlists {
         height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 
     #playlist-left span {

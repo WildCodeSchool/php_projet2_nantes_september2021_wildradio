@@ -276,6 +276,7 @@ nav a {
 
 #searchbar{
     height:auto;
+    width: 40%;
     display:inline-block;
 }
 
@@ -284,7 +285,7 @@ nav a {
     border: solid 1px black;
     border-radius: 5px;
     background: none;
-    width:500px;
+    width:73%;
     float:left;
 }
 
@@ -292,7 +293,6 @@ nav a {
     background: none;
     width: 40px;
     height: 40px;
-    padding: 0;
     border:none;
     float:left;
 }
@@ -302,6 +302,8 @@ table {
     margin-top: 5vh;
     border-collapse: separate; 
     border-spacing:10px;
+    position: relative;
+    left: -10px;
 }
 
 th{
@@ -312,12 +314,28 @@ th{
 #infos-track-box {
     border: 1px solid black;
     border-radius: 5px;
+    padding: 20px;
+    width: 25vw;
+}
+
+#infos-playlist-box {
+    border: 1px solid black;
+    border-radius: 5px;
     padding: 10px;
+    width: 290vw;
+}
+
+#actions-playlist-box {
+    text-align: center;
+    width: 25vw;
 }
 
 #actions-track-box {
     text-align: center;
+    width: 15vmin;
 }
+
+
 
 /* CSS du formulaire tracks/add */
 
@@ -392,6 +410,16 @@ input::placeholder {
     margin-bottom: 10px;
     padding-left: 10px;
 } 
+
+.input-form {
+    border: solid 1px black;
+    border-radius: 5px;
+    background: none;
+    width: 80%; 
+    height: 35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
 
 input::placeholder {
     padding-left: 15px;
@@ -491,7 +519,7 @@ input::placeholder {
 }
 
 #input-description {
-    border: solid 1px black;
+    border: solid 1px rgb(139, 82, 82);
     border-radius: 5px;
     width: 70%; 
     size: 200;

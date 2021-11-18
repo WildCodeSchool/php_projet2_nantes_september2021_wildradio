@@ -11,11 +11,13 @@
 
 {# PAGE DE GAUCHE #}
 
-            <div id="playlist-left"> 
+        <div id="playlist-left"> 
+
+            <div id="contenu-playlist-left">
               
                 <audio controls id="audioPlayer"></audio>
                     <span id="player">
-                      <i id="play" class="fa fa-play"></i>
+                        <i id="play" class="fa fa-play"></i>
                     </span>
 
                       <img id="image-playlist" src="{{playlist.img}}"> 
@@ -23,7 +25,10 @@
 
                           <h1> {{playlist.name}} </h1>
                           <p> {{playlist.description}}</p> 
+
             </div>
+
+        </div>
 
 {# PAGE DE DROITE #}
 
