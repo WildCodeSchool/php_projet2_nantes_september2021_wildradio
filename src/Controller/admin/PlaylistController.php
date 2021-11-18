@@ -65,7 +65,7 @@ public function verification()
         }
 
         if ($this->playlist['description'] == "") {
-            $this->errors['description'] = "Ajoutez une description";
+            $this->errors['description'] = "Veuillez ajouter une description";
         }
 
        // on indique 1 ou 0 si l'ajout au flux est coché
@@ -96,8 +96,9 @@ public function show($id):string
 }
 
 
-// Modifier une playlist
-
+/**
+ * permet d'afficher le formulaire pré-rempli 
+*/
 public function edit(int $id)
 {
     $playlistManager = new PlaylistManager();
@@ -109,29 +110,31 @@ public function edit(int $id)
     return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'tracksInPlaylist' => $tracksInPlaylist, 'button'=> "Modifier la playlist"]);
 }
 
+/**
+* permet de mettre à jour les données du formulaire  
+ */
 public function update(int $id)
 {
    
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $this->verification(); 
-        $this->uploadFile();
 
-        // a faire verif erreur 
-       
-            // validation et redirection
+        if (empty($this->errors)){        
+            $this->uploadFile();
             $playlistManager = new PlaylistManager();
             $playlistManager->update($this->playlist);
             header('Location: /admin/playlists/show?id=' . $id);
-        
+        }
+        return $this->twig->render('/admin/Playlist/edit.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/update?id=$id"]);
+
     }
    
 }
 
 
 // Supprimer une playlist
- 
-public function delete()
+ public function delete()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = trim($_POST['id']);
@@ -140,8 +143,8 @@ public function delete()
         header('Location:/admin/playlists/');
     }
 }
-// Ajouter image 
 
+// Permet de vérifier l'image 
 public function verifFile()
     {
 
@@ -162,6 +165,7 @@ public function verifFile()
 
     }          
 
+// Permet de télécharger l'image 
 public function uploadFile() 
     {
 
@@ -179,7 +183,6 @@ public function uploadFile()
             $this->playlist['img'] = $uploadFile;
             
     }
-
 
 
  /**
