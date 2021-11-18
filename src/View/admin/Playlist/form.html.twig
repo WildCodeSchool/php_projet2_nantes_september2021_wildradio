@@ -1,6 +1,6 @@
 <h2> Informations </h2>
 
-<form method="post" action="{{action}}" enctype="multipart/form-data">
+<form id="form-track" method="post" action="{{action}}" enctype="multipart/form-data">
 <input type="hidden" value="{{ track.id }}" name="id">
 
 <input type="hidden" value="{{ playlist.id }}" name="id">
@@ -24,7 +24,7 @@
 </div> 
 
 <div>
-		<input type="file" name="img" id="img" >
+		<input class="input-form" type="file" name="img" id="img" >
 		{% if errors.jpg is defined %}
         	{{ errors.jpg }}
 		{% endif %}
