@@ -106,9 +106,7 @@ public function edit(int $id)
     $trackPlaylistManager = new TrackPlaylistManager();
     $tracksInPlaylist= $trackPlaylistManager-> selectTracksInPlaylist($id);
 
-    
-
-    return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'tracksInPlaylist' => $tracksInPlaylist, 'button'=> "Modifier une track"]);
+    return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'tracksInPlaylist' => $tracksInPlaylist, 'button'=> "Modifier la playlist"]);
 }
 
 public function update(int $id)
@@ -128,7 +126,6 @@ public function update(int $id)
         
     }
    
-    echo "oups";
 }
 
 
