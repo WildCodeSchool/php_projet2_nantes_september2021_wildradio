@@ -165,7 +165,7 @@ public function verifFile()
         $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
 
         // // Les extensions autorisées
-        $authorizedExtensions = ['jpg'];
+        $authorizedExtensions = ['jpg', 'png', 'jpeg'];
         if( (!in_array($extension, $authorizedExtensions))){
             $this->errors['img'] = 'Veuillez sélectionner un fichier jpg !';
         }
