@@ -200,7 +200,7 @@ nav a {
     border-radius: 5px;
     background: none;
     height: 35px;
-    width : 250px;
+    width : 228px;
     margin-bottom: 10px;
 } 
 
@@ -455,6 +455,26 @@ input::placeholder {
 #img-playlist {
     width: 60px;
     height: 60px;
+}
+
+#liste-tracks {
+    padding-bottom: 100px;
+}
+
+#btn-effacer {
+    cursor:pointer;
+    padding: 10px;
+    width: 75px;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: #F39F81;
+}
+
+#btn-effacer:hover {
+    border: solid 1px black;
+    background-color: #F39F81;
+    color: black;
 }
 
 /* CSS de la page /admin/playlists/show */
