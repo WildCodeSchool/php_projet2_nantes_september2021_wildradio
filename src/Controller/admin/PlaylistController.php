@@ -33,9 +33,8 @@ class PlaylistController extends AbstractController
  {
      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
-         $verified = $this->verification(); 
+         $this->verification(); 
                      
- 
          if (empty($this->errors)){
  
          // validation et redirection 
@@ -65,7 +64,7 @@ public function verification()
         }
 
         if ($this->playlist['description'] == "") {
-            $this->errors['description'] = "Ajoutez une description";
+            $this->errors['description'] = "Veuillez ajouter une description";
         }
 
        // on indique 1 ou 0 si l'ajout au flux est coché
@@ -73,7 +72,6 @@ public function verification()
 }
 
  // Affichager toutes les playlists
-
 public function browse(): string
 {
     $playlistManager = new PlaylistManager();
@@ -82,6 +80,7 @@ public function browse(): string
     return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
 }
 
+ // Affichager une playlist
 public function show($id):string
 {
 
@@ -95,9 +94,9 @@ public function show($id):string
     
 }
 
-
-// Modifier une playlist
-
+/**
+ * permet d'afficher le formulaire pré-rempli 
+*/
 public function edit(int $id)
 {
     $playlistManager = new PlaylistManager();
@@ -109,29 +108,40 @@ public function edit(int $id)
     return $this->twig->render('admin/Playlist/edit.html.twig', ['action'=> "/admin/playlists/update?id=$id", 'playlist' => $this->playlist, 'tracksInPlaylist' => $tracksInPlaylist, 'button'=> "Modifier la playlist"]);
 }
 
+/**
+* permet de mettre à jour les données du formulaire  
+ */
 public function update(int $id)
 {
-   
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-        $this->verification(); 
-        $this->uploadFile();
+        $this->verification();
 
-        // a faire verif erreur 
-       
-            // validation et redirection
-            $playlistManager = new PlaylistManager();
-            $playlistManager->update($this->playlist);
-            header('Location: /admin/playlists/show?id=' . $id);
         
+        if (empty($this->errors)){  
+            
+            if($_FILES['img']['error'] !== 4) {
+                
+                    $this->uploadFile();
+                    $playlistManager = new PlaylistManager();
+                    $playlistManager->update($this->playlist);
+                    header('Location: /admin/playlists/show?id=' . $id);
+                
+                } else {
+                    $playlistManager = new PlaylistManager();
+                    $playlist = $playlistManager->selectOneById($id);
+                    $this->playlist['img'] = $playlist['img'];
+                    $playlistManager->update($this->playlist);
+                    header('Location: /admin/playlists/show?id=' . $id);
+                }
+        }
+        return $this->twig->render('/admin/Playlist/edit.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/update?id=$id"]);
     }
-   
 }
 
 
 // Supprimer une playlist
- 
-public function delete()
+ public function delete()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = trim($_POST['id']);
@@ -140,8 +150,8 @@ public function delete()
         header('Location:/admin/playlists/');
     }
 }
-// Ajouter image 
 
+// Permet de vérifier l'image 
 public function verifFile()
     {
 
@@ -162,6 +172,7 @@ public function verifFile()
 
     }          
 
+// Permet de télécharger l'image 
 public function uploadFile() 
     {
 
@@ -177,15 +188,15 @@ public function uploadFile()
             // on précise le chemin du fichier pour la BDD
             move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);  
             $this->playlist['img'] = $uploadFile;
+
             
     }
-
 
 
  /**
  * Afficher une vue des playlists filtrées en fonction du mot recherché
  */
-public function search()
+ public function search()
 {
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {

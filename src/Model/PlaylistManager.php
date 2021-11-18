@@ -33,7 +33,7 @@ class PlaylistManager extends AbstractManager
     }
 
 
-     // telecharger playlist dans dtbase
+     // Mettre à jour la playlist dans database
 
      public function update(array $playlist): bool
     {
