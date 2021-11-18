@@ -1,8 +1,10 @@
+
  {% extends '/front/layout.html.twig' %}
 
 {% block title %}CONTACT{% endblock %}
 
     {% block content %}
+    
     {% block header %}
         {% include "front/header.html.twig" %}
     {% endblock %}
@@ -38,30 +40,25 @@
 
             <h1> Prenons contact </h1>
 
-            <form id="form-contact" action="/contact" method="post">
-
+            <form id="form-contact" action="/contact/send" method="post">
             <div>
-                <label for="name"></label>
                 <input id="input-form" type="text" id="name" name="user_nom" placeholder="Nom et prénom">
             </div>
 
             <div>
-                <label for="mail"></label>
                 <input id="input-form" type="email" id="mail" name="user_mail" placeholder="E-mail">
             </div>
 
             <div>
-                <label for="objet"></label>
-                <input id="input-form" name="user_subject" placeholder="Objet"></input>
+                <input id="input-form" name="user_subject" placeholder="Objet">
             </div>
     
             <div>
-                <label for="msg"></label>
                 <textarea name="user_message" placeholder="Écrire le message"></textarea>
             </div>
 
               <div>
-                <button id="btn-send-msg" type="submit" name="send">Envoyer le message</button>
+                <button id="btn-send-msg" type="submit">Envoyer le message</button>
             </div>
 
             </form>
