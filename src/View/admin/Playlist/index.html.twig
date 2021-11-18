@@ -31,7 +31,7 @@
             <thead>
                 <tr>
                     <th>IMG</th>
-                    <th id="actions-track-box">Titre</th>
+                    <th>Titre</th>
                     <th id="actions-track-box">En ligne</th>
                     <th id="actions-track-box">Modif.</th>
                     <th id="actions-track-box">Suppr.</th>
@@ -43,10 +43,10 @@
 
                 <tr>
                     <td><img id="img-playlist" src="{{playlist.img}}"></td>
-                    <td id="infos-track-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
-                    <td id="actions-track-box">{% if playlist.is_online == 1 %} Oui {% else %} Non {% endif %}</td>
-                    <td id="actions-track-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
-                    <td id="actions-track-box">
+                    <td id="infos-playlist-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
+                    <td id="actions-playlist-box">{% if playlist.is_online == 1 %} Oui {% else %} Non {% endif %}</td>
+                    <td id="actions-playlist-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
+                    <td id="actions-playlist-box">
                        <form action="/admin/playlists/delete" method="POST">
                          <input type="hidden" name="id" value="{{ playlist.id }}">
                          <button id="btn-effacer">Effacer</button>
