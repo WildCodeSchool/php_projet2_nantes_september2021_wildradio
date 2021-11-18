@@ -42,7 +42,7 @@ class PlaylistController extends AbstractController
              $this->uploadFile();
              $playlistManager = new PlaylistManager();
              $playlistManager->insert($this->playlist);
-             return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add", 'button' => 'Ajouter à la playlist']);
+             return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add", 'button' => 'Créer la playlist']);
          }
 
          return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
