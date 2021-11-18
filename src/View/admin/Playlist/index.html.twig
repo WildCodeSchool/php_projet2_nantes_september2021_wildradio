@@ -45,7 +45,7 @@
                     <td><img id="img-playlist" src="{{playlist.img}}"></td>
                     <td id="infos-playlist-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
                     <td id="actions-playlist-box">{% if playlist.is_online == 1 %} Oui {% else %} Non {% endif %}</td>
-                    <td id="actions-playlist-box"><a href="/admin/playlists/edit?id={{playlist.id}}">Modif.</a></td>
+                    <td id="actions-playlist-box"><a href="/admin/playlists/edit?id={{playlist.id}}"><button id="btn-effacer">Modif.</button></a></td>
                     <td id="actions-playlist-box">
                        <form action="/admin/playlists/delete" method="POST">
                          <input type="hidden" name="id" value="{{ playlist.id }}">
