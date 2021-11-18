@@ -23,7 +23,7 @@
 
         <div id="buttons-admin-playlists">
 
-                <a href="/admin/playlists/edit?id={{ playlist.id }}"><button class="buttons-playlists">Modifier la Playlist</button></a>
+                <a href="/admin/playlists/edit?id={{ playlist.id }}"><button class="buttons-playlists">Modifier</button></a>
 
                 <form action="/admin/playlists/delete" method="POST">
                     <input type="hidden" name="id" value="{{ playlist.id }}">
@@ -37,17 +37,19 @@
     <a href="/admin/playlists"><button id="retour">Retour</button></a>
 
     <br/>
+    </div>
     
-    <div id="playlist-edit-right">
+    <div id="track-edit-right">
         
-        <h2>Les tracks</h2><br>
+        <h2>Les tracks de la playlist</h2><br>
         
         <ol id="playlist"> 
         {% for track in tracksInPlaylist %}
-          <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
+          <ul><span id="player-track-artist" >{{track.artist}}</span> - {{track.title}} </br><span id="player-track-album" >{{track.album}}</span></ul>
         {% endfor %}
         </ol>
 
-    </div>
+        </div>
+</div>
 
 {% endblock %}

@@ -115,8 +115,7 @@ public function edit(int $id)
  */
 public function update(int $id)
 {
-   
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $this->verification(); 
 

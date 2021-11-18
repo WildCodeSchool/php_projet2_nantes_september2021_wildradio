@@ -15,11 +15,10 @@ return [
     'playlists' => ['front\PlaylistController', 'browse' ],
     'playlist/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\ContactController', 'contact'],
-    'error' => ['front\ErrorController' , 'error'],
 
     // s'enregistrer et se balader dans admin 
 
-    'admin/register' => ['admin\RegisterController', 'login'],
+    'login' => ['admin\RegisterController', 'login'],
     'admin' => ['admin\HomeController', 'index'],
     'admin/logout' => ['admin\RegisterController', 'logout'],
 
