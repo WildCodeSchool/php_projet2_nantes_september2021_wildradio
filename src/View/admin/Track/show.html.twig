@@ -8,47 +8,47 @@
 
         <h1>Informations du track</h1>
 
-            <div id="contenu-admin-tracks">
+    <div id="contenu-track-edit">
 
-        <div id="input-form"> Titre : {{ track.name }}</div> 
-        <div id="input-form"> Artiste : {{ track.artist }}</div>
-        <div id="input-form">Album : {{ track.album }}</div> 
-        <div> Est dans le flux : {% if track.is_in_flux == 1 %} Oui {% else %} Non {% endif %}</div>
-        <br/>
+            <div id="track-edit-left">
+
+                <div id="input-form"> Titre : {{ track.name }}</div> 
+                <div id="input-form"> Artiste : {{ track.artist }}</div>
+                <div id="input-form">Album : {{ track.album }}</div> 
+                <div> Est dans le flux : {% if track.is_in_flux == 1 %} Oui {% else %} Non {% endif %}</div>
+                <br/>
         
-        <div id="button-show-track">
+                        <div id="button-show-track">
+                            <a href="/admin/tracks/edit?id={{ track.id }}"><button class="buttons">Modifier la track</button></a>
 
-            <a href="/admin/tracks/edit?id={{ track.id }}"><button class="buttons">Modifier la track</button></a>
+                            <form action="/admin/tracks/delete" method="POST">
+                                <input type="hidden" name="id" value="{{ track.id }}">
+                            <button class="buttons">Effacer</button>
+                            </form>
+                        </div>
 
-            <form action="/admin/tracks/delete" method="POST">
-                <input type="hidden" name="id" value="{{ track.id }}">
+                            <br/>
+                            <a href="/admin/tracks"><button id="retour"> Retour</button></a>
 
-            <button class="buttons">Effacer</button>
-            </form>
-        </div>
+            </div>
 
-            <br/>
+        <div id="track-edit-right">
 
-        <a href="/admin/tracks"><button id="retour"> Retour</button></a>
+                <h2> Dans quelle(s) playlist(s) est ma track?  </h2>
 
+                {%  for playlist in playlists %}
+                
+                    {% if playlist.id in selectedPlaylists %}
+                        <ol> {{playlist.name}} </ol>
+                    {% endif %} 
+
+                {% endfor %}
+
+                    {% if selectedPlaylists is empty %}
+                        <p> La track est enregistrée dans aucune playlist </p>
+                    {% endif %}
+        </div> 
     </div>
-
-    <div> 
-
-        <h2> Dans quelle(s) playlist(s) est ma track?  </h2>
-
-        {%  for playlist in playlists %}
-        
-            {% if playlist.id in selectedPlaylists %}
-                <ol> {{playlist.name}} </ol>
-            {% endif %} 
-
-        {% endfor %}
-
-            {% if selectedPlaylists is empty %}
-                <p> La track est enregistrée dans aucune playlist </p>
-            {% endif %}
-    </div> 
 </div>
 
 {% endblock %}
