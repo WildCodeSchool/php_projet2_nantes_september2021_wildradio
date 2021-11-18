@@ -1,0 +1,66 @@
+{% extends '/front/layout.html.twig' %}
+
+{% block title %}WILD RADIO{% endblock %}
+
+{% block content %}
+{% block background %}{% include "front/background.html.twig" %}{% endblock %}
+
+     <video class="sunset"  playsinline autoplay muted loop> 
+<source src="\assets\images\Sunset.mp4" type="video/mp4">
+</video>
+
+{% block header %}{% include "front/header.html.twig" %}{% endblock %}
+
+    <div id="contenu-homepage">
+        <div id="left-homepage">
+
+            <h1 id="wildradio">
+                <span id="wild">WILD</span><br>
+                <span id="radio">RADIO</span></h1>
+
+            <p id="description">Un flux continu et des playlists, la webradio d'Eva Wild c'est le media audio Lo-Fi, électro, hip hop nantais qui t'accompagne partout. 
+            Clique sur "Contact" pour en savoir plus et let's play ! </p>
+    </div>
+
+        <div id="right-homepage">
+            <audio controls id="audioPlayer"></audio>
+
+            <div id="player">
+                <div id="bouton-play-texte">
+                    <p id="action">Play</p><i id="play" class="fa fa-play"></i>
+                </div>
+
+                    <div id="currentTrack"> </div> 
+
+                <ul id="playlist">
+                    {% for track in tracks %}
+                    <li>
+                        <a href="{{ track.mp3 }}"> 
+                            <span id="player-track-artist">{{ track.artist }}</span> - {{track.name}} </br>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% block javascript %} 
+
+            <script src="/assets/js/playerFlux.js"></script>
+            <script>
+                audioPlayer();
+            </script>
+
+        {% endblock %}
+
+    </div>
+
+            <div id="playlists-homepage">
+                <div id="buttons-playlists">
+                    <a href="/playlist/show?id=27?"><button id="button-playlists">► Sweet music</button></a>
+                    <a href="/playlist/show?id=29?"><button id="button-playlists">► Electrophonie</button></a>
+                </div>
+                
+                <a href="/playlists"><button id="button-allplaylists">Écouter toutes nos playlists</button></a>
+            </div>
+
+{% endblock %}

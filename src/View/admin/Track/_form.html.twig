@@ -1,0 +1,51 @@
+<h2>Informations</h2>
+
+<form id="form-track" method="POST" action="{{action}}" enctype="multipart/form-data">
+
+	<input type="hidden" value="{{ track.id }}" name="id">
+
+	<div> 
+		<label for="title"></label>
+		<input id="input-form" type="text" placeholder="Titre" value="{{ track.name }}" name="title" required>
+		{% if errors.name is defined %}
+        	<div id="messageErreur">{{ errors.name }}</div>
+		{% endif %}
+	
+	</div> 
+
+	<div> 
+		<input id="input-form" type="text" placeholder="Artiste" value="{{ track.artist }}" name="artist" required >
+		{% if errors.artist is defined %}
+        	<div id="messageErreur">{{ errors.artist }}</div>
+		{% endif %}
+	</div>
+
+	<div>
+		<input id="input-form" type="text" placeholder="Album" value="{{ track.album }}" name="album" required >
+		{% if errors.album is defined %}
+        	<div id="messageErreur"> {{ errors.album }}</div>
+		{% endif %}
+	</div>
+
+	<div>
+		<input id="input-form" type="file" name="mp3" id="mp3" required >
+		{% if errors.mp3 is defined %}
+        	<div id="messageErreur"> {{ errors.mp3 }} </div>
+		{% endif %}
+	</div>
+
+	<div>
+		<label for="flux"> Dans le flux</label>
+		<input type="checkbox"  name="flux" id="flux" {% if track.is_in_flux == 1 %}  checked {% endif %} >
+	</div>
+
+	<div>
+
+    <button id="btn-submit" type="submit" value="Submit"> {{button}} </button>
+
+	</div>
+
+	<div id="messageEnvoi"> {{ messageEnvoi }} </div>
+
+</form>
+ 

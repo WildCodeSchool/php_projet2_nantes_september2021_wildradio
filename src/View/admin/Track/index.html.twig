@@ -1,0 +1,61 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block title %}Mes tracks{% endblock %}
+
+{% block content %}
+
+<div id="admin-tracks">
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+    <div id="contenu-admin-tracks">
+            <h1> {{ titre }} </h1> 
+
+        <div id="buttons-admin-tracks">
+
+            <div id="searchbar">
+                <form action="/admin/tracks/search" method="GET">
+                    <input class="champ" type="text" name="search" placeholder="Rechercher un titre, artiste ou album" />
+                    <button class="fa fa-search"></button>
+                </form>
+            </div>
+
+            <div id="dubble-buttons">
+                <a href="/admin/tracks/add"><button class="buttons">+ Ajouter une track</button></a>
+                <a href="/admin/tracks/flux"><button class="buttons">Afficher mon flux</button></a>  
+            </div>
+        </div>
+
+        <div id="liste-tracks">
+
+            <table>
+            <thead>
+                <tr>
+                    <th>Artiste</th>
+                    <th>Titre</th>
+                    <th id="actions-track-box">Flux</th>
+                    <th id="actions-track-box">Modif.</th>
+                    <th id="actions-track-box">Suppr.</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for track in tracks %}
+                <tr>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.artist }}</a></td>
+                    <td id="infos-track-box"><a href="/admin/tracks/show?id={{track.id}}">{{ track.name }}</a></td>
+                    <td id="actions-track-box">{% if track.is_in_flux == 1 %} Oui {% else %} Non {% endif %}</td>
+                    <td id="actions-track-box"><a href="/admin/tracks/edit?id={{track.id}}"><button id="btn-effacer">Modif.</button></a></td>
+                    <td id="actions-track-box">
+                        <form action="/admin/tracks/delete" method="POST">
+                         <input type="hidden" name="id" value="{{ track.id }}">
+                         <button id="btn-effacer">Effacer</button>
+                      </form>
+                    </td>
+
+                </tr>
+                {% endfor %}  
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+ {% extends '/admin/layout.html.twig' %}
+ 
+{% block content %}
+      
+    <div id="contenu-admin-track-add">
+
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+
+        <h1> Modifier la playlist "{{ playlist.name }}"</h1>
+        
+        <div id="contenu-track-edit">
+
+            <div id="track-edit-left">
+
+            {% include 'admin/Playlist/form.html.twig' %}
+
+            <a href="/admin/playlists/show?id={{ playlist.id }}"><button id="retour">Retour</button></a>
+            
+            </div>
+        
+        <div id="track-edit-right">
+        
+            <h2>Les tracks</h2>
+
+            <ol id="playlist"> 
+            {% for track in tracksInPlaylist %}
+            <ul><strong>{{track.title}}  </strong>- {{track.artist}} </br>{{track.album}}</ul>
+            {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

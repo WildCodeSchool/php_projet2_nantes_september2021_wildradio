@@ -1,0 +1,52 @@
+<h2> Informations </h2>
+
+<form id="form-track" method="post" action="{{action}}" enctype="multipart/form-data">
+<input type="hidden" value="{{ track.id }}" name="id">
+
+<input type="hidden" value="{{ playlist.id }}" name="id">
+
+<div> 
+	<label for="name"></label>
+	<input id="input-form" type="text" placeholder="Nom de la playlist" value="{{ playlist.name }}" name="name" required>
+		{% if errors.name is defined %}
+        	{{ errors.name }}
+		{% endif %}	
+</div> 
+
+<div>
+        <label for="description"></label>
+
+        <input id="input-form" type="text" placeholder="Description de la playlist" value="{{ playlist.description }}" name="description" required></input>
+
+		{% if errors.description is defined %}
+        	{{ errors.description }}
+		{% endif %}	
+</div> 
+
+<div>
+		<input class="input-form" type="file" name="img" id="img" required>
+		{% if errors.img is defined %}
+        	{{ errors.img}}
+		{% endif %}
+</div>
+
+<div>
+  <input id="input-form" type="text" id="tag" name="tag" value="{{ playlist.tag }}" placeholder="tag">
+  <label for="tag"></label>
+</div>
+
+<div>
+  <label for="online"> En ligne </label>
+  <input type="checkbox" id="is_online" name="is_online"
+         {% if playlist.is_online == 1 %}  checked {% endif %}>
+</div>
+
+<div>
+
+		<button id="btn-submit" type="submit" value="Submit"> {{button}} </button>
+</div>
+ 
+		<div id="messageEnvoi">  {{messageEnvoi}} </div>
+
+</form>
+

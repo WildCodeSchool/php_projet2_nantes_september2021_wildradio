@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block stylesheet %}
+        <link rel="stylesheet" href="/assets/css/style.css">
+    {% endblock %}
+
+        <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="icon" href="\assets\images\Wild-Radio-Blanc-BD.png">
+
+        {# Import typo Maven Pro #}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+        
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500;555&display=swap');
+    </style>
+      
+    {% block script %}
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"</script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"</script>
+
+    {% endblock %}
+
+
+</head>
+
+
+{% block content %}
+
+    {% block header %}{% endblock %}
+    {% block javascript %}{% endblock %}
+
+</body>
+</html>
+ {% endblock %}

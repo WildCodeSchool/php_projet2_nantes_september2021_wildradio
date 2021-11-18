@@ -1,0 +1,43 @@
+{% extends '/admin/layout.html.twig' %}
+
+
+{% block title %}Se connecter{% endblock %}
+
+{% block content %}
+
+<div id="register-page">    
+
+	<div id="connect">
+
+		<img id="icone-connect" src="/assets/images/user.svg">
+
+		<form method="POST" action="{{action}}">
+
+			<input type="hidden" value="{{ track.id }}" name="id">
+
+			<div> 
+				<label for="username"></label>
+				<input id="input-register" type="text" placeholder="Username" value="{{ log.username }}" name="username" >
+				{% if errors.username is defined %}
+					{{ errors.username }}
+				{% endif %}
+			
+			</div> 
+
+			<div> 
+				<input id="input-register" type="password" placeholder="Password" value="{{ log.password }}" name="password" >
+				{% if errors.password is defined %}
+					{{ errors.password }}
+				{% endif %}
+			</div>
+
+			<div>
+				<button id="btn-submit" type="submit" value="Submit"> Se connecter</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+
+ 

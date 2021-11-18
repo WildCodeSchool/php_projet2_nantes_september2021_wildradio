@@ -1,0 +1,63 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block title %}Mes Playlists{% endblock %}
+
+{% block content %}
+
+<div id="admin-tracks">
+        {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
+    <div id="contenu-admin-tracks">
+
+    <h1>Toutes mes playlists</h1> 
+
+    <div id="buttons-admin-tracks">
+
+            <div id="searchbar" >
+                <form action="/admin/playlists/search" method="GET">
+                    <input class="champ" type="text" name="search" placeholder="Rechercher une playlist"/>
+                    <button class="fa fa-search"></button>
+                </form>
+            </div>
+
+            <div id="dubble-buttons">
+                <a href="/admin/playlists/add"><button class="buttons">+ Ajouter une playlist</button></a>
+                <a href="/admin/tracks/flux"><button class="buttons">Afficher mon flux</button></a>  
+            </div>
+        </div>
+
+        <div id="liste-tracks">
+
+            <table>
+            <thead>
+                <tr>
+                    <th>IMG</th>
+                    <th>Titre</th>
+                    <th id="actions-track-box">En ligne</th>
+                    <th id="actions-track-box">Modif.</th>
+                    <th id="actions-track-box">Suppr.</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for playlist in playlists %}
+
+                <tr>
+                    <td><img id="img-playlist" src="{{playlist.img}}"></td>
+                    <td id="infos-playlist-box"><a href="/admin/playlists/show?id={{playlist.id}}">{{ playlist.name }}</a></td>
+                    <td id="actions-playlist-box">{% if playlist.is_online == 1 %} Oui {% else %} Non {% endif %}</td>
+                    <td id="actions-playlist-box"><a href="/admin/playlists/edit?id={{playlist.id}}"><button id="btn-effacer">Modif.</button></a></td>
+                    <td id="actions-playlist-box">
+                       <form action="/admin/playlists/delete" method="POST">
+                         <input type="hidden" name="id" value="{{ playlist.id }}">
+                         <button id="btn-effacer">Effacer</button>
+                      </form>
+                   </td>
+                </tr>
+                {% endfor %}  
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
