@@ -16,7 +16,7 @@ return [
     'playlist/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\ContactController', 'contact'],
     'error' => ['front\ErrorController' , 'error'],
-    'contact/send' => ['front\ContactController' , 'send'],
+  
 
     // s'enregistrer et se balader dans admin 
 

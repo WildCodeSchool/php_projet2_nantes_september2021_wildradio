@@ -25,16 +25,4 @@ class ContactController extends AbstractController
     {
         return $this->twig->render('front/contact.html.twig');
     }
-
-
-   public function send()
-   {
-    $from = $_POST ["user_mail"];
-    $to = "hello@gmail.com";
-    $subject = $_POST ["user_subject"];
-    $message = $_POST ["user_message"];
-    $headers = "De :" . $from;
-    mail($to,$subject,$message, $headers);
-   }
-    
 }
