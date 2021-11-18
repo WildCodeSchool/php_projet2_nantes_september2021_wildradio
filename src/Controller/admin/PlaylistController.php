@@ -33,9 +33,8 @@ class PlaylistController extends AbstractController
  {
      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
-         $verified = $this->verification(); 
+         $this->verification(); 
                      
- 
          if (empty($this->errors)){
  
          // validation et redirection 
@@ -73,7 +72,6 @@ public function verification()
 }
 
  // Affichager toutes les playlists
-
 public function browse(): string
 {
     $playlistManager = new PlaylistManager();
@@ -82,6 +80,7 @@ public function browse(): string
     return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
 }
 
+ // Affichager une playlist
 public function show($id):string
 {
 
@@ -94,7 +93,6 @@ public function show($id):string
     return $this->twig->render('admin/Playlist/show.html.twig', ['playlist' => $playlist, 'tracksInPlaylist' => $tracksInPlaylist]);
     
 }
-
 
 /**
  * permet d'afficher le formulaire pré-rempli 
@@ -115,20 +113,30 @@ public function edit(int $id)
  */
 public function update(int $id)
 {
-       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-        $this->verification(); 
+        $this->verification();
 
-        if (empty($this->errors)){        
-            $this->uploadFile();
-            $playlistManager = new PlaylistManager();
-            $playlistManager->update($this->playlist);
-            header('Location: /admin/playlists/show?id=' . $id);
+        
+        if (empty($this->errors)){  
+            
+            if($_FILES['img']['error'] !== 4) {
+                
+                    $this->uploadFile();
+                    $playlistManager = new PlaylistManager();
+                    $playlistManager->update($this->playlist);
+                    header('Location: /admin/playlists/show?id=' . $id);
+                
+                } else {
+                    $playlistManager = new PlaylistManager();
+                    $playlist = $playlistManager->selectOneById($id);
+                    $this->playlist['img'] = $playlist['img'];
+                    $playlistManager->update($this->playlist);
+                    header('Location: /admin/playlists/show?id=' . $id);
+                }
         }
         return $this->twig->render('/admin/Playlist/edit.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/update?id=$id"]);
-
     }
-   
 }
 
 
@@ -180,6 +188,7 @@ public function uploadFile()
             // on précise le chemin du fichier pour la BDD
             move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER["DOCUMENT_ROOT"] . $uploadFile);  
             $this->playlist['img'] = $uploadFile;
+
             
     }
 
@@ -187,7 +196,7 @@ public function uploadFile()
  /**
  * Afficher une vue des playlists filtrées en fonction du mot recherché
  */
-public function search()
+ public function search()
 {
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
