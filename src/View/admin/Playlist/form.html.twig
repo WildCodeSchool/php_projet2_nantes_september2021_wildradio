@@ -7,7 +7,7 @@
 
 <div> 
 	<label for="name"></label>
-	<input type="text" placeholder="name" value="{{ playlist.name }}" name="name" >
+	<input id="input-form" type="text" placeholder="Nom de la playlist" value="{{ playlist.name }}" name="name" >
 		{% if errors.name is defined %}
         	{{ errors.name }}
 		{% endif %}	
@@ -16,7 +16,7 @@
 <div>
         <label for="description"></label>
 
-        <input id="input-description" type="text" placeholder="ajouter description" value="{{ playlist.description }}" name="description" ></input>
+        <input id="input-form" type="text" placeholder="Description de la playlist" value="{{ playlist.description }}" name="description" ></input>
 
 		{% if errors.description is defined %}
         	{{ errors.description }}
@@ -31,17 +31,15 @@
 </div>
 
 <div>
+  <input id="input-form" type="text" id="tag" name="tag" value="{{ playlist.tag }}" placeholder="tag">
+  <label for="tag"></label>
+</div>
+
+<div>
   <label for="online"> En ligne </label>
   <input type="checkbox" id="is_online" name="is_online"
          {% if playlist.is_online == 1 %}  checked {% endif %}>
 </div>
-
-<div>
-
-  <input type="text" id="tag" name="tag" value="{{ playlist.tag }}" placeholder="tag">
-  <label for="tag"></label>
-</div>
-
 
 <div>
 
