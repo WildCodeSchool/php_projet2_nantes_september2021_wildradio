@@ -141,8 +141,9 @@ class TrackController extends AbstractController
     {
         $trackManager = new TrackManager();
         $track = $trackManager->selectOneById($id);
+        $Allplaylists = $this->browsePlaylists();
 
-        return $this->twig->render('admin/Track/show.html.twig', ['track' => $track]);
+        return $this->twig->render('admin/Track/show.html.twig', ['track' => $track, 'playlists' => $Allplaylists, 'selectedPlaylists' => $this->isInPlaylist()]);
     }
 
     /**
@@ -221,8 +222,6 @@ class TrackController extends AbstractController
         return $trackPlaylistManager->getAllSelectedPlaylists($_GET['id']);
 
     }
-
-
 
     /**
      * Permet d'afficher les playlists dans lesquels ajouter les tracks

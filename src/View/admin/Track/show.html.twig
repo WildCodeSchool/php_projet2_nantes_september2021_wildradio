@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div id="contenu-admin-track-add">
+<div id="contenu-admin-track-add">
 
     {% block header %}{% include "admin/header.html.twig" %}{% endblock %}
 
@@ -32,6 +32,23 @@
         <a href="/admin/tracks"><button id="retour"> Retour</button></a>
 
     </div>
+
+    <div> 
+
+        <h2> Dans quelle(s) playlist(s) est ma track?  </h2>
+
+        {%  for playlist in playlists %}
+        
+            {% if playlist.id in selectedPlaylists %}
+                <ol> {{playlist.name}} </ol>
+            {% endif %} 
+
+        {% endfor %}
+
+            {% if selectedPlaylists is empty %}
+                <p> La track est enregistrée dans aucune playlist </p>
+            {% endif %}
+    </div> 
 </div>
 
 {% endblock %}
