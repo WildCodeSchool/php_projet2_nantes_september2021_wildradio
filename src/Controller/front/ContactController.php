@@ -33,7 +33,7 @@ class ContactController extends AbstractController
              } if($retour) {
                     echo '<p align="center">Votre message a bien été envoyé. Merci !</p>';
                 } else {
-                    echo '<p align="center">Erreur.</p>';
+                    echo '<p align="center">Erreur lors de l\'envoi du message. Veuillez réessayer. </p>';
                 }
         }
 
