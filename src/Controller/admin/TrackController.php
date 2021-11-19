@@ -68,7 +68,7 @@ class TrackController extends AbstractController
         $extension = pathinfo($_FILES['mp3']['name'], PATHINFO_EXTENSION);
 
         // // Les extensions autorisées
-        $authorizedExtensions = ['mp3'];
+        $authorizedExtensions = ['mp3' ,];
         if( (!in_array($extension, $authorizedExtensions))){
             $this->errors['mp3'] = 'Veuillez sélectionner un fichier mp3 !';
         }
