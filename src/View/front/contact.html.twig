@@ -43,63 +43,19 @@ Vous ne voyez aucun rapport avec la WildRadio ? C'est normal. Mais on aime Britn
 
             <h1> Prenons contact </h1>
 
-            <form id="form-contact" action="/contact/send" method="post">
-            <div>
-                <input id="input-form" type="text" id="name" name="user_nom" placeholder="Nom et prénom">
-            </div>
-
-            <div>
-                <input id="input-form" type="email" id="mail" name="user_mail" placeholder="E-mail">
-            </div>
-
-            <div>
-                <input id="input-form" name="user_subject" placeholder="Objet">
-            </div>
-    
-            <div>
-                <textarea name="user_message" placeholder="Écrire le message"></textarea>
-            </div>
-
-              <div>
-                <button id="btn-send-msg" type="submit">Envoyer le message</button>
-            </div>
-            
-            </form>
-            
- {# <form method="post">
-        <label>Nom</label>
-        <input type="text" name="nom" required>
-        <label>Email</label>
-        <input type="email" name="email" required>
-        <label>Message</label>
-        <textarea name="message" required></textarea>
-        <input type="submit">
-    </form>
-    <?php
-    if(isset($_POST['message'])){
-        $entete  = 'MIME-Version: 1.0' . "\r\n";
-        $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $entete .= 'From: ' . $_POST['email'] . "\r\n";
-
-        $message = '<h1>Message envoyé depuis la page Contact de monsite.fr</h1>
-        <p><b>Nom : </b>' . $_POST['nom'] . '<br>
-        <b>Email : </b>' . $_POST['email'] . '<br>
-        <b>Message : </b>' . $_POST['message'] . '</p>';
-
-        $retour = mail('destinataire@free.fr', 'Envoi depuis page Contact', $message, $entete);
-        if($retour) {
-            echo '<p>Votre message a bien été envoyé.</p>';
-        }
-    }
-    ?> #}
+    <form name ="form-contact" id="form-contact" method="post" action="/contact">
         
-        </div>
-    </div>
+        <input id="input-form" type="text" name="name" placeholder="Nom et prénom" required><br>
 
-</div>
+        <input id="input-form" type="email" name="email" placeholder="E-mail" required><br>
+        
+        <input id="input-form" name="user_subject" placeholder="Objet">
 
+        <textarea name="message" required></textarea><br>
 
+        <button id="btn-send-msg" type="submit">Envoyer le message</button>
 
+    </form>
 
 {% endblock %}
 
