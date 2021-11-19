@@ -12,7 +12,7 @@ return [
     // affichage Front (user)
      
     '' => ['front\HomeController', 'index'],
-    'playlists' => ['front\PlaylistController', 'browse' ],
+    'playlists' => ['front\PlaylistController', 'browseOnline' ],
     'playlist/show' => ['front\PlaylistController', 'show', ['id']],
     'contact' => ['front\ContactController', 'contact'],
 
