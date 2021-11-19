@@ -7,7 +7,7 @@
 
 <div> 
 	<label for="name"></label>
-	<input id="input-form" type="text" placeholder="Nom de la playlist" value="{{ playlist.name }}" name="name" >
+	<input id="input-form" type="text" placeholder="Nom de la playlist" value="{{ playlist.name }}" name="name" required>
 		{% if errors.name is defined %}
         	{{ errors.name }}
 		{% endif %}	
@@ -16,7 +16,7 @@
 <div>
         <label for="description"></label>
 
-        <input id="input-form" type="text" placeholder="Description de la playlist" value="{{ playlist.description }}" name="description" ></input>
+        <input id="input-form" type="text" placeholder="Description de la playlist" value="{{ playlist.description }}" name="description" required></input>
 
 		{% if errors.description is defined %}
         	{{ errors.description }}
@@ -24,7 +24,11 @@
 </div> 
 
 <div>
+<<<<<<< HEAD
 		<input id="input-form" type="file" name="img" id="img" >
+=======
+		<input class="input-form" type="file" name="img" id="img">
+>>>>>>> a50cef7ba6d4b740077b4eb4dfb5bbed84b5b116
 		{% if errors.img is defined %}
         	{{ errors.img}}
 		{% endif %}

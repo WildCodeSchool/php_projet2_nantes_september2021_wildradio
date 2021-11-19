@@ -23,7 +23,7 @@ class PlaylistManager extends AbstractManager
         $statement->execute();
     }
     
-
+ // récuperer toutes les plalylists 
     public function getAll(): array
     {
         $statement = $this->pdo->query("SELECT * FROM ". self::TABLE);
@@ -31,6 +31,16 @@ class PlaylistManager extends AbstractManager
 
         return $playlists;
     }
+
+ // récuperer toutes les plalylists 
+ public function getAllOnline(): array
+ {
+     $statement = $this->pdo->query("SELECT * FROM ". self::TABLE . " WHERE is_online = '1' ");
+     $playlists = $statement->fetchAll();
+
+     return $playlists;
+ }    
+
 
 
      // Mettre à jour la playlist dans database

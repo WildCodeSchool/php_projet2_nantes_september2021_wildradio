@@ -15,15 +15,20 @@ class PlaylistController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      */
 
+
+      /**
+     * Browse all online playlits 
+     */
          
-    public function browse()
+    public function browseOnline()
     {
         $playlistManager = new PlaylistManager();
-        $playlists = $playlistManager->getAll();
+        $playlists = $playlistManager->getAllOnline();
 
         return $this->twig->render('front/catalogue.html.twig', ['playlists' => $playlists]);
     }
 
+    
     /**
      * Show informations for a specific track
      */

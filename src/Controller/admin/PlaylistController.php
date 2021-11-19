@@ -42,7 +42,7 @@ class PlaylistController extends AbstractController
              $this->uploadFile();
              $playlistManager = new PlaylistManager();
              $playlistManager->insert($this->playlist);
-             return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add", 'button' => 'Ajouter à la playlist']);
+             return $this->twig->render('/admin/Playlist/add.html.twig', ["messageEnvoi" => "La playlist a bien été créée" ,'action'=> "/admin/playlists/add", 'button' => 'Créer la playlist']);
          }
 
          return $this->twig->render('/admin/Playlist/add.html.twig', ["errors" => $this->errors ,'action'=> "/admin/playlists/add"]);
@@ -79,6 +79,9 @@ public function browse(): string
 
     return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
 }
+
+
+
 
  // Affichager une playlist
 public function show($id):string
@@ -153,7 +156,7 @@ public function update(int $id)
 
 // Permet de vérifier l'image 
 public function verifFile()
-    {
+{
 
         // Le poids max géré par PHP
         $maxFileSize = 2000000;
@@ -165,12 +168,12 @@ public function verifFile()
         $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
 
         // // Les extensions autorisées
-        $authorizedExtensions = ['jpg'];
+        $authorizedExtensions = ['jpg', 'png', 'jpeg'];
         if( (!in_array($extension, $authorizedExtensions))){
             $this->errors['img'] = 'Veuillez sélectionner un fichier jpg !';
         }
 
-    }          
+}          
 
 // Permet de télécharger l'image 
 public function uploadFile() 
