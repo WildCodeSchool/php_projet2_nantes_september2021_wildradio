@@ -20,11 +20,13 @@ class ContactController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      */
 
-    public function contact()
+     public function contact()
     {
+        
         if (isset($_POST['message'])) {
+            echo '<p align="center">Votre message a bien été envoyé. Merci !</p>';
 
-            $position_arobase = strpos($_POST['email'], '@');
+/*          $position_arobase = strpos($_POST['email'], '@');
             if ($position_arobase === false) {
                 echo '<p>Votre email doit comporter un arobase.</p>';
             } else {
@@ -35,8 +37,8 @@ class ContactController extends AbstractController
                 } else {
                     echo '<p align="center">Erreur.</p>';
                 }
-        }
-
+                */
+    }
     return $this->twig->render('front/contact.html.twig');
 
     }
