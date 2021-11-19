@@ -29,7 +29,7 @@ class TrackManager extends AbstractManager
      */
     public function getAll(): array
     {
-        $statement = $this->pdo->query("SELECT * FROM ". self::TABLE);
+        $statement = $this->pdo->query("SELECT * FROM track ORDER BY id DESC");
         $tracks = $statement->fetchAll();
 
         return $tracks;

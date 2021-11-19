@@ -80,6 +80,9 @@ public function browse(): string
     return $this->twig->render('admin/Playlist/index.html.twig', ['playlists' => $playlists]);
 }
 
+
+
+
  // Affichager une playlist
 public function show($id):string
 {
@@ -153,7 +156,7 @@ public function update(int $id)
 
 // Permet de vérifier l'image 
 public function verifFile()
-    {
+{
 
         // Le poids max géré par PHP
         $maxFileSize = 2000000;
@@ -170,7 +173,7 @@ public function verifFile()
             $this->errors['img'] = 'Veuillez sélectionner un fichier jpg !';
         }
 
-    }          
+}          
 
 // Permet de télécharger l'image 
 public function uploadFile() 
