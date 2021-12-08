@@ -211,8 +211,5 @@ ADMIN/TRACKS [localhost:8000/admin/tracks]
 - V1.2 : afficher les tracks triées dans l'ordre du plus récent au plus ancien
 - V1.2 : intégration d'icones pour les colonnes "Modifier" / "Effacer"
 - V1.2 : ajout d'une checkbox permettant d'ajouter / enlever la track au flux depuis cette page
-<<<<<<< HEAD
 - V1.2 : custom checkbox en CSS
-=======
-- V1.2 : custom checkbox en CSS
->>>>>>> a50cef7ba6d4b740077b4eb4dfb5bbed84b5b116
+
